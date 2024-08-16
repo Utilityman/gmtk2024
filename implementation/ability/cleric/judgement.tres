@@ -1,0 +1,97 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=28 format=3 uid="uid://cc0175gwbqe2e"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="1_homai"]
+[ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="1_qbetm"]
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_utlf0"]
+[ext_resource type="Resource" uid="uid://csk64haufbxsb" path="res://implementation/ability/cleric/judgement_filter.tres" id="2_y0x8c"]
+[ext_resource type="Resource" uid="uid://ulvqqailsb44" path="res://implementation/ability/cleric/judgement_proc.tres" id="3_3jxa0"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="3_bwbgh"]
+[ext_resource type="Script" path="res://rpg/ability/effect/aura_consume_effect.gd" id="3_c665a"]
+[ext_resource type="Script" path="res://rpg/util/filter/aura_filter.gd" id="3_xvr00"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/in_range_requisite.gd" id="4_4vqrx"]
+[ext_resource type="Script" path="res://rpg/aura/on_ability_aura.gd" id="5_1gt8b"]
+[ext_resource type="Script" path="res://rpg/util/filter/ability_filter.gd" id="5_qd33f"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/spell_known_requisite.gd" id="6_wgtv1"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="7_hdss1"]
+[ext_resource type="Script" path="res://rpg/util/filter/context_filter.gd" id="9_lyxqu"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/aura_exists_requisite.gd" id="10_5uged"]
+[ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="12_ojjuj"]
+[ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="17_oqake"]
+
+[sub_resource type="Resource" id="Resource_f7xql"]
+script = ExtResource("1_qbetm")
+flat_damage = 100.0
+level_ratio = 1.0
+spell_power_ratio = 1.0
+attack_power_ratio = 0.0
+weapon_damage_ratio = 0.0
+using = 0
+type = ""
+sub_type = ""
+debug = false
+
+[sub_resource type="Resource" id="Resource_uhqt7"]
+script = ExtResource("3_c665a")
+apply_to_self = true
+aura_filters = Array[ExtResource("3_xvr00")]([ExtResource("2_y0x8c")])
+debug = false
+
+[sub_resource type="Resource" id="Resource_ii0tm"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/hammer-drop.png"
+
+[sub_resource type="Resource" id="Resource_hwebh"]
+script = ExtResource("5_qd33f")
+ability_ids = Array[String](["default-pummel"])
+negate_ids = false
+cost_type = 0
+negate_cost_type = false
+
+[sub_resource type="Resource" id="Resource_agiuc"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/hammer-drop.png"
+
+[sub_resource type="Resource" id="Resource_a42vl"]
+script = ExtResource("5_1gt8b")
+effect = Array[ExtResource("1_utlf0")]([ExtResource("3_3jxa0")])
+filters = Array[ExtResource("9_lyxqu")]([SubResource("Resource_hwebh")])
+id = ""
+name = "Judgement (On Ability)"
+description = "TODO: Proc Effect
+TODO: make this OnAbilityEffect a new resource to split this off (cause its big and cascading)
+TODO: Filter on weaponskills"
+icon = SubResource("Resource_agiuc")
+duration = 0.0
+forever = true
+type = "feature"
+sub_type = ""
+is_unique = "by_entity"
+max_stacks = 1
+
+[sub_resource type="Resource" id="Resource_ucvjh"]
+script = ExtResource("3_bwbgh")
+
+[sub_resource type="Resource" id="Resource_dvqes"]
+script = ExtResource("4_4vqrx")
+
+[sub_resource type="Resource" id="Resource_arl01"]
+script = ExtResource("6_wgtv1")
+
+[sub_resource type="Resource" id="Resource_lf0o1"]
+script = ExtResource("10_5uged")
+check_self = true
+aura_filters = Array[ExtResource("3_xvr00")]([ExtResource("2_y0x8c")])
+
+[resource]
+script = ExtResource("1_homai")
+id = "cleric-judgement"
+name = "Judgement"
+description = ""
+icon = SubResource("Resource_ii0tm")
+use_range = 10.0
+cast_time = 0.0
+cooldown = 0.0
+global_cooldown = 1.5
+off_global_cooldown = false
+requisites = Array[ExtResource("12_ojjuj")]([SubResource("Resource_ucvjh"), SubResource("Resource_dvqes"), SubResource("Resource_arl01"), SubResource("Resource_lf0o1")])
+resource_costs = Array[ExtResource("17_oqake")]([])
+effects = Array[ExtResource("1_utlf0")]([SubResource("Resource_f7xql"), SubResource("Resource_uhqt7")])
+passives = Array[ExtResource("7_hdss1")]([SubResource("Resource_a42vl")])

@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=16 format=3 uid="uid://xfsdcwofaadk"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="1_6rj5u"]
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_bgass"]
+[ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="1_vexfc"]
+[ext_resource type="Resource" uid="uid://ws50ux2pgc87" path="res://implementation/ability/weaponskill/main_aura.tres" id="2_1d43q"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="2_xgpxd"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="3_11axj"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/in_range_requisite.gd" id="3_dxb02"]
+[ext_resource type="Script" path="res://rpg/ability/effect/aura_effect.gd" id="4_5etyh"]
+[ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="7_kh40t"]
+[ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="10_pgkr0"]
+
+[sub_resource type="Resource" id="Resource_hnbst"]
+script = ExtResource("1_vexfc")
+flat_damage = 0.0
+level_ratio = 1.0
+spell_power_ratio = 0.0
+attack_power_ratio = 0.5
+weapon_damage_ratio = 0.0
+using = 0
+type = ""
+sub_type = ""
+debug = false
+
+[sub_resource type="Resource" id="Resource_vej86"]
+script = ExtResource("4_5etyh")
+auras = Array[ExtResource("3_11axj")]([ExtResource("2_1d43q")])
+apply_to_self = false
+debug = false
+
+[sub_resource type="Resource" id="Resource_i3jcw"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/ragged-wound.png"
+
+[sub_resource type="Resource" id="Resource_yybmq"]
+script = ExtResource("2_xgpxd")
+
+[sub_resource type="Resource" id="Resource_a05e0"]
+script = ExtResource("3_dxb02")
+
+[resource]
+script = ExtResource("1_6rj5u")
+id = "weaponskill-axe-maim"
+name = "Maim"
+description = "Maim the target dealing damage and causing them to bleed for the next 9 seconds."
+icon = SubResource("Resource_i3jcw")
+use_range = 2.0
+cast_time = 0.0
+cooldown = 0.0
+global_cooldown = 1.5
+off_global_cooldown = false
+requisites = Array[ExtResource("7_kh40t")]([SubResource("Resource_yybmq"), SubResource("Resource_a05e0")])
+resource_costs = Array[ExtResource("10_pgkr0")]([])
+effects = Array[ExtResource("1_bgass")]([SubResource("Resource_hnbst"), SubResource("Resource_vej86")])
+passives = Array[ExtResource("3_11axj")]([])

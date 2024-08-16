@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=14 format=3 uid="uid://jrpdhxn1gqth"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_6a44o"]
+[ext_resource type="Resource" uid="uid://br83x8cmpwoxs" path="res://implementation/ability/weaponskill/shoot_bow_projectile_effect.tres" id="1_coiae"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/in_range_requisite.gd" id="2_kyimp"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/spell_known_requisite.gd" id="3_7qn6n"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="4_8ke8d"]
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="5_q6t2o"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="5_xcb7t"]
+[ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="5_xo2ai"]
+[ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="9_llvfm"]
+
+[sub_resource type="Resource" id="Resource_gjdxn"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/archer.svg"
+
+[sub_resource type="Resource" id="Resource_yemr3"]
+script = ExtResource("2_kyimp")
+
+[sub_resource type="Resource" id="Resource_jvndy"]
+script = ExtResource("3_7qn6n")
+
+[sub_resource type="Resource" id="Resource_8e524"]
+script = ExtResource("5_xcb7t")
+
+[resource]
+script = ExtResource("5_q6t2o")
+id = "weaponskill-bow-shoot"
+name = "Shoot"
+description = "Shoot a target with your bow dealing {format} damage."
+icon = SubResource("Resource_gjdxn")
+use_range = 12.0
+cast_time = 0.0
+cooldown = 0.0
+global_cooldown = 1.5
+off_global_cooldown = false
+requisites = Array[ExtResource("5_xo2ai")]([SubResource("Resource_yemr3"), SubResource("Resource_jvndy"), SubResource("Resource_8e524")])
+resource_costs = Array[ExtResource("9_llvfm")]([])
+effects = Array[ExtResource("1_6a44o")]([ExtResource("1_coiae")])
+passives = Array[ExtResource("4_8ke8d")]([])

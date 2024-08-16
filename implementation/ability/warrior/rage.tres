@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=18 format=3 uid="uid://dy8dklmjt7aum"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_gm12u"]
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="1_lpptt"]
+[ext_resource type="Script" path="res://rpg/aura/resource_aura.gd" id="1_ymi2o"]
+[ext_resource type="Script" path="res://rpg/aura/on_hit_aura.gd" id="2_2o4hl"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="3_7bctd"]
+[ext_resource type="Script" path="res://rpg/ability/effect/resource_effect.gd" id="3_8ydoe"]
+[ext_resource type="Script" path="res://rpg/util/filter/ability_filter.gd" id="4_ml8pq"]
+[ext_resource type="Script" path="res://rpg/util/filter/context_filter.gd" id="6_x8nco"]
+[ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="9_2beel"]
+[ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="10_r77xg"]
+
+[sub_resource type="Resource" id="Resource_k70vx"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/enrage.png"
+
+[sub_resource type="Resource" id="Resource_dinqo"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/enrage.png"
+
+[sub_resource type="Resource" id="Resource_pafbp"]
+script = ExtResource("1_ymi2o")
+resource_type = 1
+quantity = 100
+add_quantity = false
+id = ""
+name = "Rage (Resource Grant)"
+description = ""
+icon = SubResource("Resource_dinqo")
+duration = 0.0
+forever = true
+type = "feature"
+sub_type = ""
+is_unique = "by_entity"
+max_stacks = 1
+
+[sub_resource type="Resource" id="Resource_3jbui"]
+script = ExtResource("3_8ydoe")
+resource_type = 1
+quantity = 10.0
+apply_to_self = true
+debug = false
+
+[sub_resource type="Resource" id="Resource_j2jh5"]
+script = ExtResource("4_ml8pq")
+ability_ids = Array[String]([])
+negate_ids = false
+cost_type = 1
+negate_cost_type = false
+
+[sub_resource type="Resource" id="Resource_yjxsr"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/enrage.png"
+
+[sub_resource type="Resource" id="Resource_u5q3l"]
+script = ExtResource("2_2o4hl")
+effects = Array[ExtResource("1_gm12u")]([SubResource("Resource_3jbui")])
+filters = Array[ExtResource("6_x8nco")]([SubResource("Resource_j2jh5")])
+id = ""
+name = "Rage (On Hit Modifier)"
+description = ""
+icon = SubResource("Resource_yjxsr")
+duration = 0.0
+forever = true
+type = "feature"
+sub_type = ""
+is_unique = "by_entity"
+max_stacks = 1
+
+[resource]
+script = ExtResource("1_lpptt")
+id = "warrior-rage-passive"
+name = "Rage"
+description = "Grants Rage as a resource. Weapon skills, and other abilities generate rage.
+
+TODO: also want to give the passive that depletes rage on this ability as well"
+icon = SubResource("Resource_k70vx")
+use_range = 2.0
+cast_time = 0.0
+cooldown = 0.0
+global_cooldown = 1.5
+off_global_cooldown = true
+requisites = Array[ExtResource("9_2beel")]([])
+resource_costs = Array[ExtResource("10_r77xg")]([])
+effects = Array[ExtResource("1_gm12u")]([])
+passives = Array[ExtResource("3_7bctd")]([SubResource("Resource_pafbp"), SubResource("Resource_u5q3l")])

@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=19 format=3 uid="uid://bkbk3gvwwndvj"]
+
+[ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="1_jttqy"]
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="1_vcx7p"]
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_wh0f2"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="2_0c46c"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="4_h4h3v"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/in_range_requisite.gd" id="4_q33s0"]
+[ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="5_tms53"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/spell_known_requisite.gd" id="5_x6dnh"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/line_of_sight_requisite.gd" id="6_okuo4"]
+[ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="8_nvdbq"]
+
+[sub_resource type="Resource" id="Resource_qqyhd"]
+script = ExtResource("1_jttqy")
+flat_damage = 0.0
+level_ratio = 1.0
+spell_power_ratio = 0.0
+attack_power_ratio = 0.3
+weapon_damage_ratio = 0.95
+using = 0
+type = ""
+sub_type = ""
+debug = false
+
+[sub_resource type="Resource" id="Resource_t145p"]
+script = ExtResource("1_jttqy")
+flat_damage = 0.0
+level_ratio = 1.0
+spell_power_ratio = 0.0
+attack_power_ratio = 0.0
+weapon_damage_ratio = 0.0
+using = 0
+type = ""
+sub_type = ""
+debug = false
+
+[sub_resource type="Resource" id="Resource_3vhvb"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/claw-slashes.png"
+
+[sub_resource type="Resource" id="Resource_2r8fc"]
+script = ExtResource("2_0c46c")
+
+[sub_resource type="Resource" id="Resource_cku5m"]
+script = ExtResource("4_q33s0")
+
+[sub_resource type="Resource" id="Resource_flqsp"]
+script = ExtResource("5_x6dnh")
+
+[sub_resource type="Resource" id="Resource_xbaif"]
+script = ExtResource("6_okuo4")
+
+[sub_resource type="Resource" id="Resource_uv8pm"]
+script = ExtResource("8_nvdbq")
+resource_type = 1
+quantity = 65
+
+[resource]
+script = ExtResource("1_vcx7p")
+id = "warrior-thrash"
+name = "Thrash"
+description = "Trash a target hitting them multiple times."
+icon = SubResource("Resource_3vhvb")
+use_range = 2.0
+cast_time = 0.0
+cooldown = 0.0
+global_cooldown = 1.5
+off_global_cooldown = false
+requisites = Array[ExtResource("5_tms53")]([SubResource("Resource_2r8fc"), SubResource("Resource_cku5m"), SubResource("Resource_flqsp"), SubResource("Resource_xbaif")])
+resource_costs = Array[ExtResource("8_nvdbq")]([SubResource("Resource_uv8pm")])
+effects = Array[ExtResource("1_wh0f2")]([SubResource("Resource_qqyhd"), SubResource("Resource_t145p")])
+passives = Array[ExtResource("4_h4h3v")]([])

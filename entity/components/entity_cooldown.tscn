@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://q21hhxm6su8o"]
+
+[ext_resource type="Script" path="res://entity/components/entity_cooldown.gd" id="1_wg622"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8wm7b"]
+properties/0/path = NodePath(".:id")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:duration")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:max_duration")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+
+[node name="EntityCooldown" type="Node"]
+script = ExtResource("1_wg622")
+
+[node name="CooldownSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.5
+delta_interval = 0.5
+replication_config = SubResource("SceneReplicationConfig_8wm7b")

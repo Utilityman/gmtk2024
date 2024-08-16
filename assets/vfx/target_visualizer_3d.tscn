@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8eh0wdt0nf04"]
+
+[sub_resource type="Gradient" id="Gradient_odeux"]
+offsets = PackedFloat32Array(0, 0.617733)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lself"]
+gradient = SubResource("Gradient_odeux")
+fill = 1
+fill_from = Vector2(0.25, 0.75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpjkr"]
+transparency = 1
+albedo_texture = SubResource("GradientTexture2D_lself")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gw3vj"]
+material = SubResource("StandardMaterial3D_mpjkr")
+bottom_radius = 0.0
+height = 0.001
+
+[node name="TargetVisualizer3D" type="Node3D"]
+
+[node name="TargetRing" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_gw3vj")

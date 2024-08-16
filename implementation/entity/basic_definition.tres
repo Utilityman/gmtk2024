@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="RpgData" load_steps=7 format=3 uid="uid://bi0hchki3cqcp"]
+
+[ext_resource type="Script" path="res://rpg/entity/rpg_data.gd" id="1_li1jq"]
+[ext_resource type="Script" path="res://rpg/stats/stat_block.gd" id="1_ykwue"]
+[ext_resource type="Script" path="res://rpg/entity/spellbook.gd" id="3_5rhlt"]
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="5_0xodf"]
+
+[sub_resource type="Resource" id="Resource_33kcm"]
+script = ExtResource("1_ykwue")
+hitpoints = 10
+vitality = 60
+strength = 3
+dexterity = 3
+intelligence = 3
+constitution = 3
+armor = 0
+ward = 0
+
+[sub_resource type="Resource" id="Resource_4eqxi"]
+script = ExtResource("3_5rhlt")
+abilities = Array[ExtResource("5_0xodf")]([])
+
+[resource]
+script = ExtResource("1_li1jq")
+name = "Dummy"
+level = 1
+base_stats = SubResource("Resource_33kcm")
+spellbook = SubResource("Resource_4eqxi")

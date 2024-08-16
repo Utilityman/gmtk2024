@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgbmfsmtgna20"]
+
+[ext_resource type="Script" path="res://entity/components/cooldown_component.gd" id="1_oundu"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2x5oh"]
+properties/0/path = NodePath(".:global_cooldown")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[node name="CooldownComponent" type="Node"]
+script = ExtResource("1_oundu")
+
+[node name="CooldownSychronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.033
+replication_config = SubResource("SceneReplicationConfig_2x5oh")
+
+[node name="CooldownSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://entity/components/entity_cooldown.tscn")
+spawn_path = NodePath("..")

@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgwn12a1swsxr"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_jvjoh"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jvjoh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -6.0
+offset_right = 153.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ClassChoice" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Warrior" type="Button" parent="VBoxContainer/ClassChoice"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Warrior"
+
+[node name="Cleric" type="Button" parent="VBoxContainer/ClassChoice"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Cleric"
+
+[node name="NameField" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Name"
+alignment = 1
+clear_button_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Host" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Host"
+
+[node name="Join" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Join
+"
+
+[node name="LogPlayers" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Log Players"
+
+[node name="Background" type="Node3D" parent="VBoxContainer"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="VBoxContainer/Background"]
+transform = Transform3D(-0.923516, -0.383507, -0.00641135, -0.271557, 0.641945, 0.717051, -0.270878, 0.663949, -0.696991, 0, 3.38992, -8.39351)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="VBoxContainer/Background"]
+transform = Transform3D(-1, -1.51808e-08, -8.60946e-08, 0, 0.984808, -0.173648, 8.74228e-08, -0.173648, -0.984808, 0, 0, -2.5)

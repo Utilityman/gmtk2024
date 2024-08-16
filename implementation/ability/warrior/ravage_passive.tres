@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="OnHitAura" load_steps=9 format=3 uid="uid://cnkd5th2rvyj2"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_byjqu"]
+[ext_resource type="Script" path="res://rpg/ability/effect/cooldown_effect.gd" id="1_l0d7k"]
+[ext_resource type="Script" path="res://rpg/aura/on_hit_aura.gd" id="1_rct21"]
+[ext_resource type="Script" path="res://rpg/util/filter/ability_filter.gd" id="2_tojm4"]
+[ext_resource type="Script" path="res://rpg/util/filter/context_filter.gd" id="3_lvfbi"]
+
+[sub_resource type="Resource" id="Resource_4q4mr"]
+script = ExtResource("1_l0d7k")
+ability_ids = Array[String](["warrior-ravage"])
+amount = 6.0
+apply_to_self = true
+debug = false
+
+[sub_resource type="Resource" id="Resource_mdx6f"]
+script = ExtResource("2_tojm4")
+ability_ids = Array[String](["warrior-ravage"])
+negate_ids = true
+cost_type = 0
+negate_cost_type = false
+
+[sub_resource type="Resource" id="Resource_o14xk"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/air-zigzag.png"
+
+[resource]
+script = ExtResource("1_rct21")
+effects = Array[ExtResource("1_byjqu")]([SubResource("Resource_4q4mr")])
+filters = Array[ExtResource("3_lvfbi")]([SubResource("Resource_mdx6f")])
+id = ""
+name = "Ravage (Passive)"
+description = "Reduces the cooldown of Ravage on hit
+
+TODO: need an additional filter to filter just for physical attacks, don't want magical abilities, bleeds, curses, etc to proc this at all. 
+
+Which the way that this is currently wired, would be hard to also check the effect out."
+icon = SubResource("Resource_o14xk")
+duration = 0.0
+forever = true
+type = ""
+sub_type = ""
+is_unique = "by_entity"
+max_stacks = 1

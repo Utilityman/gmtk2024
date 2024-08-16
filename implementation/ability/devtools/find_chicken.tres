@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=14 format=3 uid="uid://cv8a1qqc1vlw2"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_mbpk3"]
+[ext_resource type="Resource" uid="uid://cgxb6ox61gbo2" path="res://implementation/item/raw_chicken.tres" id="2_88jnj"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="2_erkpm"]
+[ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="3_8e358"]
+[ext_resource type="Script" path="res://rpg/ability/effect/item_loot_effect.gd" id="3_d8jl5"]
+[ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="4_luwtt"]
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="5_l20fo"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="7_ej2hr"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/spell_known_requisite.gd" id="8_jea8r"]
+
+[sub_resource type="Resource" id="Resource_adadc"]
+script = ExtResource("3_d8jl5")
+item = ExtResource("2_88jnj")
+quantity = 1
+debug = false
+
+[sub_resource type="Resource" id="Resource_hllpw"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/roast-chicken.svg"
+
+[sub_resource type="Resource" id="Resource_46w3q"]
+script = ExtResource("7_ej2hr")
+
+[sub_resource type="Resource" id="Resource_fpcuh"]
+script = ExtResource("8_jea8r")
+
+[resource]
+script = ExtResource("5_l20fo")
+id = "devtool-add-chicken-001"
+name = "Find Chicken"
+description = "Happen upon a raw chicken that's in surprisingly good condition!"
+icon = SubResource("Resource_hllpw")
+use_range = 2.0
+cast_time = 0.0
+cooldown = 0.0
+global_cooldown = 1.5
+off_global_cooldown = false
+requisites = Array[ExtResource("3_8e358")]([SubResource("Resource_46w3q"), SubResource("Resource_fpcuh")])
+resource_costs = Array[ExtResource("4_luwtt")]([])
+effects = Array[ExtResource("1_mbpk3")]([SubResource("Resource_adadc")])
+passives = Array[ExtResource("2_erkpm")]([])

@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=11 format=3 uid="uid://bjf82p4m3nn66"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_4rnxx"]
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="1_dd8p6"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="3_usyuw"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/in_range_requisite.gd" id="4_1e40y"]
+[ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="4_84jk8"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/line_of_sight_requisite.gd" id="5_h8l64"]
+[ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="7_ny20e"]
+
+[sub_resource type="Resource" id="Resource_ykej8"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/whirlwind.svg"
+
+[sub_resource type="Resource" id="Resource_mcw8v"]
+script = ExtResource("4_1e40y")
+
+[sub_resource type="Resource" id="Resource_vmyko"]
+script = ExtResource("5_h8l64")
+
+[resource]
+script = ExtResource("1_dd8p6")
+id = "warrior-whirlwind"
+name = "Whirlwind"
+description = "Whirl your blades around dealing damage to nearby targets"
+icon = SubResource("Resource_ykej8")
+use_range = 2.0
+cast_time = 0.0
+cooldown = 0.0
+global_cooldown = 1.5
+off_global_cooldown = false
+requisites = Array[ExtResource("4_84jk8")]([SubResource("Resource_mcw8v"), SubResource("Resource_vmyko")])
+resource_costs = Array[ExtResource("7_ny20e")]([])
+effects = Array[ExtResource("1_4rnxx")]([])
+passives = Array[ExtResource("3_usyuw")]([])

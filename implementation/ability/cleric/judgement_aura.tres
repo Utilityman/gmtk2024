@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaseAura" load_steps=3 format=3 uid="uid://bwb3qnn6lcexg"]
+
+[ext_resource type="Texture2D" uid="uid://ceevqpmr4j7wa" path="res://assets/icons/net/game-icons/hammer-drop.png" id="1_scofq"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="2_51lsa"]
+
+[resource]
+script = ExtResource("2_51lsa")
+id = "judgement-proc-aura"
+name = "Judgement"
+description = "Ready to perform judgement"
+icon = ExtResource("1_scofq")
+duration = 12.0
+forever = false
+type = "buff"
+sub_type = ""
+is_unique = "by_entity"
+max_stacks = 1

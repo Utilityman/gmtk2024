@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=14 format=3 uid="uid://bsty4sxb0pp57"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_6x2gn"]
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="1_bdq06"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="1_t5s6x"]
+[ext_resource type="Resource" uid="uid://bc017ym0h8fx1" path="res://implementation/ability/fireball_projectile_effect.tres" id="2_2u8kc"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/in_range_requisite.gd" id="3_6hkxp"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="4_lwx8e"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/spell_known_requisite.gd" id="4_ujv3c"]
+[ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="5_cj0wd"]
+[ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="9_fedd4"]
+
+[sub_resource type="Resource" id="Resource_mflhj"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/fireball.svg"
+
+[sub_resource type="Resource" id="Resource_c7x2o"]
+script = ExtResource("1_t5s6x")
+
+[sub_resource type="Resource" id="Resource_sea3q"]
+script = ExtResource("3_6hkxp")
+
+[sub_resource type="Resource" id="Resource_qu7f4"]
+script = ExtResource("4_ujv3c")
+
+[resource]
+script = ExtResource("1_bdq06")
+id = "base-fireball"
+name = "Fireball"
+description = "Hurl a fireball at your enemy dealing {TBD formatting} damage and then {TBD formatting} damage over 9 seconds."
+icon = SubResource("Resource_mflhj")
+use_range = 12.0
+cast_time = 2.5
+cooldown = 0.0
+global_cooldown = 1.5
+off_global_cooldown = false
+requisites = Array[ExtResource("5_cj0wd")]([SubResource("Resource_c7x2o"), SubResource("Resource_sea3q"), SubResource("Resource_qu7f4")])
+resource_costs = Array[ExtResource("9_fedd4")]([])
+effects = Array[ExtResource("1_6x2gn")]([ExtResource("2_2u8kc")])
+passives = Array[ExtResource("4_lwx8e")]([])

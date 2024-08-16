@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dowdb8xwgxtyo"]
+
+[ext_resource type="Script" path="res://interface/action/action_tooltip.gd" id="1_8wpj7"]
+
+[node name="ActionTooltip" type="PanelContainer"]
+z_index = 1
+offset_right = 61.0
+offset_bottom = 37.0
+mouse_filter = 1
+script = ExtResource("1_8wpj7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Title
+"
+
+[node name="Description" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Description
+"

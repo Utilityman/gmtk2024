@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="ProjectileEffect" load_steps=16 format=3 uid="uid://bc017ym0h8fx1"]
+
+[ext_resource type="Script" path="res://rpg/ability/effect/projectile_effect.gd" id="1_7cxml"]
+[ext_resource type="Script" path="res://game/effects/projectile_data.gd" id="1_ygf7q"]
+[ext_resource type="PackedScene" uid="uid://56em0kd2w1b7" path="res://assets/vfx/fireball_001.tscn" id="2_pmxpy"]
+[ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="2_r3mks"]
+[ext_resource type="Script" path="res://game/multiplayer/replicated_scene_data.gd" id="3_axgu2"]
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="4_kvmev"]
+[ext_resource type="Script" path="res://game/effects/area_effect_data.gd" id="5_ebnk6"]
+[ext_resource type="Script" path="res://rpg/ability/effect/area_effect.gd" id="7_slmbf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qnuuw"]
+radius = 0.1
+
+[sub_resource type="Resource" id="Resource_vnglw"]
+script = ExtResource("3_axgu2")
+model = ExtResource("2_pmxpy")
+model_direction = Vector3(0, -1, 0)
+
+[sub_resource type="Resource" id="Resource_bambg"]
+script = ExtResource("1_ygf7q")
+shape = SubResource("SphereShape3D_qnuuw")
+visual_effects = Array[ExtResource("3_axgu2")]([SubResource("Resource_vnglw")])
+direction = null
+use_source_direction = null
+start_from_source = true
+follow_style = "follow_target"
+speed = 12.0
+acceleration = 1.0
+life_time = 15.0
+hit_style = "only_target"
+time_to_free = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ii001"]
+radius = 1.5
+
+[sub_resource type="Resource" id="Resource_ecbvg"]
+script = ExtResource("5_ebnk6")
+shape = SubResource("SphereShape3D_ii001")
+max_targets = 0
+hit_self = false
+top_level = false
+
+[sub_resource type="Resource" id="Resource_1s4st"]
+script = ExtResource("2_r3mks")
+flat_damage = 50.0
+level_ratio = 1.0
+spell_power_ratio = 0.0
+attack_power_ratio = 0.0
+weapon_damage_ratio = 0.0
+using = 0
+type = ""
+sub_type = ""
+debug = false
+
+[sub_resource type="Resource" id="Resource_hu8ti"]
+script = ExtResource("7_slmbf")
+data = SubResource("Resource_ecbvg")
+effects = Array[ExtResource("4_kvmev")]([SubResource("Resource_1s4st")])
+debug = false
+
+[resource]
+script = ExtResource("1_7cxml")
+data = SubResource("Resource_bambg")
+effects = Array[ExtResource("4_kvmev")]([SubResource("Resource_hu8ti")])
+debug = false

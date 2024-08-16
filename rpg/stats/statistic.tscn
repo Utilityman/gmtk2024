@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsijp5eo6530g"]
+
+[ext_resource type="Script" path="res://rpg/stats/statistic.gd" id="1_bctne"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_oiyt7"]
+properties/0/path = NodePath(".:value")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[node name="Statistic" type="Node"]
+script = ExtResource("1_bctne")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_oiyt7")

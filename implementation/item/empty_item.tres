@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://c1mmmk5u1447i"]
+
+[ext_resource type="Texture2D" uid="uid://ctve2nppot8vj" path="res://assets/icons/net/game-icons/spanner.png" id="1_moxwq"]
+[ext_resource type="Script" path="res://rpg/item/item.gd" id="1_wv83k"]
+
+[resource]
+script = ExtResource("1_wv83k")
+name = "Null Item"
+max_stack_count = 1
+icon = ExtResource("1_moxwq")

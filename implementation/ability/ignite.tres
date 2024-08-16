@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://3qj6ih70m6q4"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="1_phwhe"]
+
+[resource]
+script = ExtResource("1_phwhe")
+id = ""
+name = ""
+description = ""
+use_range = 2.0
+cast_time = 0.0
+cooldown = 0.0
+global_cooldown = 1.5
+off_global_cooldown = false
+requisites = Array[Resource("res://rpg/ability/ability_requisite.gd")]([])
+resource_costs = Array[Resource("res://rpg/ability/resource_cost.gd")]([])
+effects = Array[Resource("res://rpg/ability/ability_effect.gd")]([])
+passives = Array[Resource("res://rpg/aura/base_aura.gd")]([])

@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="ProjectileEffect" load_steps=11 format=3 uid="uid://br83x8cmpwoxs"]
+
+[ext_resource type="Script" path="res://game/effects/projectile_data.gd" id="2_25b1g"]
+[ext_resource type="Script" path="res://game/multiplayer/replicated_scene_data.gd" id="3_172ir"]
+[ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="3_nwc2n"]
+[ext_resource type="Script" path="res://rpg/ability/effect/projectile_effect.gd" id="3_rt4pu"]
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="4_lu65a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_onxsg"]
+size = Vector3(0.1, 0.1, 1)
+
+[sub_resource type="Resource" id="Resource_mk1vn"]
+metadata/__load_path__ = "res://assets/models/com/syntystore/dungeon-pack/arrow_01.glb"
+
+[sub_resource type="Resource" id="Resource_77o1b"]
+script = ExtResource("3_172ir")
+model = SubResource("Resource_mk1vn")
+model_direction = Vector3(0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_m4ug1"]
+script = ExtResource("2_25b1g")
+shape = SubResource("BoxShape3D_onxsg")
+visual_effects = Array[ExtResource("3_172ir")]([SubResource("Resource_77o1b")])
+direction = Vector3(0, 0, 0)
+use_source_direction = false
+start_from_source = true
+follow_style = "follow_target"
+speed = 15.0
+acceleration = 1.0
+life_time = 15.0
+hit_style = "only_target"
+time_to_free = 0.0
+
+[sub_resource type="Resource" id="Resource_dtvrb"]
+script = ExtResource("3_nwc2n")
+flat_damage = 30.0
+level_ratio = 1.0
+spell_power_ratio = 0.0
+attack_power_ratio = 0.0
+weapon_damage_ratio = 0.0
+using = 0
+type = ""
+sub_type = ""
+debug = false
+
+[resource]
+script = ExtResource("3_rt4pu")
+data = SubResource("Resource_m4ug1")
+effects = Array[ExtResource("4_lu65a")]([SubResource("Resource_dtvrb")])
+debug = false

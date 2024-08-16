@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=3 uid="uid://sddqtriuefvq"]
+
+[ext_resource type="Script" path="res://entity/entity.gd" id="1_257f2"]
+[ext_resource type="PackedScene" uid="uid://dl70rpkp4mwmt" path="res://assets/models/com/syntystore/prototype/Characters/SK_Character_Dummy_Male_01.fbx" id="2_yym15"]
+[ext_resource type="PackedScene" uid="uid://dfpxre2fdf1m8" path="res://entity/components/entity_info.tscn" id="3_svy0u"]
+[ext_resource type="PackedScene" uid="uid://c7l1hjjmrial2" path="res://entity/components/aura/aura_component.tscn" id="4_nhluc"]
+[ext_resource type="PackedScene" uid="uid://dgbmfsmtgna20" path="res://entity/components/cooldown_component.tscn" id="5_6nvep"]
+[ext_resource type="PackedScene" uid="uid://ddq8u87rotno1" path="res://entity/components/stats_component.tscn" id="5_mw6ii"]
+[ext_resource type="PackedScene" uid="uid://b8eh0wdt0nf04" path="res://assets/vfx/target_visualizer_3d.tscn" id="6_b64lv"]
+[ext_resource type="PackedScene" uid="uid://bvqvpd2sj0v7i" path="res://entity/components/spellbook_component.tscn" id="7_0fiao"]
+[ext_resource type="PackedScene" uid="uid://bi6r44rk8bxl6" path="res://entity/components/inventory/inventory_component.tscn" id="8_ddx1h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_igknc"]
+radius = 0.4
+height = 1.7
+
+[node name="Entity" type="CharacterBody3D" groups=["ENTITY"]]
+collision_layer = 2
+script = ExtResource("1_257f2")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("CapsuleShape3D_igknc")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Root Scene" parent="Model" instance=ExtResource("2_yym15")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="ProjectileSource" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32082, 0)
+
+[node name="ProjectileMultiplayerReplicator" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://game/effects/projectile_3d.tscn", "res://game/multiplayer/replicated_scene_3d.tscn")
+spawn_path = NodePath("../ProjectileSource")
+
+[node name="Info" parent="." instance=ExtResource("3_svy0u")]
+entity_name = null
+level = null
+
+[node name="Auras" parent="." instance=ExtResource("4_nhluc")]
+
+[node name="Cooldowns" parent="." instance=ExtResource("5_6nvep")]
+
+[node name="Stats" parent="." instance=ExtResource("5_mw6ii")]
+
+[node name="Spellbook" parent="." instance=ExtResource("7_0fiao")]
+
+[node name="Inventory" parent="." instance=ExtResource("8_ddx1h")]
+
+[node name="TargetVisualizer3D" parent="." instance=ExtResource("6_b64lv")]
+visible = false

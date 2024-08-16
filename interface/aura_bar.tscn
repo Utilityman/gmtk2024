@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce6qjmpvavgxc"]
+
+[ext_resource type="Script" path="res://interface/aura_bar.gd" id="1_peoqy"]
+
+[node name="AuraBar" type="HBoxContainer"]
+script = ExtResource("1_peoqy")

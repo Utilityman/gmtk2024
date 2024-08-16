@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvqvpd2sj0v7i"]
+
+[ext_resource type="Script" path="res://entity/components/spellbook_component.gd" id="1_ix0u0"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_q84i0"]
+properties/0/path = NodePath(".:spell_ids")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[node name="Spells" type="Node"]
+script = ExtResource("1_ix0u0")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_q84i0")

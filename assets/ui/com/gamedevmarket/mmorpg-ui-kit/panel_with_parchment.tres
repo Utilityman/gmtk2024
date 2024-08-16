@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://f7wpd0it53yo"]
+
+[ext_resource type="Texture2D" uid="uid://kqubuypfl5fj" path="res://assets/ui/com/gamedevmarket/mmorpg-ui-kit/ui-sheet.png" id="1_dm5mc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88eay"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iraw7"]
+texture = ExtResource("1_dm5mc")
+texture_margin_left = 63.0
+texture_margin_top = 60.0
+texture_margin_right = 65.0
+texture_margin_bottom = 61.0
+region_rect = Rect2(1560, 22, 790, 577)
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxFlat_88eay")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_iraw7")

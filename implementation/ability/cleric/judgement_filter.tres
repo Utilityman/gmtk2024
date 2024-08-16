@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AuraFilter" load_steps=2 format=3 uid="uid://csk64haufbxsb"]
+
+[ext_resource type="Script" path="res://rpg/util/filter/aura_filter.gd" id="1_5e44c"]
+
+[resource]
+script = ExtResource("1_5e44c")
+aura_id = "judgement-proc-aura"
+negate_id = false
+type = ""
+sub_type = ""

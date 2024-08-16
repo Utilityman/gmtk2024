@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=14 format=3 uid="uid://hy751m4hghjv"]
+
+[ext_resource type="Resource" uid="uid://bs1uhpybdt5fm" path="res://implementation/ability/warrior/enrage_aura.tres" id="1_7nqli"]
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_hwveg"]
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="1_lwpe6"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="2_5ixco"]
+[ext_resource type="Script" path="res://rpg/ability/effect/aura_effect.gd" id="2_qd0kt"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="3_jvfrw"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/spell_known_requisite.gd" id="4_44ewq"]
+[ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="6_aeef0"]
+[ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="9_f78te"]
+
+[sub_resource type="Resource" id="Resource_vyk52"]
+script = ExtResource("2_qd0kt")
+auras = Array[ExtResource("2_5ixco")]([ExtResource("1_7nqli")])
+apply_to_self = true
+debug = false
+
+[sub_resource type="Resource" id="Resource_2fslc"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/enrage.png"
+
+[sub_resource type="Resource" id="Resource_ata0j"]
+script = ExtResource("3_jvfrw")
+
+[sub_resource type="Resource" id="Resource_k3e5j"]
+script = ExtResource("4_44ewq")
+
+[resource]
+script = ExtResource("1_lwpe6")
+id = "warrior-enrage"
+name = "Enrage"
+description = "Enrages the warrior increasing their damage dealt. 
+
+TODO: need to make the aura that this applies actually do the damage increase it supposedly should do"
+icon = SubResource("Resource_2fslc")
+use_range = 2.0
+cast_time = 0.0
+cooldown = 15.0
+global_cooldown = 0.0
+off_global_cooldown = true
+requisites = Array[ExtResource("6_aeef0")]([SubResource("Resource_ata0j"), SubResource("Resource_k3e5j")])
+resource_costs = Array[ExtResource("9_f78te")]([])
+effects = Array[ExtResource("1_hwveg")]([SubResource("Resource_vyk52")])
+passives = Array[ExtResource("2_5ixco")]([])

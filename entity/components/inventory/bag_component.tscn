@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyah51nqdgyoo"]
+
+[ext_resource type="Script" path="res://entity/components/inventory/bag_component.gd" id="1_wxei5"]
+
+[node name="BagComponent" type="Node"]
+script = ExtResource("1_wxei5")

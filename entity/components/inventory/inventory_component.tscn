@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi6r44rk8bxl6"]
+
+[ext_resource type="Script" path="res://entity/components/inventory/inventory_component.gd" id="1_2q1j7"]
+[ext_resource type="PackedScene" uid="uid://cyah51nqdgyoo" path="res://entity/components/inventory/bag_component.tscn" id="2_3xucc"]
+
+[node name="InventoryComponent" type="Node"]
+script = ExtResource("1_2q1j7")
+
+[node name="BagComponent0" parent="." instance=ExtResource("2_3xucc")]
+
+[node name="BagComponent1" parent="." instance=ExtResource("2_3xucc")]
+
+[node name="BagComponent2" parent="." instance=ExtResource("2_3xucc")]
+
+[node name="BagComponent3" parent="." instance=ExtResource("2_3xucc")]

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatBlock" load_steps=2 format=3 uid="uid://ciwvpdi7io0hw"]
+
+[ext_resource type="Script" path="res://rpg/stats/stat_block.gd" id="1_mom3w"]
+
+[resource]
+script = ExtResource("1_mom3w")
+hitpoints = 25
+vitality = 4
+strength = 6
+dexterity = 2
+intelligence = 1
+constitution = 3
+armor = 0
+ward = 0

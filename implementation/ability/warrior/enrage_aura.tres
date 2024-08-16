@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DamageModAura" load_steps=3 format=3 uid="uid://bs1uhpybdt5fm"]
+
+[ext_resource type="Script" path="res://rpg/aura/damage_mod_aura.gd" id="1_gm02b"]
+[ext_resource type="Texture2D" uid="uid://cu2gkotdc3dne" path="res://assets/icons/net/game-icons/enrage.png" id="1_w0qds"]
+
+[resource]
+script = ExtResource("1_gm02b")
+flat_modification = 0
+percent_modification = 0.1
+filters = Array[Resource("res://rpg/util/filter/context_filter.gd")]([])
+id = "warrior-enraged-aura-001"
+name = "Enraged"
+description = "Dealing increased damage!"
+icon = ExtResource("1_w0qds")
+duration = 4.0
+forever = false
+type = "buff"
+sub_type = "enrage"
+is_unique = "by_entity"
+max_stacks = 1

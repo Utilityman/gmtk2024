@@ -1,0 +1,159 @@
+[gd_scene load_steps=15 format=3 uid="uid://bjs5x7fyns6gt"]
+
+[ext_resource type="Script" path="res://interface/player_user_interface.gd" id="1_glg3w"]
+[ext_resource type="PackedScene" uid="uid://ce6qjmpvavgxc" path="res://interface/aura_bar.tscn" id="4_m64y3"]
+[ext_resource type="PackedScene" uid="uid://dmc41ngdt2toi" path="res://interface/action/action_button.tscn" id="5_m7jce"]
+[ext_resource type="PackedScene" uid="uid://dv35lyh7vr6cg" path="res://interface/action/action_bar.tscn" id="5_oq1x2"]
+[ext_resource type="Script" path="res://interface/action/provider/interface_action_provider.gd" id="6_adqkm"]
+[ext_resource type="Texture2D" uid="uid://dhyovlbo2dfvm" path="res://assets/icons/net/game-icons/battle-gear.png" id="6_vpc2w"]
+[ext_resource type="Texture2D" uid="uid://b2dxdmf2ll0q6" path="res://assets/icons/net/game-icons/book-cover.png" id="8_mtegh"]
+[ext_resource type="Texture2D" uid="uid://c0hhlvylwyx7s" path="res://assets/icons/net/game-icons/scroll-unfurled.png" id="9_35juj"]
+[ext_resource type="PackedScene" uid="uid://dgfgkxjaxn63e" path="res://interface/entity/entity_frame.tscn" id="10_5yvr6"]
+[ext_resource type="PackedScene" uid="uid://d3leo2uq5070r" path="res://interface/windows/spellbook/spellbook_window.tscn" id="10_d5xp7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04by5"]
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Resource" id="Resource_qjxab"]
+script = ExtResource("6_adqkm")
+icon = ExtResource("6_vpc2w")
+title = ""
+window_id = ""
+
+[sub_resource type="Resource" id="Resource_320aw"]
+script = ExtResource("6_adqkm")
+icon = ExtResource("8_mtegh")
+title = "Spellbook"
+window_id = "spellbook"
+
+[sub_resource type="Resource" id="Resource_yrpc4"]
+script = ExtResource("6_adqkm")
+icon = ExtResource("9_35juj")
+title = ""
+window_id = ""
+
+[node name="PlayerUserInterface" type="Control" groups=["PLAYER_UI"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_glg3w")
+
+[node name="PlayerFrame" parent="." instance=ExtResource("10_5yvr6")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="TargetFrame" parent="." instance=ExtResource("10_5yvr6")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 328.0
+offset_top = 8.0
+offset_right = 328.0
+offset_bottom = 8.0
+
+[node name="TargetAuraBar" parent="TargetFrame" instance=ExtResource("4_m64y3")]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 91.0
+offset_right = 6.0
+offset_bottom = 91.0
+
+[node name="ActionBar" parent="." instance=ExtResource("5_oq1x2")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+action_bar_input_base = "ACTION_BAR_0"
+
+[node name="PlayerAuraBar" parent="." instance=ExtResource("4_m64y3")]
+layout_mode = 1
+offset_left = 53.0
+offset_top = 124.0
+offset_right = 53.0
+offset_bottom = 124.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="MenuButtons" type="PanelContainer" parent="MarginContainer"]
+editor_description = "TODO: I probably want to make this entire thing (the menu container) its own scene"
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_04by5")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MenuButtons"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MenuButtons/MarginContainer"]
+layout_mode = 2
+
+[node name="CharacterButton" parent="MarginContainer/MenuButtons/MarginContainer/HBoxContainer" instance=ExtResource("5_m7jce")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+action = SubResource("Resource_qjxab")
+
+[node name="SpellbookButton" parent="MarginContainer/MenuButtons/MarginContainer/HBoxContainer" instance=ExtResource("5_m7jce")]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+shortcut_key = "SPELLBOOK_TOGGLE"
+action = SubResource("Resource_320aw")
+
+[node name="TmpSpellbookButton" type="Button" parent="MarginContainer/MenuButtons/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Spellbook"
+
+[node name="QuestButton" parent="MarginContainer/MenuButtons/MarginContainer/HBoxContainer" instance=ExtResource("5_m7jce")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+action = SubResource("Resource_yrpc4")
+
+[node name="WindowManager" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 162.0
+offset_right = 6.0
+offset_bottom = 162.0
+mouse_filter = 2
+
+[node name="WindowContainer" type="HBoxContainer" parent="WindowManager"]
+layout_mode = 0
+theme_override_constants/separation = 16
+
+[node name="SpellbookWindow" parent="WindowManager/WindowContainer" groups=["spellbook"] instance=ExtResource("10_d5xp7")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2

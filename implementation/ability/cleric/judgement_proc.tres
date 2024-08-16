@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ProcEffect" load_steps=7 format=3 uid="uid://ulvqqailsb44"]
+
+[ext_resource type="Resource" uid="uid://bwb3qnn6lcexg" path="res://implementation/ability/cleric/judgement_aura.tres" id="1_j7d4t"]
+[ext_resource type="Script" path="res://rpg/ability/effect/proc_effect.gd" id="1_wvflo"]
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_xtk2h"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="2_kal1a"]
+[ext_resource type="Script" path="res://rpg/ability/effect/aura_effect.gd" id="2_s0v3g"]
+
+[sub_resource type="Resource" id="Resource_d41qx"]
+script = ExtResource("2_s0v3g")
+auras = Array[ExtResource("2_kal1a")]([ExtResource("1_j7d4t")])
+apply_to_self = true
+debug = false
+
+[resource]
+script = ExtResource("1_wvflo")
+percent_chance = 0.55
+effects = Array[ExtResource("1_xtk2h")]([SubResource("Resource_d41qx")])
+debug = false

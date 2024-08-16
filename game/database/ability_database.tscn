@@ -1,0 +1,19 @@
+[gd_scene load_steps=14 format=3 uid="uid://sl466dpxv2k1"]
+
+[ext_resource type="Script" path="res://game/database/ability_database.gd" id="1_ahuak"]
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="2_d6hin"]
+[ext_resource type="Resource" uid="uid://bsty4sxb0pp57" path="res://implementation/ability/fireball.tres" id="3_jc57d"]
+[ext_resource type="Resource" uid="uid://xfsdcwofaadk" path="res://implementation/ability/weaponskill/maim.tres" id="4_3gthp"]
+[ext_resource type="Resource" uid="uid://d34nnygsdb1an" path="res://implementation/ability/weaponskill/pummel.tres" id="5_hlled"]
+[ext_resource type="Resource" uid="uid://jrpdhxn1gqth" path="res://implementation/ability/weaponskill/shoot_bow.tres" id="6_j5pps"]
+[ext_resource type="Resource" uid="uid://hy751m4hghjv" path="res://implementation/ability/warrior/enrage.tres" id="7_epgi3"]
+[ext_resource type="Resource" uid="uid://dy8dklmjt7aum" path="res://implementation/ability/warrior/rage.tres" id="8_43fii"]
+[ext_resource type="Resource" uid="uid://fumiwb330kob" path="res://implementation/ability/warrior/ravage.tres" id="9_07vs8"]
+[ext_resource type="Resource" uid="uid://bkbk3gvwwndvj" path="res://implementation/ability/warrior/thrash.tres" id="10_3atkp"]
+[ext_resource type="Resource" uid="uid://bjf82p4m3nn66" path="res://implementation/ability/warrior/whirlwind.tres" id="11_ty01h"]
+[ext_resource type="Resource" uid="uid://cc0175gwbqe2e" path="res://implementation/ability/cleric/judgement.tres" id="12_pjc2a"]
+[ext_resource type="Resource" uid="uid://cv8a1qqc1vlw2" path="res://implementation/ability/devtools/find_chicken.tres" id="13_rqyt3"]
+
+[node name="AbilityDatabbase" type="Node"]
+script = ExtResource("1_ahuak")
+stored_abilities = Array[ExtResource("2_d6hin")]([ExtResource("3_jc57d"), ExtResource("4_3gthp"), ExtResource("5_hlled"), ExtResource("6_j5pps"), ExtResource("7_epgi3"), ExtResource("8_43fii"), ExtResource("9_07vs8"), ExtResource("10_3atkp"), ExtResource("11_ty01h"), ExtResource("12_pjc2a"), ExtResource("13_rqyt3")])

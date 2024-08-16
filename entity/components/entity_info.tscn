@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfpxre2fdf1m8"]
+
+[ext_resource type="Script" path="res://entity/components/entity_info.gd" id="1_mdkwv"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6cdi4"]
+properties/0/path = NodePath(".:entity_name")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:level")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="EntityInfo" type="Node"]
+script = ExtResource("1_mdkwv")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_6cdi4")

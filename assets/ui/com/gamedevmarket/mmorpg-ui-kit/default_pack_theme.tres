@@ -1,0 +1,23 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://tajviiaxim5b"]
+
+[ext_resource type="Texture2D" uid="uid://kqubuypfl5fj" path="res://assets/ui/com/gamedevmarket/mmorpg-ui-kit/ui-sheet.png" id="1_faxqj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aduef"]
+texture = ExtResource("1_faxqj")
+texture_margin_left = 43.0
+texture_margin_top = 44.0
+texture_margin_right = 43.0
+texture_margin_bottom = 42.0
+region_rect = Rect2(0, 0, 796, 1219)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vsf7g"]
+texture = ExtResource("1_faxqj")
+texture_margin_left = 43.0
+texture_margin_top = 44.0
+texture_margin_right = 43.0
+texture_margin_bottom = 42.0
+region_rect = Rect2(0, 0, 796, 1219)
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxTexture_aduef")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_vsf7g")

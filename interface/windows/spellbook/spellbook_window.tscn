@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3leo2uq5070r"]
+
+[ext_resource type="Theme" uid="uid://cpnc6nrujvhvt" path="res://assets/ui/io/itch/pixelfrog-assets/UI/Banners/banner_horizontal.tres" id="1_csnh1"]
+[ext_resource type="PackedScene" uid="uid://cwovrfdmfqr0h" path="res://interface/windows/spellbook/ability_container.tscn" id="2_71qwo"]
+[ext_resource type="Script" path="res://interface/windows/spellbook/spellbook_window.gd" id="2_n0dhv"]
+
+[node name="SpellbookWindow" type="Control"]
+custom_minimum_size = Vector2(388, 375)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 388.0
+offset_bottom = 375.0
+mouse_filter = 1
+theme = ExtResource("1_csnh1")
+script = ExtResource("2_n0dhv")
+
+[node name="MainWindow" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 388.0
+offset_bottom = 375.0
+mouse_filter = 1
+
+[node name="GridContainer" type="GridContainer" parent="MainWindow"]
+layout_mode = 2
+mouse_filter = 2
+columns = 2
+
+[node name="AbilityContainer0" parent="MainWindow/GridContainer" instance=ExtResource("2_71qwo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="AbilityContainer1" parent="MainWindow/GridContainer" instance=ExtResource("2_71qwo")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityContainer2" parent="MainWindow/GridContainer" instance=ExtResource("2_71qwo")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityContainer3" parent="MainWindow/GridContainer" instance=ExtResource("2_71qwo")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityContainer4" parent="MainWindow/GridContainer" instance=ExtResource("2_71qwo")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityContainer5" parent="MainWindow/GridContainer" instance=ExtResource("2_71qwo")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityContainer6" parent="MainWindow/GridContainer" instance=ExtResource("2_71qwo")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityContainer7" parent="MainWindow/GridContainer" instance=ExtResource("2_71qwo")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityContainer8" parent="MainWindow/GridContainer" instance=ExtResource("2_71qwo")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityContainer9" parent="MainWindow/GridContainer" instance=ExtResource("2_71qwo")]
+unique_name_in_owner = true
+layout_mode = 2

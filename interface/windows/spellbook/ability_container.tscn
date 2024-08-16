@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwovrfdmfqr0h"]
+
+[ext_resource type="Theme" uid="uid://cx11quua82sf1" path="res://assets/ui/io/itch/pixelfrog-assets/UI/Banners/carved_regular.tres" id="1_3mov4"]
+[ext_resource type="Script" path="res://interface/windows/spellbook/ability_container.gd" id="1_sbrlh"]
+[ext_resource type="PackedScene" uid="uid://dmc41ngdt2toi" path="res://interface/action/action_button.tscn" id="2_wvm83"]
+
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 48.0
+script = ExtResource("1_sbrlh")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3mov4")
+
+[node name="ActionButton" parent="BoxContainer" instance=ExtResource("2_wvm83")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(90, 52)
+layout_mode = 0
+offset_left = 45.0
+offset_top = 4.0
+offset_right = 135.0
+offset_bottom = 55.0
+theme_override_constants/separation = 0
+
+[node name="BoxContainer" type="BoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SpellnameLabel" type="Label" parent="HBoxContainer/BoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 2
+
+[node name="SecondaryText" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11

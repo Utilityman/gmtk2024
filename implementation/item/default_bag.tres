@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemContainer" load_steps=3 format=3 uid="uid://dhcv6dcqkl3c4"]
+
+[ext_resource type="Texture2D" uid="uid://bhdekjrgbsq0g" path="res://assets/icons/net/game-icons/knapsack.png" id="1_jf3ml"]
+[ext_resource type="Script" path="res://rpg/item/item_container.gd" id="1_wfew7"]
+
+[resource]
+script = ExtResource("1_wfew7")
+size = 10
+id = "default-starting-bag-001"
+name = "Adventure Pack"
+max_stack_count = 1
+icon = ExtResource("1_jf3ml")

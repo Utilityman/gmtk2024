@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cx11quua82sf1"]
+
+[ext_resource type="Texture2D" uid="uid://5vvy86jd0u0d" path="res://assets/ui/io/itch/pixelfrog-assets/UI/Banners/Carved_9Slides.png" id="1_ocgnf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ou7f5"]
+texture = ExtResource("1_ocgnf")
+texture_margin_left = 19.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 20.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 1
+region_rect = Rect2(2, 1, 189, 190)
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxTexture_ou7f5")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_ou7f5")

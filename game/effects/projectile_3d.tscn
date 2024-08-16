@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://t46hcl7tgha8"]
+
+[ext_resource type="Script" path="res://game/effects/projectile_3d.gd" id="1_046bj"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tq116"]
+properties/0/path = NodePath(".:local_speed")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:local_acceleration")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:local_direction")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:local_follow_style")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:local_target")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+properties/5/path = NodePath(".:position")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+
+[node name="Projectile3D" type="Area3D"]
+top_level = true
+collision_mask = 2
+script = ExtResource("1_046bj")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 1.0
+delta_interval = 0.033
+replication_config = SubResource("SceneReplicationConfig_tq116")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="Lifetime" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="VisualEffects" type="Node3D" parent="."]
+
+[node name="VisualEffectSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://game/multiplayer/replicated_scene_3d.tscn")
+spawn_path = NodePath("../VisualEffects")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cgxb6ox61gbo2"]
+
+[ext_resource type="Texture2D" uid="uid://citawp06vlwdx" path="res://assets/icons/net/game-icons/roast-chicken.svg" id="1_2g8jt"]
+[ext_resource type="Script" path="res://rpg/item/item.gd" id="2_0kpqa"]
+
+[resource]
+script = ExtResource("2_0kpqa")
+id = "base-raw-chicken-001"
+name = "Raw Chicken"
+max_stack_count = 1
+icon = ExtResource("1_2g8jt")

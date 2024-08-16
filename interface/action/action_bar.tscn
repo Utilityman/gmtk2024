@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv35lyh7vr6cg"]
+
+[ext_resource type="PackedScene" uid="uid://dmc41ngdt2toi" path="res://interface/action/action_button.tscn" id="1_06oeb"]
+[ext_resource type="Script" path="res://interface/action/action_bar.gd" id="1_bs4it"]
+
+[node name="ActionBar" type="CenterContainer"]
+script = ExtResource("1_bs4it")
+metadata/_edit_vertical_guides_ = [0.0, -392.0]
+
+[node name="ButtonContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ActionButton0" parent="ButtonContainer" instance=ExtResource("1_06oeb")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="ActionButton1" parent="ButtonContainer" instance=ExtResource("1_06oeb")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="ActionButton2" parent="ButtonContainer" instance=ExtResource("1_06oeb")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="ActionButton3" parent="ButtonContainer" instance=ExtResource("1_06oeb")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="ActionButton4" parent="ButtonContainer" instance=ExtResource("1_06oeb")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="ActionButton5" parent="ButtonContainer" instance=ExtResource("1_06oeb")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="ActionButton6" parent="ButtonContainer" instance=ExtResource("1_06oeb")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="ActionButton7" parent="ButtonContainer" instance=ExtResource("1_06oeb")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="ActionButton8" parent="ButtonContainer" instance=ExtResource("1_06oeb")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="ActionButton9" parent="ButtonContainer" instance=ExtResource("1_06oeb")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2

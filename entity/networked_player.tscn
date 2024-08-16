@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://csr1e87omav53"]
+
+[ext_resource type="PackedScene" uid="uid://sddqtriuefvq" path="res://entity/entity.tscn" id="1_wktom"]
+[ext_resource type="Script" path="res://entity/networked_player.gd" id="2_hqsjf"]
+[ext_resource type="Script" path="res://entity/networked_player_input_provider.gd" id="3_nnv1d"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3pit3"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:client_multiplayer_id")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dir2x"]
+properties/0/path = NodePath("PlayerInputProvider:direction")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath("PlayerInputProvider:jumping")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("PlayerInputProvider:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+
+[node name="NetworkedPlayer" groups=["PLAYER"] instance=ExtResource("1_wktom")]
+script = ExtResource("2_hqsjf")
+client_multiplayer_id = 0
+speed = null
+number_of_jumps = null
+jump_velocity = null
+gravity = null
+rotation_speed = null
+
+[node name="NameLabel" type="Label3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23706, 0)
+billboard = 1
+text = "Name"
+font_size = 64
+
+[node name="HostSynchronizer" type="MultiplayerSynchronizer" parent="." index="7"]
+replication_config = SubResource("SceneReplicationConfig_3pit3")
+
+[node name="PlayerInputProvider" type="MultiplayerSynchronizer" parent="." index="8"]
+replication_config = SubResource("SceneReplicationConfig_dir2x")
+script = ExtResource("3_nnv1d")

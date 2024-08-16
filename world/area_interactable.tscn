@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8vmqds07wfpl"]
+
+[ext_resource type="Script" path="res://world/area_interactable.gd" id="1_ttaa7"]
+[ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="2_mysa0"]
+[ext_resource type="Material" uid="uid://m4gavu0p6vqc" path="res://addons/kenney_prototype_tools/materials/light/material_03.tres" id="3_82bsg"]
+
+[sub_resource type="Resource" id="Resource_i0qau"]
+script = ExtResource("2_mysa0")
+flat_damage = 20.0
+level_ratio = 1.0
+spell_power_ratio = 0.0
+attack_power_ratio = 0.0
+weapon_damage_ratio = 0.0
+using = 0
+type = ""
+sub_type = ""
+debug = false
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o84hv"]
+radius = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_j6amm"]
+material = ExtResource("3_82bsg")
+
+[node name="AreaInteractable" type="Area3D"]
+script = ExtResource("1_ttaa7")
+effect = SubResource("Resource_i0qau")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_o84hv")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_j6amm")

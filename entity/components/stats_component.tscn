@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddq8u87rotno1"]
+
+[ext_resource type="Script" path="res://entity/components/stats_component.gd" id="1_xfcmi"]
+[ext_resource type="PackedScene" uid="uid://bsijp5eo6530g" path="res://rpg/stats/statistic.tscn" id="2_h2mt8"]
+[ext_resource type="PackedScene" uid="uid://d3hb73mteeyiq" path="res://rpg/stats/attribute.tscn" id="3_ectlu"]
+
+[node name="StatsComponent" type="Node"]
+script = ExtResource("1_xfcmi")
+
+[node name="Health" parent="." instance=ExtResource("3_ectlu")]
+id = "health"
+
+[node name="Hitpoints" parent="." instance=ExtResource("2_h2mt8")]
+id = "hitpoints"
+
+[node name="Vitality" parent="." instance=ExtResource("2_h2mt8")]
+id = "vitality"
+
+[node name="Strength" parent="." instance=ExtResource("2_h2mt8")]
+id = "strength"
+
+[node name="Dexterity" parent="." instance=ExtResource("2_h2mt8")]
+id = "dexterity"
+
+[node name="Intelligence" parent="." instance=ExtResource("2_h2mt8")]
+id = "intelligence"
+
+[node name="Constitution" parent="." instance=ExtResource("2_h2mt8")]
+id = "constitution"
+
+[node name="Armor" parent="." instance=ExtResource("2_h2mt8")]
+id = "armor"
+
+[node name="Ward" parent="." instance=ExtResource("2_h2mt8")]
+id = "ward"

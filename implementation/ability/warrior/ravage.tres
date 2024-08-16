@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=16 format=3 uid="uid://fumiwb330kob"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="1_1ba2l"]
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_gy2qb"]
+[ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="1_nh2ye"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="2_lj4ws"]
+[ext_resource type="Resource" uid="uid://cnkd5th2rvyj2" path="res://implementation/ability/warrior/ravage_passive.tres" id="3_3youf"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/in_range_requisite.gd" id="4_60dm1"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="4_iq5i0"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/spell_known_requisite.gd" id="5_l7roq"]
+[ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="6_2c1jl"]
+[ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="10_2h0v7"]
+
+[sub_resource type="Resource" id="Resource_7e3nq"]
+script = ExtResource("1_nh2ye")
+flat_damage = 0.0
+level_ratio = 1.0
+spell_power_ratio = 0.0
+attack_power_ratio = 0.25
+weapon_damage_ratio = 0.95
+using = 2
+type = ""
+sub_type = ""
+debug = false
+
+[sub_resource type="Resource" id="Resource_m5luo"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/air-zigzag.png"
+
+[sub_resource type="Resource" id="Resource_yhgm3"]
+script = ExtResource("2_lj4ws")
+
+[sub_resource type="Resource" id="Resource_m67nx"]
+script = ExtResource("4_60dm1")
+
+[sub_resource type="Resource" id="Resource_y6225"]
+script = ExtResource("5_l7roq")
+
+[resource]
+script = ExtResource("1_1ba2l")
+id = "warrior-ravage"
+name = "Ravage"
+description = "Ravage your target instantly dealing {DAMAGE TOOLTIP} damage.
+
+TODO: need to "
+icon = SubResource("Resource_m5luo")
+use_range = 2.0
+cast_time = 0.0
+cooldown = 20.0
+global_cooldown = 0.0
+off_global_cooldown = true
+requisites = Array[ExtResource("6_2c1jl")]([SubResource("Resource_yhgm3"), SubResource("Resource_m67nx"), SubResource("Resource_y6225")])
+resource_costs = Array[ExtResource("10_2h0v7")]([])
+effects = Array[ExtResource("1_gy2qb")]([SubResource("Resource_7e3nq")])
+passives = Array[ExtResource("4_iq5i0")]([ExtResource("3_3youf")])
