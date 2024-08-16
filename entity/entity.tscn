@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://sddqtriuefvq"]
+[gd_scene load_steps=12 format=3 uid="uid://sddqtriuefvq"]
 
 [ext_resource type="Script" path="res://entity/entity.gd" id="1_257f2"]
 [ext_resource type="PackedScene" uid="uid://dfpxre2fdf1m8" path="res://entity/components/entity_info.tscn" id="3_svy0u"]
@@ -15,6 +15,10 @@ height = 1.7
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3h3jr"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_c7kuk"]
+radius = 0.1
+height = 0.2
+
 [node name="Entity" type="CharacterBody3D" groups=["ENTITY"]]
 collision_layer = 2
 script = ExtResource("1_257f2")
@@ -28,6 +32,14 @@ shape = SubResource("CapsuleShape3D_igknc")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_3h3jr")
+
+[node name="Eye1" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.5, -0.45)
+mesh = SubResource("SphereMesh_c7kuk")
+
+[node name="Eye2" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1.5, -0.45)
+mesh = SubResource("SphereMesh_c7kuk")
 
 [node name="ProjectileSource" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32082, 0)

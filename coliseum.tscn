@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://b3koyon3b1egm"]
+
+[ext_resource type="Script" path="res://coliseum.gd" id="1_g1hoj"]
+[ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="1_viexb"]
+[ext_resource type="PackedScene" uid="uid://cust65hisogl1" path="res://local_player_entity.tscn" id="3_ffj6k"]
+[ext_resource type="Material" uid="uid://dxlnifhgft6h5" path="res://addons/kenney_prototype_tools/materials/green/material_01.tres" id="5_e3rw1"]
+[ext_resource type="Material" uid="uid://8ylcw0h1lkhg" path="res://addons/kenney_prototype_tools/materials/orange/material_01.tres" id="6_43kcs"]
+[ext_resource type="Material" uid="uid://ddal25jay8fq1" path="res://addons/kenney_prototype_tools/materials/purple/material_01.tres" id="7_fjjru"]
+[ext_resource type="Material" uid="uid://d0gmvf62uyhd0" path="res://addons/kenney_prototype_tools/materials/red/material_01.tres" id="8_wfw2x"]
+[ext_resource type="PackedScene" uid="uid://sddqtriuefvq" path="res://entity/entity.tscn" id="10_gx550"]
+[ext_resource type="PackedScene" uid="uid://dpgwy82yhmsgj" path="res://game/camera/observing_camera.tscn" id="12_pbd5v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pvj55"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_6n78a"]
+sky_material = SubResource("ProceduralSkyMaterial_pvj55")
+
+[sub_resource type="Environment" id="Environment_6ugcg"]
+background_mode = 2
+sky = SubResource("Sky_6n78a")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Coliseum" type="Node3D"]
+script = ExtResource("1_g1hoj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6ugcg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 8, 0)
+shadow_enabled = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+material_override = ExtResource("1_viexb")
+use_collision = true
+radius = 25.0
+height = 0.1
+sides = 64
+
+[node name="LocalPlayerEntity" parent="." instance=ExtResource("3_ffj6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48023, 16.358)
+
+[node name="ObservableCamera" parent="LocalPlayerEntity" instance=ExtResource("12_pbd5v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+
+[node name="Cubes" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Cubes"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0.5, 13.5)
+material_override = ExtResource("5_e3rw1")
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Cubes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, -1.08332)
+material_override = ExtResource("5_e3rw1")
+use_collision = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Cubes"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -11.1099, 0.5, 10.5231)
+material_override = ExtResource("6_43kcs")
+use_collision = true
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Cubes"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 3.10993, 0.5, 1.89358)
+material_override = ExtResource("6_43kcs")
+use_collision = true
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Cubes"]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -4.29166, 0.5, 5.20834)
+material_override = ExtResource("7_fjjru")
+use_collision = true
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Cubes"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 8.29166, 0.5, 10.2083)
+material_override = ExtResource("7_fjjru")
+use_collision = true
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Cubes"]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 4.56977, 0.5, -5.33487)
+material_override = ExtResource("8_wfw2x")
+use_collision = true
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Cubes"]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -5.56977, 0.5, 11.7516)
+material_override = ExtResource("8_wfw2x")
+use_collision = true
+
+[node name="Entity" parent="." instance=ExtResource("10_gx550")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -4, 0, 0)

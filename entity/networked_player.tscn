@@ -29,11 +29,6 @@ properties/2/replication_mode = 2
 [node name="NetworkedPlayer" groups=["PLAYER"] instance=ExtResource("1_wktom")]
 script = ExtResource("2_hqsjf")
 client_multiplayer_id = 0
-speed = null
-number_of_jumps = null
-jump_velocity = null
-gravity = null
-rotation_speed = null
 
 [node name="NameLabel" type="Label3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23706, 0)

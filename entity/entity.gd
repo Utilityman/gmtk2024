@@ -102,14 +102,6 @@ func get_rotate_direction () -> float:
 	return 0.0
 
 func _physics_process(delta: float) -> void:
-	# if sychronizer.get_multiplayer_authority() != multiplayer.get_unique_id(): 
-	# 	# TODO: bring back the lerping of position and rotation
-	# 	# 		figure out how to sync the position better than current
-	# 	global_position = global_position.lerp(sync_position, 1 / 12.0)
-	# 	global_rotation = global_rotation.lerp(sync_rotation, 1 / 12.0)
-	# 	return
-
-
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 

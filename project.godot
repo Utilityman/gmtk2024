@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="EternalSeasons"
-run/main_scene="res://main_menu.tscn"
+config/name="Colossal See Em"
+run/main_scene="res://coliseum.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
