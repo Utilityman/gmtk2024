@@ -42,6 +42,9 @@ func _ready() -> void:
 func add_projectile_data (projectile_data: ProjectileData) -> void:
 	data = projectile_data
 	local_direction = data.direction
+	if projectile_data.use_source_direction:
+		local_direction = -source.global_transform.basis.z
+		print(local_direction)
 	local_speed = data.speed
 	local_acceleration = data.acceleration
 	local_follow_style = data.follow_style
@@ -54,7 +57,6 @@ func _process(delta: float) -> void:
 	local_speed += (local_acceleration * delta)
 	if local_follow_style == "follow_target":
 		local_direction = (local_target - global_position).normalized()
-	else: local_direction = local_direction
 
 func _physics_process(delta: float) -> void:	
 	# TODO: don't look_at if origin and target are the same

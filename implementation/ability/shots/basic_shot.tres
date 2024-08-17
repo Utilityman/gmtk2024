@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=16 format=3 uid="uid://3whvp8sd7e3m"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_33kkj"]
+[ext_resource type="Script" path="res://game/effects/projectile_data.gd" id="2_005p4"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="2_7gk1c"]
+[ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="3_310xr"]
+[ext_resource type="Script" path="res://game/multiplayer/replicated_scene_data.gd" id="3_apg53"]
+[ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="4_vlxl5"]
+[ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="4_yur5n"]
+[ext_resource type="Script" path="res://rpg/ability/effect/projectile_effect.gd" id="5_8vo4l"]
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="5_iax1c"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="8_mmyjt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r4s7n"]
+
+[sub_resource type="Resource" id="Resource_haaae"]
+script = ExtResource("2_005p4")
+shape = SubResource("SphereShape3D_r4s7n")
+visual_effects = Array[ExtResource("3_apg53")]([])
+direction = Vector3(0, 0, 0)
+use_source_direction = true
+start_from_source = true
+follow_style = "follow_direction"
+speed = 0.1
+acceleration = 0.0
+life_time = 60.0
+hit_style = "only_target"
+time_to_free = 0.0
+
+[sub_resource type="Resource" id="Resource_xc58g"]
+script = ExtResource("4_vlxl5")
+flat_damage = 10.0
+level_ratio = 0.0
+spell_power_ratio = 0.0
+attack_power_ratio = 0.0
+weapon_damage_ratio = 0.0
+using = 0
+type = ""
+sub_type = ""
+debug = false
+
+[sub_resource type="Resource" id="Resource_racwy"]
+script = ExtResource("5_8vo4l")
+data = SubResource("Resource_haaae")
+effects = Array[ExtResource("1_33kkj")]([SubResource("Resource_xc58g")])
+debug = false
+
+[sub_resource type="Resource" id="Resource_xdd4l"]
+script = ExtResource("8_mmyjt")
+
+[resource]
+script = ExtResource("5_iax1c")
+id = "basic-shot-001"
+name = "Basic Shot"
+description = "doesnt matter"
+use_range = 2.0
+cast_time = 0.0
+cooldown = 0.0
+global_cooldown = 1.5
+off_global_cooldown = false
+requisites = Array[ExtResource("3_310xr")]([SubResource("Resource_xdd4l")])
+resource_costs = Array[ExtResource("4_yur5n")]([])
+effects = Array[ExtResource("1_33kkj")]([SubResource("Resource_racwy")])
+passives = Array[ExtResource("2_7gk1c")]([])

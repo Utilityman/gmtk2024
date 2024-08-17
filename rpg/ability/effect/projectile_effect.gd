@@ -17,10 +17,11 @@ func apply (context: EffectContext) -> void:
 	var target: Entity = context.target
 
 	var projectile: Projectile3D = projectile_scene.instantiate()
-	projectile.add_projectile_data(data)
-	projectile.enabled = true
 	projectile.source = source
 	projectile.target = target
+	projectile.add_projectile_data(data)
+	projectile.enabled = true
+
 	
 	source.projectile_source.add_child(projectile, true)
 	projectile.global_position = source.projectile_source.global_position
