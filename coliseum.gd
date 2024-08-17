@@ -1,5 +1,7 @@
 class_name Coliseum extends Node3D
 
+var npc_names: Array[String] = ["Tony the Tank"]
+
 @export var player_cuttoff: int = 1
 @export var arena_time: int = 45
 

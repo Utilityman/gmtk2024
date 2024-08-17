@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://sddqtriuefvq"]
+[gd_scene load_steps=12 format=3 uid="uid://sddqtriuefvq"]
 
 [ext_resource type="Script" path="res://entity/entity.gd" id="1_257f2"]
 [ext_resource type="PackedScene" uid="uid://cxncb2sfemrc5" path="res://entity/model/robot_model.tscn" id="2_b02yj"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b8eh0wdt0nf04" path="res://assets/vfx/target_visualizer_3d.tscn" id="6_b64lv"]
 [ext_resource type="PackedScene" uid="uid://bvqvpd2sj0v7i" path="res://entity/components/spellbook_component.tscn" id="7_0fiao"]
 [ext_resource type="PackedScene" uid="uid://bi6r44rk8bxl6" path="res://entity/components/inventory/inventory_component.tscn" id="8_ddx1h"]
+[ext_resource type="Script" path="res://entity/components/progress_bar_3d.gd" id="10_8g2vt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_igknc"]
 radius = 0.4
@@ -48,3 +49,9 @@ level = null
 
 [node name="TargetVisualizer3D" parent="." instance=ExtResource("6_b64lv")]
 visible = false
+
+[node name="HealthBar3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79716, 0)
+script = ExtResource("10_8g2vt")
+outline_size = 0.05
+size = Vector3(1, 0.175, 0.05)

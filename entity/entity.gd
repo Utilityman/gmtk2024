@@ -3,6 +3,8 @@ class_name Entity extends CharacterBody3D
 # TODO: how will it work injecting a model with animations (and physics?) onto this? 
 # 		I'm thinking that if I wanted to add an entity with a model that's not this person, I'm not sure how I can/would do that
 signal death
+signal shoot
+signal punch
 signal on_target_changed
 
 # @deprecated - I don't want to use this resource for anything besides loading the character in. 
@@ -35,6 +37,7 @@ signal on_target_changed
 # 		that can be used to query various critical points from an entity's model 
 # 		Center, Top, Bottom, ProjectileSource, etc.
 @onready var projectile_source: Node3D = $ProjectileSource
+@onready var health_bar: ProgressBar3D = $HealthBar3D
 
 # PRIVATE
 @onready var _jump_counter: int = number_of_jumps
@@ -61,6 +64,7 @@ func _ready() -> void:
 		load_rpg_data()
 		if data is HeroData:
 			load_hero_data()
+	stats_component.health.on_current_changed.connect(_on_health_changed)
 
 func load_rpg_data () -> void:
 	info.load_data(data)
@@ -101,6 +105,9 @@ func get_direction () -> Vector3:
 
 func get_rotate_direction () -> float:
 	return 0.0
+
+func _process(delta: float) -> void:
+	health_bar.value = stats_component.health.current / stats_component.health.value
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -226,3 +233,10 @@ func activate_ability(ability: Ability, ability_target: Entity) -> void:
 		var effect_ctx: EffectContext = EffectContext.new(self, ability_target)
 		effect_ctx.source_ability = ability
 		effect.apply(effect_ctx)
+
+func _on_health_changed (value: float) -> void:
+	# TODO: should this spill any guts just on hit?
+	if value == 0:
+		health_bar.visible = false
+		death.emit()
+	pass

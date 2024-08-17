@@ -52,15 +52,15 @@ level = 1
 base_stats = SubResource("Resource_yque7")
 spellbook = SubResource("Resource_gkwfb")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mq4yo"]
-size = Vector3(3.82123, 0.460205, 3.92725)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_5joda"]
 size = Vector3(2.21289, 0.434021, 2.13123)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mq4yo"]
+size = Vector3(3.82123, 0.460205, 3.92725)
+
 [sub_resource type="Resource" id="Resource_pf66a"]
 script = ExtResource("5_rrubv")
-hitpoints = 500
+hitpoints = 50
 vitality = 0
 strength = 0
 dexterity = 0
@@ -92,6 +92,7 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Cubes" type="Node3D" parent="."]
 
@@ -99,49 +100,66 @@ shadow_enabled = true
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0.497672, 8.22213)
 material_override = ExtResource("5_e3rw1")
 use_collision = true
+size = Vector3(1, 5, 2)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Cubes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, -1.08332)
 material_override = ExtResource("5_e3rw1")
 use_collision = true
+size = Vector3(1, 5, 2)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Cubes"]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -11.1099, 0.5, 10.5231)
 material_override = ExtResource("6_43kcs")
 use_collision = true
+size = Vector3(1, 5, 2)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Cubes"]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 3.10993, 0.5, 1.89358)
 material_override = ExtResource("6_43kcs")
 use_collision = true
+size = Vector3(1, 5, 2)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Cubes"]
 transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -4.29166, 0.5, 5.20834)
 material_override = ExtResource("7_fjjru")
 use_collision = true
+size = Vector3(1, 5, 2)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Cubes"]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 8.29166, 0.5, 10.2083)
 material_override = ExtResource("7_fjjru")
 use_collision = true
+size = Vector3(1, 5, 2)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Cubes"]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 4.56977, 0.5, -5.33487)
 material_override = ExtResource("8_wfw2x")
 use_collision = true
+size = Vector3(1, 5, 2)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Cubes"]
 transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -5.56977, 0.5, 11.7516)
 material_override = ExtResource("8_wfw2x")
 use_collision = true
+size = Vector3(1, 5, 2)
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_ffj6k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04581, 5.03796, 19.5556)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04581, 5.03796, 21.4868)
 shoot_ability = ExtResource("15_1pnm2")
 data = SubResource("Resource_a6hsx")
 camera = NodePath("ObservableCamera")
 
 [node name="ObservableCamera" parent="Player" instance=ExtResource("12_pbd5v")]
+
+[node name="SpawnPlatform" parent="." instance=ExtResource("17_6qcyd")]
+transform = Transform3D(0.999946, -0.010402, 0, 0.010402, 0.999946, 0, 0, 0, 1, -1, 5, 21.4381)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SpawnPlatform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPlatform/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0380859, -0.170258, 0.00262451)
+shape = SubResource("BoxShape3D_5joda")
 
 [node name="PrimaryPlatform" parent="." instance=ExtResource("16_k0i1g")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -58.261, -0.24, -0.047)
@@ -153,17 +171,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07125, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0874557, -0.160701, -0.017334)
 shape = SubResource("BoxShape3D_mq4yo")
 
-[node name="SpawnPlatform" parent="." instance=ExtResource("17_6qcyd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 19.5069)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="SpawnPlatform"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPlatform/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0380859, -0.170258, 0.00262451)
-shape = SubResource("BoxShape3D_5joda")
-
 [node name="SpectatorPlatform" parent="." instance=ExtResource("18_hsi7y")]
-transform = Transform3D(0.113515, 0, 0.993536, 0, 1, 0, -0.993536, 0, 0.113515, -19.0924, 5.84739, 15)
+transform = Transform3D(0.113515, 0, 0.993536, 0, 1, 0, -0.993536, 0, 0.113515, -19.0924, 7.67968, 15)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

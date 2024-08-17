@@ -44,7 +44,6 @@ func add_projectile_data (projectile_data: ProjectileData) -> void:
 	local_direction = data.direction
 	if projectile_data.use_source_direction:
 		local_direction = -source.global_transform.basis.z
-		print(local_direction)
 	local_speed = data.speed
 	local_acceleration = data.acceleration
 	local_follow_style = data.follow_style
@@ -66,6 +65,7 @@ func _physics_process(delta: float) -> void:
 	position += local_direction * local_speed * delta
 
 func _on_body_entered(body: Node3D) -> void:
+	print("Body Entered!:" + str(body))
 	# never do anything in this case
 	if body == source: return
 

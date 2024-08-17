@@ -20,9 +20,12 @@ func get_rotate_direction() -> float:
 	return rotate_dir
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("SHOOT_GUN"):
+	super._process(delta)
+	if Input.is_action_just_pressed("SHOOT_GUN") and cooldowns.global_cooldown == 0:
 		use_ability(shoot_ability, self)
-	if Input.is_action_just_pressed("MELEE"):
+		shoot.emit()
+	if Input.is_action_just_pressed("MELEE") and cooldowns.global_cooldown == 0:
 		#use_ability(sword_ability)
 		print("smack a bro")
+		punch.emit()
 
