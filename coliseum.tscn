@@ -1,9 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://b3koyon3b1egm"]
+[gd_scene load_steps=28 format=3 uid="uid://b3koyon3b1egm"]
 
 [ext_resource type="Script" path="res://coliseum.gd" id="1_g1hoj"]
 [ext_resource type="PackedScene" uid="uid://cust65hisogl1" path="res://local_player_entity.tscn" id="3_ffj6k"]
 [ext_resource type="Material" uid="uid://dxlnifhgft6h5" path="res://addons/kenney_prototype_tools/materials/green/material_01.tres" id="5_e3rw1"]
-[ext_resource type="PackedScene" uid="uid://bjs5x7fyns6gt" path="res://interface/player_user_interface.tscn" id="5_pk6h2"]
 [ext_resource type="Script" path="res://rpg/entity/rpg_data.gd" id="5_r372i"]
 [ext_resource type="Script" path="res://rpg/stats/stat_block.gd" id="5_rrubv"]
 [ext_resource type="Material" uid="uid://8ylcw0h1lkhg" path="res://addons/kenney_prototype_tools/materials/orange/material_01.tres" id="6_43kcs"]
@@ -53,6 +52,12 @@ level = 1
 base_stats = SubResource("Resource_yque7")
 spellbook = SubResource("Resource_gkwfb")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mq4yo"]
+size = Vector3(3.82123, 0.460205, 3.92725)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5joda"]
+size = Vector3(2.21289, 0.434021, 2.13123)
+
 [sub_resource type="Resource" id="Resource_pf66a"]
 script = ExtResource("5_rrubv")
 hitpoints = 500
@@ -75,14 +80,9 @@ level = 1
 base_stats = SubResource("Resource_pf66a")
 spellbook = SubResource("Resource_wtn21")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mq4yo"]
-size = Vector3(3.82123, 0.460205, 3.92725)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_5joda"]
-size = Vector3(1.64453, 1, 2.10522)
-
 [node name="Coliseum" type="Node3D"]
 script = ExtResource("1_g1hoj")
+player_cuttoff = 10
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6ugcg")
@@ -90,6 +90,8 @@ environment = SubResource("Environment_6ugcg")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 8, 0)
 shadow_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
 
 [node name="Cubes" type="Node3D" parent="."]
 
@@ -134,17 +136,12 @@ material_override = ExtResource("8_wfw2x")
 use_collision = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_ffj6k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21046, 5.48023, 15.4178)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04581, 5.03796, 19.5556)
+shoot_ability = ExtResource("15_1pnm2")
 data = SubResource("Resource_a6hsx")
 camera = NodePath("ObservableCamera")
 
 [node name="ObservableCamera" parent="Player" instance=ExtResource("12_pbd5v")]
-
-[node name="PlayerUI" parent="Player" instance=ExtResource("5_pk6h2")]
-
-[node name="Entity" parent="." instance=ExtResource("10_gx550")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14, 0, 0)
-data = SubResource("Resource_lcdf1")
 
 [node name="PrimaryPlatform" parent="." instance=ExtResource("16_k0i1g")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -58.261, -0.24, -0.047)
@@ -162,8 +159,98 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 19.5069)
 [node name="StaticBody3D" type="StaticBody3D" parent="SpawnPlatform"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPlatform/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.322266, 0, -0.010376)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0380859, -0.170258, 0.00262451)
 shape = SubResource("BoxShape3D_5joda")
 
 [node name="SpectatorPlatform" parent="." instance=ExtResource("18_hsi7y")]
 transform = Transform3D(0.113515, 0, 0.993536, 0, 1, 0, -0.993536, 0, 0.113515, -19.0924, 5.84739, 15)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GoalContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="GoalLabel" type="Label" parent="Control/GoalContainer"]
+layout_mode = 2
+text = "Goal: Survive"
+
+[node name="PlayerCountContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -61.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 0
+
+[node name="PlayerCountLabel" type="Label" parent="Control/PlayerCountContainer"]
+layout_mode = 2
+text = "Players:"
+
+[node name="Timer" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Entity" parent="Node3D" instance=ExtResource("10_gx550")]
+transform = Transform3D(-0.572203, 0, -0.820112, 0, 1, 0, 0.820112, 0, -0.572203, -14, 0, 0.747572)
+data = SubResource("Resource_lcdf1")
+
+[node name="Entity2" parent="Node3D" instance=ExtResource("10_gx550")]
+transform = Transform3D(-0.277331, 0, -0.960774, 0, 1, 0, 0.960774, 0, -0.277331, -14, 0, 3.48722)
+data = SubResource("Resource_lcdf1")
+
+[node name="Entity3" parent="Node3D" instance=ExtResource("10_gx550")]
+transform = Transform3D(-0.332869, 0, -0.942973, 0, 1, 0, 0.942973, 0, -0.332869, -14, 0, 6.94699)
+data = SubResource("Resource_lcdf1")
+
+[node name="Entity4" parent="Node3D" instance=ExtResource("10_gx550")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14.8327, 0, 10.2549)
+data = SubResource("Resource_lcdf1")
+
+[node name="Entity5" parent="Node3D" instance=ExtResource("10_gx550")]
+transform = Transform3D(0.387628, 0, -0.921816, 0, 1, 0, 0.921816, 0, 0.387628, -14, 0, 15.5407)
+data = SubResource("Resource_lcdf1")
+
+[node name="Entity6" parent="Node3D" instance=ExtResource("10_gx550")]
+transform = Transform3D(-0.119929, 0, -0.992782, 0, 1, 0, 0.992782, 0, -0.119929, -14.5732, 0, 13.0565)
+data = SubResource("Resource_lcdf1")
+
+[node name="Entity7" parent="Node3D" instance=ExtResource("10_gx550")]
+transform = Transform3D(0.944353, 0, -0.328933, 0, 1, 0, 0.328933, 0, 0.944353, -12.3155, 0, 16.8233)
+data = SubResource("Resource_lcdf1")
+
+[node name="Entity8" parent="Node3D" instance=ExtResource("10_gx550")]
+transform = Transform3D(0.99313, 0, -0.117017, 0, 1, 0, 0.117017, 0, 0.99313, -9.67282, 0, 16.9154)
+data = SubResource("Resource_lcdf1")
+
+[node name="Entity9" parent="Node3D" instance=ExtResource("10_gx550")]
+transform = Transform3D(0.999999, 0, 0.00127399, 0, 1, 0, -0.00127399, 0, 0.999999, -5.9725, 0, 16.9154)
+data = SubResource("Resource_lcdf1")
+
+[node name="Entity10" parent="Node3D" instance=ExtResource("10_gx550")]
+transform = Transform3D(0.995339, 0, 0.0964364, 0, 1, 0, -0.0964364, 0, 0.995339, -1.83195, 0, 16.9154)
+data = SubResource("Resource_lcdf1")

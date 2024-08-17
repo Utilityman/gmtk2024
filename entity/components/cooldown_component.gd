@@ -18,12 +18,10 @@ var ability_cooldowns: Dictionary = {}
 @onready var cooldown_spawner: MultiplayerSpawner = $CooldownSpawner
 
 func _ready() -> void:
-	Logger.info("Setting up the cooldown spawner!")
 	cooldown_spawner.spawned.connect(_on_cooldown_spawn)
 	cooldown_spawner.despawned.connect(_on_cooldown_despawn)
 
 func _on_cooldown_spawn (cooldown: EntityCooldown) -> void:
-	Logger.info("Cooldown!")
 	if ability_cooldowns.has(cooldown.id): _on_cooldown_expired(cooldown.id)
 	ability_cooldowns[cooldown.id] = cooldown
 	cooldown.expired.connect(_on_cooldown_expired)

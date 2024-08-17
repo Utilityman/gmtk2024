@@ -15,7 +15,7 @@ class_name InventoryComponent extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(bags)
+	pass
 
 func load (data: HeroData) -> void:
 	if data.bag0: setup_bag(bags[0], data.bag0, data.bag0Items)

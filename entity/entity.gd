@@ -2,6 +2,7 @@ class_name Entity extends CharacterBody3D
 
 # TODO: how will it work injecting a model with animations (and physics?) onto this? 
 # 		I'm thinking that if I wanted to add an entity with a model that's not this person, I'm not sure how I can/would do that
+signal death
 signal on_target_changed
 
 # @deprecated - I don't want to use this resource for anything besides loading the character in. 

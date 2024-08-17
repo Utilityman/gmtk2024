@@ -11,6 +11,7 @@ script = ExtResource("2_n7mgv")
 bones/1/position = Vector3(-3.43777e-06, 0.00378199, 5.03862e-05)
 bones/1/rotation = Quaternion(-0.0081504, -2.92539e-08, -1.65241e-09, 0.999967)
 bones/1/scale = Vector3(1.00048, 1.00048, 1.00048)
+bones/2/scale = Vector3(1.00048, 1.00048, 1.00048)
 bones/3/rotation = Quaternion(-0.475713, 0.181504, 0.100947, 0.85473)
 bones/4/rotation = Quaternion(-0.381815, -0.061882, -0.536106, 0.750319)
 bones/5/scale = Vector3(1, 1, 1)
@@ -23,6 +24,6 @@ bones/12/scale = Vector3(1, 1, 1)
 bones/13/scale = Vector3(5.00048, 1.00048, 1.00048)
 
 [node name="LeftHand" type="BoneAttachment3D" parent="RootNode/CharacterArmature/Skeleton3D" index="2"]
-transform = Transform3D(-0.251897, -0.238242, 0.938482, -0.410214, -0.852133, -0.326427, 0.877059, -0.466981, 0.116863, 0.0053244, -0.0022547, 0.00287951)
+transform = Transform3D(-0.252017, -0.238355, 0.938928, -0.410409, -0.852538, -0.326582, 0.877476, -0.467202, 0.116918, 0.00532544, -0.00225577, 0.00287839)
 bone_name = "Hand.L"
 bone_idx = 5
