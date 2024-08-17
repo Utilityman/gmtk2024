@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://b3koyon3b1egm"]
 
 [ext_resource type="Script" path="res://coliseum.gd" id="1_g1hoj"]
-[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_af7lc"]
+[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_af7lc"]
 [ext_resource type="PackedScene" uid="uid://cust65hisogl1" path="res://local_player_entity.tscn" id="3_ffj6k"]
 [ext_resource type="Material" uid="uid://dxlnifhgft6h5" path="res://addons/kenney_prototype_tools/materials/green/material_01.tres" id="5_e3rw1"]
 [ext_resource type="Script" path="res://rpg/entity/rpg_data.gd" id="5_r372i"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dpgwy82yhmsgj" path="res://game/camera/observing_camera.tscn" id="12_pbd5v"]
 [ext_resource type="Resource" uid="uid://3whvp8sd7e3m" path="res://implementation/ability/shots/basic_shot.tres" id="15_1pnm2"]
 [ext_resource type="PackedScene" uid="uid://owr0a6iuh5je" path="res://game/platforms/starting_platform.tscn" id="16_bujbd"]
-[ext_resource type="Resource" uid="uid://c05tbkik3skwj" path="res://implementation/ability/shots/punch.tres" id="16_dwaw8"]
+[ext_resource type="Resource" uid="uid://bv8c458jk1b5" path="res://implementation/ability/shots/punch.tres" id="16_dwaw8"]
 [ext_resource type="PackedScene" uid="uid://bol24dvutt2eg" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-ctQ5CDmraQ.glb" id="16_k0i1g"]
 [ext_resource type="PackedScene" uid="uid://hqb4b7dnhbyi" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform.glb" id="18_hsi7y"]
 

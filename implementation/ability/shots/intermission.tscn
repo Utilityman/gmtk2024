@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciwg4h8m1kphe"]
+
+[sub_resource type="Environment" id="Environment_anmff"]
+
+[node name="intermission" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_anmff")
