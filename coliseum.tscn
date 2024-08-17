@@ -30,30 +30,8 @@ sky = SubResource("Sky_6n78a")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="Resource" id="Resource_yque7"]
-script = ExtResource("5_rrubv")
-hitpoints = 50
-vitality = 0
-strength = 0
-dexterity = 0
-intelligence = 0
-constitution = 0
-armor = 0
-ward = 0
-
-[sub_resource type="Resource" id="Resource_gkwfb"]
-script = ExtResource("9_s3iro")
-abilities = Array[ExtResource("7_jj267")]([ExtResource("15_1pnm2")])
-
-[sub_resource type="Resource" id="Resource_a6hsx"]
-script = ExtResource("5_r372i")
-name = "Tot"
-level = 1
-base_stats = SubResource("Resource_yque7")
-spellbook = SubResource("Resource_gkwfb")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_mq4yo"]
-size = Vector3(3.82123, 0.460205, 3.92725)
+size = Vector3(3.86278, 0.460205, 3.90308)
 
 [sub_resource type="Resource" id="Resource_pf66a"]
 script = ExtResource("5_rrubv")
@@ -76,6 +54,28 @@ name = "Test Subject"
 level = 1
 base_stats = SubResource("Resource_pf66a")
 spellbook = SubResource("Resource_wtn21")
+
+[sub_resource type="Resource" id="Resource_yque7"]
+script = ExtResource("5_rrubv")
+hitpoints = 50
+vitality = 0
+strength = 0
+dexterity = 0
+intelligence = 0
+constitution = 0
+armor = 0
+ward = 0
+
+[sub_resource type="Resource" id="Resource_gkwfb"]
+script = ExtResource("9_s3iro")
+abilities = Array[ExtResource("7_jj267")]([ExtResource("15_1pnm2")])
+
+[sub_resource type="Resource" id="Resource_a6hsx"]
+script = ExtResource("5_r372i")
+name = "Tot"
+level = 1
+base_stats = SubResource("Resource_yque7")
+spellbook = SubResource("Resource_gkwfb")
 
 [node name="Coliseum" type="Node3D"]
 script = ExtResource("1_g1hoj")
@@ -141,26 +141,18 @@ material_override = ExtResource("8_wfw2x")
 use_collision = true
 size = Vector3(1, 5, 2)
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_ffj6k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.633373, 5.03796, 33.115)
-shoot_ability = ExtResource("15_1pnm2")
-data = SubResource("Resource_a6hsx")
-camera = NodePath("ObservableCamera")
-
-[node name="ObservableCamera" parent="Player" instance=ExtResource("12_pbd5v")]
-
 [node name="PrimaryPlatform" parent="." instance=ExtResource("16_k0i1g")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -58.261, -0.24, -0.047)
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, -73.55, 0, -0.047)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="PrimaryPlatform"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07125, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PrimaryPlatform/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0874557, -0.160701, -0.017334)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0867159, -0.160701, -0.0294199)
 shape = SubResource("BoxShape3D_mq4yo")
 
 [node name="SpectatorPlatform" parent="." instance=ExtResource("18_hsi7y")]
-transform = Transform3D(0.113515, 0, 0.993536, 0, 1, 0, -0.993536, 0, 0.113515, -19.0924, 7.67968, 36.6299)
+transform = Transform3D(0.113515, 0, 0.993536, 0, 1, 0, -0.993536, 0, 0.113515, -31.0924, 7.67968, 36.6299)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -252,26 +244,34 @@ data = SubResource("Resource_lcdf1")
 transform = Transform3D(0.995339, 0, 0.0964364, 0, 1, 0, -0.0964364, 0, 0.995339, -1.83195, 0, 16.9154)
 data = SubResource("Resource_lcdf1")
 
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_ffj6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 5, 36)
+shoot_ability = ExtResource("15_1pnm2")
+data = SubResource("Resource_a6hsx")
+camera = NodePath("ObservableCamera")
+
+[node name="ObservableCamera" parent="Player" instance=ExtResource("12_pbd5v")]
+
 [node name="StartingPlatforms" type="Node3D" parent="."]
 
 [node name="ZPositivePlatforms" type="Node3D" parent="StartingPlatforms"]
 
 [node name="StartingPlatform0" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7867, 4.72882, 32.9651)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 5, 36)
 approach_direction = Vector3(0, 0, -1)
 
 [node name="StartingPlatform1" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78672, 4.72882, 32.9651)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5, 36)
 approach_direction = Vector3(0, 0, -1)
 
 [node name="StartingPlatform2" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.622305, 4.72882, 32.9651)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 36)
 approach_direction = Vector3(0, 0, -1)
 
 [node name="StartingPlatform3" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.21328, 4.72882, 32.9651)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 5, 36)
 approach_direction = Vector3(0, 0, -1)
 
 [node name="StartingPlatform4" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2133, 4.72882, 32.9651)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 5, 36)
 approach_direction = Vector3(0, 0, -1)

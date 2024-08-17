@@ -1,7 +1,10 @@
 class_name Coliseum extends Node3D
 
+const player_scene: PackedScene = preload("res://local_player_entity.tscn")
+
 var npc_names: Array[String] = ["Tony the Tank"]
 
+@export var number_of_players: int = 20
 @export var player_cuttoff: int = 1
 @export var arena_time: int = 45
 

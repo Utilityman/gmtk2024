@@ -22,6 +22,7 @@ Logger="*res://addons/godot-logger/logger.gd"
 MultiplayerManager="*res://game/manager/multiplayer_manager.tscn"
 Settings="*res://settings/settings.tscn"
 AbilityDatabase="*res://game/database/ability_database.tscn"
+Shaker="*res://addons/shaker/src/Shaker.gd"
 
 [debug]
 
@@ -29,7 +30,7 @@ gdscript/warnings/untyped_declaration=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-logger/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-logger/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
 [file_customization]
 
