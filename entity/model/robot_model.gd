@@ -37,3 +37,7 @@ func _on_punch () -> void:
 func _on_death () -> void:
 	is_dead = true
 	animation_player.play("CharacterArmature|Dead")
+	var tween: Tween = get_tree().create_tween()
+	var ground_position: Vector3 = position
+	ground_position.y = -0.5 # TODO: as the robot gets bigger, this 0.5 isn't going to be quite right
+	tween.tween_property(self, "position", ground_position, animation_player.get_animation("CharacterArmature|Dead").length)

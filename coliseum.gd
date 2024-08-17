@@ -36,8 +36,6 @@ func _process(delta: float) -> void:
 		timer_label.text = "%10.1f" % timer.time_left
 	player_label.text = "Players Remaining\n  " + str(players_remaining)
 
-
-
 func _on_timer_timeout () -> void:
 	print("OUT OF TIME!")
 

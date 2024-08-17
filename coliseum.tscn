@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b3koyon3b1egm"]
+[gd_scene load_steps=27 format=3 uid="uid://b3koyon3b1egm"]
 
 [ext_resource type="Script" path="res://coliseum.gd" id="1_g1hoj"]
 [ext_resource type="PackedScene" uid="uid://cust65hisogl1" path="res://local_player_entity.tscn" id="3_ffj6k"]
@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://sddqtriuefvq" path="res://entity/entity.tscn" id="10_gx550"]
 [ext_resource type="PackedScene" uid="uid://dpgwy82yhmsgj" path="res://game/camera/observing_camera.tscn" id="12_pbd5v"]
 [ext_resource type="Resource" uid="uid://3whvp8sd7e3m" path="res://implementation/ability/shots/basic_shot.tres" id="15_1pnm2"]
+[ext_resource type="PackedScene" uid="uid://owr0a6iuh5je" path="res://game/platforms/starting_platform.tscn" id="16_bujbd"]
 [ext_resource type="PackedScene" uid="uid://bol24dvutt2eg" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-ctQ5CDmraQ.glb" id="16_k0i1g"]
-[ext_resource type="PackedScene" uid="uid://biaw6ewthr7gd" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-dHymLbsOMY.glb" id="17_6qcyd"]
 [ext_resource type="PackedScene" uid="uid://hqb4b7dnhbyi" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform.glb" id="18_hsi7y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pvj55"]
@@ -51,9 +51,6 @@ name = "Tot"
 level = 1
 base_stats = SubResource("Resource_yque7")
 spellbook = SubResource("Resource_gkwfb")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_5joda"]
-size = Vector3(2.21289, 0.434021, 2.13123)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mq4yo"]
 size = Vector3(3.82123, 0.460205, 3.92725)
@@ -145,21 +142,12 @@ use_collision = true
 size = Vector3(1, 5, 2)
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_ffj6k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04581, 5.03796, 21.4868)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.633373, 5.03796, 33.115)
 shoot_ability = ExtResource("15_1pnm2")
 data = SubResource("Resource_a6hsx")
 camera = NodePath("ObservableCamera")
 
 [node name="ObservableCamera" parent="Player" instance=ExtResource("12_pbd5v")]
-
-[node name="SpawnPlatform" parent="." instance=ExtResource("17_6qcyd")]
-transform = Transform3D(0.999946, -0.010402, 0, 0.010402, 0.999946, 0, 0, 0, 1, -1, 5, 21.4381)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="SpawnPlatform"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPlatform/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0380859, -0.170258, 0.00262451)
-shape = SubResource("BoxShape3D_5joda")
 
 [node name="PrimaryPlatform" parent="." instance=ExtResource("16_k0i1g")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -58.261, -0.24, -0.047)
@@ -172,7 +160,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0874557, -0.160701, -0.017
 shape = SubResource("BoxShape3D_mq4yo")
 
 [node name="SpectatorPlatform" parent="." instance=ExtResource("18_hsi7y")]
-transform = Transform3D(0.113515, 0, 0.993536, 0, 1, 0, -0.993536, 0, 0.113515, -19.0924, 7.67968, 15)
+transform = Transform3D(0.113515, 0, 0.993536, 0, 1, 0, -0.993536, 0, 0.113515, -19.0924, 7.67968, 36.6299)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -263,3 +251,27 @@ data = SubResource("Resource_lcdf1")
 [node name="Entity10" parent="Node3D" instance=ExtResource("10_gx550")]
 transform = Transform3D(0.995339, 0, 0.0964364, 0, 1, 0, -0.0964364, 0, 0.995339, -1.83195, 0, 16.9154)
 data = SubResource("Resource_lcdf1")
+
+[node name="StartingPlatforms" type="Node3D" parent="."]
+
+[node name="ZPositivePlatforms" type="Node3D" parent="StartingPlatforms"]
+
+[node name="StartingPlatform0" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7867, 4.72882, 32.9651)
+approach_direction = Vector3(0, 0, -1)
+
+[node name="StartingPlatform1" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78672, 4.72882, 32.9651)
+approach_direction = Vector3(0, 0, -1)
+
+[node name="StartingPlatform2" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.622305, 4.72882, 32.9651)
+approach_direction = Vector3(0, 0, -1)
+
+[node name="StartingPlatform3" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.21328, 4.72882, 32.9651)
+approach_direction = Vector3(0, 0, -1)
+
+[node name="StartingPlatform4" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2133, 4.72882, 32.9651)
+approach_direction = Vector3(0, 0, -1)

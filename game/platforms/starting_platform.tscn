@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://owr0a6iuh5je"]
+
+[ext_resource type="PackedScene" uid="uid://biaw6ewthr7gd" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-dHymLbsOMY.glb" id="1_e1b86"]
+[ext_resource type="Script" path="res://game/platforms/starting_platform.gd" id="2_8ec7e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w6d5j"]
+size = Vector3(2.13812, 0.445251, 2.13135)
+
+[node name="StartingPlatform" instance=ExtResource("1_e1b86")]
+script = ExtResource("2_8ec7e")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00991821, -0.16806, 0.0065918)
+shape = SubResource("BoxShape3D_w6d5j")
