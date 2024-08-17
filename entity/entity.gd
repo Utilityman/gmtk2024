@@ -7,6 +7,9 @@ signal shoot
 signal punch
 signal on_target_changed
 
+@export var shoot_ability: Ability 
+@export var melee: Ability 
+
 # @deprecated - I don't want to use this resource for anything besides loading the character in. 
 # 				since we can't replicate this easily, we MUST use nodes with replicated properties instead.
 # 				when saving, an RpgData will be created from the attributes of the nodes

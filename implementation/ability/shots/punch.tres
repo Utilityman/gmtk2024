@@ -37,7 +37,7 @@ time_to_free = 0.1
 
 [sub_resource type="Resource" id="Resource_o8qo0"]
 script = ExtResource("4_64f6g")
-flat_damage = 10.0
+flat_damage = 25.0
 level_ratio = 1.0
 spell_power_ratio = 0.0
 attack_power_ratio = 0.0
