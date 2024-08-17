@@ -1,6 +1,7 @@
 class_name LocalPlayerEntity extends Entity
 
 @export var shoot_ability: Ability 
+@export var melee: Ability 
 
 func should_jump() -> bool:
 	return Input.is_action_just_pressed(&"JUMP")
@@ -25,7 +26,6 @@ func _process(delta: float) -> void:
 		use_ability(shoot_ability, self)
 		shoot.emit()
 	if Input.is_action_just_pressed("MELEE") and cooldowns.global_cooldown == 0:
-		#use_ability(sword_ability)
+		use_ability(melee, self)
 		print("smack a bro")
 		punch.emit()
-

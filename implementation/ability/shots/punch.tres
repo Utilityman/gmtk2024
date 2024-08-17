@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=22 format=3 uid="uid://c05tbkik3skwj"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_liouq"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="2_741sa"]
+[ext_resource type="Script" path="res://game/effects/projectile_data.gd" id="2_j6ota"]
+[ext_resource type="Script" path="res://game/multiplayer/replicated_scene_data.gd" id="3_cqd3p"]
+[ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="3_ii68x"]
+[ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="4_64f6g"]
+[ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="4_qneoy"]
+[ext_resource type="PackedScene" uid="uid://ccmjsv24rvqkb" path="res://assets/vfx/lazer_001.tscn" id="4_tactu"]
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="5_h4ttm"]
+[ext_resource type="PackedScene" uid="uid://b6xv5hhsnutur" path="res://assets/vfx/fire_explosion_001.tscn" id="5_lh2to"]
+[ext_resource type="Script" path="res://rpg/ability/effect/scene_effect.gd" id="6_ycosy"]
+[ext_resource type="Script" path="res://rpg/ability/effect/projectile_effect.gd" id="7_b4f6o"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="10_w3o43"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vpkws"]
+
+[sub_resource type="Resource" id="Resource_4gv0i"]
+script = ExtResource("3_cqd3p")
+model = ExtResource("4_tactu")
+model_direction = Vector3(0, 0, -1)
+
+[sub_resource type="Resource" id="Resource_lyeli"]
+script = ExtResource("2_j6ota")
+shape = SubResource("SphereShape3D_vpkws")
+visual_effects = Array[ExtResource("3_cqd3p")]([SubResource("Resource_4gv0i")])
+direction = Vector3(0, 0, 0)
+use_source_direction = true
+start_from_source = true
+follow_style = "follow_direction"
+speed = 5.0
+acceleration = 0.0
+life_time = 0.2
+hit_style = "any"
+time_to_free = 0.1
+
+[sub_resource type="Resource" id="Resource_o8qo0"]
+script = ExtResource("4_64f6g")
+flat_damage = 10.0
+level_ratio = 1.0
+spell_power_ratio = 0.0
+attack_power_ratio = 0.0
+weapon_damage_ratio = 0.0
+using = 0
+type = ""
+sub_type = ""
+debug = false
+
+[sub_resource type="Resource" id="Resource_8h4s4"]
+script = ExtResource("3_cqd3p")
+model = ExtResource("5_lh2to")
+model_direction = Vector3(0, 0, -1)
+
+[sub_resource type="Resource" id="Resource_ldj8q"]
+script = ExtResource("6_ycosy")
+scene_data = SubResource("Resource_8h4s4")
+apply_to_self = false
+duration = 5.0
+debug = false
+
+[sub_resource type="Resource" id="Resource_m7k43"]
+script = ExtResource("7_b4f6o")
+data = SubResource("Resource_lyeli")
+effects = Array[ExtResource("1_liouq")]([SubResource("Resource_o8qo0"), SubResource("Resource_ldj8q")])
+debug = false
+
+[sub_resource type="Resource" id="Resource_4r68u"]
+script = ExtResource("10_w3o43")
+
+[resource]
+script = ExtResource("5_h4ttm")
+id = "punch"
+name = "punch"
+description = "smack smack"
+use_range = 2.0
+cast_time = 0.0
+cooldown = 0.0
+global_cooldown = 1.5
+off_global_cooldown = false
+requisites = Array[ExtResource("3_ii68x")]([SubResource("Resource_4r68u")])
+resource_costs = Array[ExtResource("4_qneoy")]([])
+effects = Array[ExtResource("1_liouq")]([SubResource("Resource_m7k43")])
+passives = Array[ExtResource("2_741sa")]([])

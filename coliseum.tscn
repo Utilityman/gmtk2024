@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://b3koyon3b1egm"]
+[gd_scene load_steps=29 format=3 uid="uid://b3koyon3b1egm"]
 
 [ext_resource type="Script" path="res://coliseum.gd" id="1_g1hoj"]
+[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_af7lc"]
 [ext_resource type="PackedScene" uid="uid://cust65hisogl1" path="res://local_player_entity.tscn" id="3_ffj6k"]
 [ext_resource type="Material" uid="uid://dxlnifhgft6h5" path="res://addons/kenney_prototype_tools/materials/green/material_01.tres" id="5_e3rw1"]
 [ext_resource type="Script" path="res://rpg/entity/rpg_data.gd" id="5_r372i"]
@@ -14,15 +15,15 @@
 [ext_resource type="PackedScene" uid="uid://dpgwy82yhmsgj" path="res://game/camera/observing_camera.tscn" id="12_pbd5v"]
 [ext_resource type="Resource" uid="uid://3whvp8sd7e3m" path="res://implementation/ability/shots/basic_shot.tres" id="15_1pnm2"]
 [ext_resource type="PackedScene" uid="uid://owr0a6iuh5je" path="res://game/platforms/starting_platform.tscn" id="16_bujbd"]
+[ext_resource type="Resource" uid="uid://c05tbkik3skwj" path="res://implementation/ability/shots/punch.tres" id="16_dwaw8"]
 [ext_resource type="PackedScene" uid="uid://bol24dvutt2eg" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-ctQ5CDmraQ.glb" id="16_k0i1g"]
 [ext_resource type="PackedScene" uid="uid://hqb4b7dnhbyi" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform.glb" id="18_hsi7y"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pvj55"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5ts75"]
+panorama = ExtResource("2_af7lc")
 
 [sub_resource type="Sky" id="Sky_6n78a"]
-sky_material = SubResource("ProceduralSkyMaterial_pvj55")
+sky_material = SubResource("PanoramaSkyMaterial_5ts75")
 
 [sub_resource type="Environment" id="Environment_6ugcg"]
 background_mode = 2
@@ -247,6 +248,7 @@ data = SubResource("Resource_lcdf1")
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_ffj6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 5, 36)
 shoot_ability = ExtResource("15_1pnm2")
+melee = ExtResource("16_dwaw8")
 data = SubResource("Resource_a6hsx")
 camera = NodePath("ObservableCamera")
 

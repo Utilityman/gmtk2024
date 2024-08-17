@@ -86,5 +86,3 @@ func free_projectile() -> void:
 	# TODO: other sorts of behaviors such as fading out
 	await get_tree().create_timer(data.time_to_free).timeout
 	queue_free()
-
-

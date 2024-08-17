@@ -1,0 +1,82 @@
+[gd_scene load_steps=17 format=3 uid="uid://dvvysgg27ufe7"]
+
+[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/uploads_files_4381654_LightBlueSky_texture.jpg" id="1_41d76"]
+[ext_resource type="PackedScene" uid="uid://cust65hisogl1" path="res://local_player_entity.tscn" id="2_3iylo"]
+[ext_resource type="Resource" uid="uid://3whvp8sd7e3m" path="res://implementation/ability/shots/basic_shot.tres" id="3_3dqr3"]
+[ext_resource type="Resource" uid="uid://bv8c458jk1b5" path="res://implementation/ability/shots/punch.tres" id="4_jgyul"]
+[ext_resource type="Script" path="res://rpg/entity/rpg_data.gd" id="5_2tjg7"]
+[ext_resource type="Script" path="res://rpg/stats/stat_block.gd" id="6_1qa5i"]
+[ext_resource type="PackedScene" uid="uid://biaw6ewthr7gd" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-dHymLbsOMY.glb" id="7_5sry0"]
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="8_b136o"]
+[ext_resource type="Script" path="res://rpg/entity/spellbook.gd" id="9_rtxou"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nedbd"]
+panorama = ExtResource("1_41d76")
+
+[sub_resource type="Sky" id="Sky_51jcd"]
+sky_material = SubResource("PanoramaSkyMaterial_nedbd")
+
+[sub_resource type="Environment" id="Environment_bwqxk"]
+background_mode = 2
+sky = SubResource("Sky_51jcd")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pgku7"]
+size = Vector3(2.21289, 0.434021, 2.13123)
+
+[sub_resource type="Resource" id="Resource_yque7"]
+script = ExtResource("6_1qa5i")
+hitpoints = 50
+vitality = 0
+strength = 0
+dexterity = 0
+intelligence = 0
+constitution = 0
+armor = 0
+ward = 0
+
+[sub_resource type="Resource" id="Resource_gkwfb"]
+script = ExtResource("9_rtxou")
+abilities = Array[ExtResource("8_b136o")]([ExtResource("3_3dqr3")])
+
+[sub_resource type="Resource" id="Resource_btp1e"]
+script = ExtResource("5_2tjg7")
+name = "Tot"
+level = 1
+base_stats = SubResource("Resource_yque7")
+spellbook = SubResource("Resource_gkwfb")
+
+[node name="intermission" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bwqxk")
+
+[node name="PlayerPlatform" parent="." instance=ExtResource("7_5sry0")]
+transform = Transform3D(0.999946, -0.010402, 0, 0.010402, 0.999946, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PlayerPlatform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerPlatform/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0380859, -0.170258, 0.00262451)
+shape = SubResource("BoxShape3D_pgku7")
+
+[node name="Player" parent="." instance=ExtResource("2_3iylo")]
+melee = ExtResource("4_jgyul")
+data = SubResource("Resource_btp1e")
+speed = 0.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, -1.51808e-08, 8.60946e-08, 0, 0.984808, 0.173648, -8.74228e-08, 0.173648, -0.984808, 0, 1.25, -4)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 197.0
+offset_right = 472.0
+offset_bottom = 270.0
+text = "I am a button"

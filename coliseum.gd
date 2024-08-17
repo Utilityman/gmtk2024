@@ -19,6 +19,8 @@ var players_remaining: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# var player = player_scene.instantiate()
+
 	timer.start(arena_time)
 	timer.timeout.connect(_on_timer_timeout)
 	players_remaining = get_tree().get_node_count_in_group("ENTITY")
