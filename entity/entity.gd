@@ -41,6 +41,7 @@ signal on_target_changed
 
 # PRIVATE
 @onready var _jump_counter: int = number_of_jumps
+@onready var model: RobotModel = $RobotModel
 
 # TODO: anything that is in RPGData that needs to be shared with clients should be put into a node which can replicate those infos
 # Something like the name and such needs to be replicated
@@ -57,6 +58,7 @@ var target: Entity:
 	set(new_target):
 		target = new_target
 		on_target_changed.emit(target)
+var is_alive: bool = true
 
 func _ready() -> void:
 	# if the data exists, then setup the character components
@@ -235,8 +237,11 @@ func activate_ability(ability: Ability, ability_target: Entity) -> void:
 		effect.apply(effect_ctx)
 
 func _on_health_changed (value: float) -> void:
-	# TODO: should this spill any guts just on hit?
+	# TODO: should this spill any guts just on any hit?
 	if value == 0:
-		health_bar.visible = false
-		death.emit()
-	pass
+		if is_alive:
+			health_bar.visible = false
+			death.emit()
+		else: model._on_death()
+
+		is_alive = false
