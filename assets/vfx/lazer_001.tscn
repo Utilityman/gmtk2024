@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://ccmjsv24rvqkb"]
+[gd_scene load_steps=2 format=3 uid="uid://ccmjsv24rvqkb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n1xk4"]
+height = 1.0
 
 [node name="Lazer" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D"]
+draw_pass_1 = SubResource("CapsuleMesh_n1xk4")

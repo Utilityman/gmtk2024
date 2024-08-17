@@ -1,5 +1,7 @@
 class_name LocalPlayerEntity extends Entity
 
+@export var shoot_ability: Ability 
+
 func should_jump() -> bool:
 	return Input.is_action_just_pressed(&"JUMP")
 
@@ -17,10 +19,10 @@ func get_rotate_direction() -> float:
 		rotate_dir -= 1.0
 	return rotate_dir
 
-# func _process(delta):
-# 	if Input.is_action_just_pressed("SHOOT_GUN"):
-# 		use_ability()
-# 	if Input.is_action_just_pressed("SWORD"):
-# 		#use_ability(sword_ability)
-# 		print("swing sword")
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("SHOOT_GUN"):
+		use_ability(shoot_ability, self)
+	if Input.is_action_just_pressed("MELEE"):
+		#use_ability(sword_ability)
+		print("smack a bro")
 
