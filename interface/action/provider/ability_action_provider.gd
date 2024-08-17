@@ -20,6 +20,7 @@ func get_icon () -> Texture2D:
 	return ability.icon
 
 func activate () -> void:
+	# TODO: fixme null pointer on entity_local.target not existing
 	entity_local.use_ability_by_id.rpc_id(1, ability.id, entity_local.target.name)
 
 func has_tooltip () -> bool:

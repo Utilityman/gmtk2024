@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://sl466dpxv2k1"]
+[gd_scene load_steps=15 format=3 uid="uid://sl466dpxv2k1"]
 
 [ext_resource type="Script" path="res://game/database/ability_database.gd" id="1_ahuak"]
 [ext_resource type="Script" path="res://rpg/ability/ability.gd" id="2_d6hin"]
@@ -13,7 +13,8 @@
 [ext_resource type="Resource" uid="uid://bjf82p4m3nn66" path="res://implementation/ability/warrior/whirlwind.tres" id="11_ty01h"]
 [ext_resource type="Resource" uid="uid://cc0175gwbqe2e" path="res://implementation/ability/cleric/judgement.tres" id="12_pjc2a"]
 [ext_resource type="Resource" uid="uid://cv8a1qqc1vlw2" path="res://implementation/ability/devtools/find_chicken.tres" id="13_rqyt3"]
+[ext_resource type="Resource" uid="uid://3whvp8sd7e3m" path="res://implementation/ability/shots/basic_shot.tres" id="14_o2o0p"]
 
 [node name="AbilityDatabbase" type="Node"]
 script = ExtResource("1_ahuak")
-stored_abilities = Array[ExtResource("2_d6hin")]([ExtResource("3_jc57d"), ExtResource("4_3gthp"), ExtResource("5_hlled"), ExtResource("6_j5pps"), ExtResource("7_epgi3"), ExtResource("8_43fii"), ExtResource("9_07vs8"), ExtResource("10_3atkp"), ExtResource("11_ty01h"), ExtResource("12_pjc2a"), ExtResource("13_rqyt3")])
+stored_abilities = Array[ExtResource("2_d6hin")]([ExtResource("3_jc57d"), ExtResource("4_3gthp"), ExtResource("5_hlled"), ExtResource("6_j5pps"), ExtResource("7_epgi3"), ExtResource("8_43fii"), ExtResource("9_07vs8"), ExtResource("10_3atkp"), ExtResource("11_ty01h"), ExtResource("12_pjc2a"), ExtResource("13_rqyt3"), ExtResource("14_o2o0p")])
