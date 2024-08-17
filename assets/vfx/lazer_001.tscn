@@ -1,11 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccmjsv24rvqkb"]
+[gd_scene load_steps=4 format=3 uid="uid://ccmjsv24rvqkb"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_n1xk4"]
-height = 1.0
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o6uwo"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+angular_velocity_min = -0.150016
+angular_velocity_max = 1.49998
+gravity = Vector3(0, 0, 0)
+color = Color(0.565541, 0.74339, 0.895918, 0.0941176)
 
-[node name="Lazer" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ars8s"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_oseft"]
+material = SubResource("StandardMaterial3D_ars8s")
+
+[node name="punch_001" type="Node3D"]
 
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D"]
-draw_pass_1 = SubResource("CapsuleMesh_n1xk4")
+lifetime = 0.2
+trail_lifetime = 0.01
+process_material = SubResource("ParticleProcessMaterial_o6uwo")
+draw_pass_1 = SubResource("SphereMesh_oseft")
