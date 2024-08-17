@@ -1,17 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://b3koyon3b1egm"]
+[gd_scene load_steps=24 format=3 uid="uid://b3koyon3b1egm"]
 
 [ext_resource type="Script" path="res://coliseum.gd" id="1_g1hoj"]
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="1_viexb"]
 [ext_resource type="PackedScene" uid="uid://cust65hisogl1" path="res://local_player_entity.tscn" id="3_ffj6k"]
-[ext_resource type="Script" path="res://rpg/item/item_stack.gd" id="4_biwt4"]
 [ext_resource type="Material" uid="uid://dxlnifhgft6h5" path="res://addons/kenney_prototype_tools/materials/green/material_01.tres" id="5_e3rw1"]
 [ext_resource type="PackedScene" uid="uid://bjs5x7fyns6gt" path="res://interface/player_user_interface.tscn" id="5_pk6h2"]
+[ext_resource type="Script" path="res://rpg/entity/rpg_data.gd" id="5_r372i"]
 [ext_resource type="Script" path="res://rpg/stats/stat_block.gd" id="5_rrubv"]
-[ext_resource type="Script" path="res://rpg/entity/hero_data.gd" id="6_17kpc"]
 [ext_resource type="Material" uid="uid://8ylcw0h1lkhg" path="res://addons/kenney_prototype_tools/materials/orange/material_01.tres" id="6_43kcs"]
 [ext_resource type="Material" uid="uid://ddal25jay8fq1" path="res://addons/kenney_prototype_tools/materials/purple/material_01.tres" id="7_fjjru"]
 [ext_resource type="Script" path="res://rpg/ability/ability.gd" id="7_jj267"]
-[ext_resource type="Resource" uid="uid://bsty4sxb0pp57" path="res://implementation/ability/fireball.tres" id="8_c2acu"]
 [ext_resource type="Material" uid="uid://d0gmvf62uyhd0" path="res://addons/kenney_prototype_tools/materials/red/material_01.tres" id="8_wfw2x"]
 [ext_resource type="Script" path="res://rpg/entity/spellbook.gd" id="9_s3iro"]
 [ext_resource type="PackedScene" uid="uid://sddqtriuefvq" path="res://entity/entity.tscn" id="10_gx550"]
@@ -30,7 +28,7 @@ sky = SubResource("Sky_6n78a")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="Resource" id="Resource_rhpfx"]
+[sub_resource type="Resource" id="Resource_yque7"]
 script = ExtResource("5_rrubv")
 hitpoints = 50
 vitality = 0
@@ -41,20 +39,38 @@ constitution = 0
 armor = 0
 ward = 0
 
-[sub_resource type="Resource" id="Resource_3r6l7"]
+[sub_resource type="Resource" id="Resource_gkwfb"]
 script = ExtResource("9_s3iro")
-abilities = Array[ExtResource("7_jj267")]([ExtResource("8_c2acu")])
+abilities = Array[ExtResource("7_jj267")]([])
 
-[sub_resource type="Resource" id="Resource_0qlyv"]
-script = ExtResource("6_17kpc")
-bag0Items = Array[ExtResource("4_biwt4")]([])
-bag1Items = Array[ExtResource("4_biwt4")]([])
-bag2Items = Array[ExtResource("4_biwt4")]([])
-bag3Items = Array[ExtResource("4_biwt4")]([])
-name = "Name"
+[sub_resource type="Resource" id="Resource_a6hsx"]
+script = ExtResource("5_r372i")
+name = "Tot"
 level = 1
-base_stats = SubResource("Resource_rhpfx")
-spellbook = SubResource("Resource_3r6l7")
+base_stats = SubResource("Resource_yque7")
+spellbook = SubResource("Resource_gkwfb")
+
+[sub_resource type="Resource" id="Resource_pf66a"]
+script = ExtResource("5_rrubv")
+hitpoints = 500
+vitality = 0
+strength = 0
+dexterity = 0
+intelligence = 0
+constitution = 0
+armor = 0
+ward = 0
+
+[sub_resource type="Resource" id="Resource_wtn21"]
+script = ExtResource("9_s3iro")
+abilities = Array[ExtResource("7_jj267")]([])
+
+[sub_resource type="Resource" id="Resource_lcdf1"]
+script = ExtResource("5_r372i")
+name = "Test Subject"
+level = 1
+base_stats = SubResource("Resource_pf66a")
+spellbook = SubResource("Resource_wtn21")
 
 [node name="Coliseum" type="Node3D"]
 script = ExtResource("1_g1hoj")
@@ -75,7 +91,7 @@ sides = 64
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_ffj6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48023, 16.358)
-data = SubResource("Resource_0qlyv")
+data = SubResource("Resource_a6hsx")
 camera = NodePath("ObservableCamera")
 
 [node name="ObservableCamera" parent="Player" instance=ExtResource("12_pbd5v")]
@@ -126,3 +142,4 @@ use_collision = true
 
 [node name="Entity" parent="." instance=ExtResource("10_gx550")]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -4, 0, 0)
+data = SubResource("Resource_lcdf1")
