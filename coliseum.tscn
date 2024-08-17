@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b3koyon3b1egm"]
+[gd_scene load_steps=25 format=3 uid="uid://b3koyon3b1egm"]
 
 [ext_resource type="Script" path="res://coliseum.gd" id="1_g1hoj"]
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="1_viexb"]
@@ -11,10 +11,10 @@
 [ext_resource type="Material" uid="uid://ddal25jay8fq1" path="res://addons/kenney_prototype_tools/materials/purple/material_01.tres" id="7_fjjru"]
 [ext_resource type="Script" path="res://rpg/ability/ability.gd" id="7_jj267"]
 [ext_resource type="Material" uid="uid://d0gmvf62uyhd0" path="res://addons/kenney_prototype_tools/materials/red/material_01.tres" id="8_wfw2x"]
-[ext_resource type="Resource" uid="uid://3whvp8sd7e3m" path="res://implementation/ability/shots/basic_shot.tres" id="9_3nxyi"]
 [ext_resource type="Script" path="res://rpg/entity/spellbook.gd" id="9_s3iro"]
 [ext_resource type="PackedScene" uid="uid://sddqtriuefvq" path="res://entity/entity.tscn" id="10_gx550"]
 [ext_resource type="PackedScene" uid="uid://dpgwy82yhmsgj" path="res://game/camera/observing_camera.tscn" id="12_pbd5v"]
+[ext_resource type="Resource" uid="uid://3whvp8sd7e3m" path="res://implementation/ability/shots/basic_shot.tres" id="15_1pnm2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pvj55"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -42,7 +42,7 @@ ward = 0
 
 [sub_resource type="Resource" id="Resource_gkwfb"]
 script = ExtResource("9_s3iro")
-abilities = Array[ExtResource("7_jj267")]([ExtResource("8_c2acu"), ExtResource("9_3nxyi")])
+abilities = Array[ExtResource("7_jj267")]([ExtResource("15_1pnm2")])
 
 [sub_resource type="Resource" id="Resource_a6hsx"]
 script = ExtResource("5_r372i")
