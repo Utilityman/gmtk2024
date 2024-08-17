@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://b3koyon3b1egm"]
+[gd_scene load_steps=30 format=3 uid="uid://b3koyon3b1egm"]
 
 [ext_resource type="Script" path="res://coliseum.gd" id="1_g1hoj"]
+[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_ev0tp"]
 [ext_resource type="PackedScene" uid="uid://cust65hisogl1" path="res://local_player_entity.tscn" id="3_ffj6k"]
 [ext_resource type="Material" uid="uid://dxlnifhgft6h5" path="res://addons/kenney_prototype_tools/materials/green/material_01.tres" id="5_e3rw1"]
 [ext_resource type="Script" path="res://rpg/entity/rpg_data.gd" id="5_r372i"]
@@ -8,6 +9,7 @@
 [ext_resource type="Material" uid="uid://8ylcw0h1lkhg" path="res://addons/kenney_prototype_tools/materials/orange/material_01.tres" id="6_43kcs"]
 [ext_resource type="Material" uid="uid://ddal25jay8fq1" path="res://addons/kenney_prototype_tools/materials/purple/material_01.tres" id="7_fjjru"]
 [ext_resource type="Script" path="res://rpg/ability/ability.gd" id="7_jj267"]
+[ext_resource type="Resource" uid="uid://bv8c458jk1b5" path="res://implementation/ability/shots/punch.tres" id="8_q3btq"]
 [ext_resource type="Material" uid="uid://d0gmvf62uyhd0" path="res://addons/kenney_prototype_tools/materials/red/material_01.tres" id="8_wfw2x"]
 [ext_resource type="Script" path="res://rpg/entity/spellbook.gd" id="9_s3iro"]
 [ext_resource type="PackedScene" uid="uid://sddqtriuefvq" path="res://entity/entity.tscn" id="10_gx550"]
@@ -17,12 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://biaw6ewthr7gd" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-dHymLbsOMY.glb" id="17_6qcyd"]
 [ext_resource type="PackedScene" uid="uid://hqb4b7dnhbyi" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform.glb" id="18_hsi7y"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pvj55"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h5xci"]
+panorama = ExtResource("2_ev0tp")
 
 [sub_resource type="Sky" id="Sky_6n78a"]
-sky_material = SubResource("ProceduralSkyMaterial_pvj55")
+sky_material = SubResource("PanoramaSkyMaterial_h5xci")
 
 [sub_resource type="Environment" id="Environment_6ugcg"]
 background_mode = 2
@@ -30,7 +31,7 @@ sky = SubResource("Sky_6n78a")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="Resource" id="Resource_yque7"]
+[sub_resource type="Resource" id="Resource_2rw2n"]
 script = ExtResource("5_rrubv")
 hitpoints = 50
 vitality = 0
@@ -41,7 +42,7 @@ constitution = 0
 armor = 0
 ward = 0
 
-[sub_resource type="Resource" id="Resource_gkwfb"]
+[sub_resource type="Resource" id="Resource_ininu"]
 script = ExtResource("9_s3iro")
 abilities = Array[ExtResource("7_jj267")]([ExtResource("15_1pnm2")])
 
@@ -49,8 +50,8 @@ abilities = Array[ExtResource("7_jj267")]([ExtResource("15_1pnm2")])
 script = ExtResource("5_r372i")
 name = "Tot"
 level = 1
-base_stats = SubResource("Resource_yque7")
-spellbook = SubResource("Resource_gkwfb")
+base_stats = SubResource("Resource_2rw2n")
+spellbook = SubResource("Resource_ininu")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5joda"]
 size = Vector3(2.21289, 0.434021, 2.13123)
@@ -88,7 +89,8 @@ player_cuttoff = 10
 environment = SubResource("Environment_6ugcg")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 8, 0)
+transform = Transform3D(-0.732543, -0.589522, 0.34036, 0, 0.5, 0.866025, -0.680721, 0.634401, -0.366271, -17.5255, 8.65005, 24.5624)
+light_energy = 0.5
 shadow_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -147,6 +149,7 @@ size = Vector3(1, 5, 2)
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_ffj6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04581, 5.03796, 21.4868)
 shoot_ability = ExtResource("15_1pnm2")
+melee = ExtResource("8_q3btq")
 data = SubResource("Resource_a6hsx")
 camera = NodePath("ObservableCamera")
 
