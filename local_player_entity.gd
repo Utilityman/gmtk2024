@@ -1,8 +1,5 @@
 class_name LocalPlayerEntity extends Entity
 
-@export var shoot_ability: Ability 
-@export var melee: Ability 
-
 func should_jump() -> bool:
 	return Input.is_action_just_pressed(&"JUMP")
 

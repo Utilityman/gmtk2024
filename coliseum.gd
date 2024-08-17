@@ -1,10 +1,11 @@
 class_name Coliseum extends Node3D
 
-const player_scene: PackedScene = preload("res://local_player_entity.tscn")
+const entity_scene: PackedScene = preload("res://entity/entity.tscn")
 
 var npc_names: Array[String] = ["Tony the Tank"]
 
-@export var number_of_players: int = 20
+@export var intermission: PackedScene
+
 @export var player_cuttoff: int = 1
 @export var arena_time: int = 45
 
@@ -17,9 +18,36 @@ var npc_names: Array[String] = ["Tony the Tank"]
 
 var players_remaining: int
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# var player = player_scene.instantiate()
+	# TODO: don't export number of players, and player cutoff. Get that from some other global (that is keeping track of how many times we've been to the coliseum)
+	
+	var platforms: Array[Node] = get_tree().get_nodes_in_group("STARTING_PLATFORM")
+	var number_of_players: int = 1 + Players.npcs.size()
+	print("Number of Players: " + str(number_of_players))
+	var difference: int = platforms.size() - number_of_players
+
+	for i in range(difference):
+		var node: Node = platforms.pick_random()
+		platforms.erase(node)
+		node.queue_free()	
+
+	for data: PlayerData in Players.npcs:
+		var entity: Entity = entity_scene.instantiate()
+		entity.data = data.data
+		entity.shoot_ability = data.shoot_ability
+		entity.melee = data.punch_ability
+		add_child(entity)
+
+		var platform: Node3D = platforms.pick_random() as Node3D
+		platforms.erase(platform)
+
+		entity.global_position = platform.global_position + Vector3(0, 0.5, 0)
+		entity.global_basis = platform.global_basis
+
+	var player_platform: Node3D = platforms.pick_random() as Node3D
+	player.global_position = player_platform.global_position + Vector3(0, 0.5, 0)
+	player.global_basis = player_platform.global_basis
+
 
 	timer.start(arena_time)
 	timer.timeout.connect(_on_timer_timeout)

@@ -1,4 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://hbcga53nyo6y"]
+[gd_scene load_steps=13 format=3 uid="uid://hbcga53nyo6y"]
+
+[ext_resource type="Script" path="res://assets/vfx/platform_explosion.gd" id="1_uy3bh"]
 
 [sub_resource type="Curve" id="Curve_ubm66"]
 _data = [Vector2(0, 0.85789), 0.0, 0.588278, 0, 0, Vector2(0.587065, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.7084, 0.0, 0, 0]
@@ -66,8 +68,10 @@ _data = {
 }
 
 [node name="PlatformExplosion" type="Node3D"]
+script = ExtResource("1_uy3bh")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+visibility_range_fade_mode = 1
 amount = 64
 lifetime = 1.5
 one_shot = true

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtc2pp2fxuc5s"]
+
+[ext_resource type="ArrayMesh" uid="uid://d3b4vn6yawwfi" path="res://assets/pizza/poly/model.obj" id="1_4gctl"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7pd1m"]
+radial_velocity_min = 2.99998
+radial_velocity_max = 9.99998
+
+[node name="Screwslposion" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_7pd1m")
+draw_pass_1 = ExtResource("1_4gctl")

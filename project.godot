@@ -23,6 +23,7 @@ MultiplayerManager="*res://game/manager/multiplayer_manager.tscn"
 Settings="*res://settings/settings.tscn"
 AbilityDatabase="*res://game/database/ability_database.tscn"
 Shaker="*res://addons/shaker/src/Shaker.gd"
+Players="*res://players.tscn"
 
 [debug]
 
