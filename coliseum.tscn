@@ -1,7 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://b3koyon3b1egm"]
+[gd_scene load_steps=29 format=3 uid="uid://b3koyon3b1egm"]
 
 [ext_resource type="Script" path="res://coliseum.gd" id="1_g1hoj"]
-[ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="1_viexb"]
 [ext_resource type="PackedScene" uid="uid://cust65hisogl1" path="res://local_player_entity.tscn" id="3_ffj6k"]
 [ext_resource type="Material" uid="uid://dxlnifhgft6h5" path="res://addons/kenney_prototype_tools/materials/green/material_01.tres" id="5_e3rw1"]
 [ext_resource type="PackedScene" uid="uid://bjs5x7fyns6gt" path="res://interface/player_user_interface.tscn" id="5_pk6h2"]
@@ -15,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://sddqtriuefvq" path="res://entity/entity.tscn" id="10_gx550"]
 [ext_resource type="PackedScene" uid="uid://dpgwy82yhmsgj" path="res://game/camera/observing_camera.tscn" id="12_pbd5v"]
 [ext_resource type="Resource" uid="uid://3whvp8sd7e3m" path="res://implementation/ability/shots/basic_shot.tres" id="15_1pnm2"]
+[ext_resource type="PackedScene" uid="uid://bol24dvutt2eg" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-ctQ5CDmraQ.glb" id="16_k0i1g"]
+[ext_resource type="PackedScene" uid="uid://biaw6ewthr7gd" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-dHymLbsOMY.glb" id="17_6qcyd"]
+[ext_resource type="PackedScene" uid="uid://hqb4b7dnhbyi" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform.glb" id="18_hsi7y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pvj55"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -73,6 +75,12 @@ level = 1
 base_stats = SubResource("Resource_pf66a")
 spellbook = SubResource("Resource_wtn21")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mq4yo"]
+size = Vector3(3.82123, 0.460205, 3.92725)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5joda"]
+size = Vector3(1.64453, 1, 2.10522)
+
 [node name="Coliseum" type="Node3D"]
 script = ExtResource("1_g1hoj")
 
@@ -83,26 +91,10 @@ environment = SubResource("Environment_6ugcg")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 8, 0)
 shadow_enabled = true
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-material_override = ExtResource("1_viexb")
-use_collision = true
-radius = 25.0
-height = 0.1
-sides = 64
-
-[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_ffj6k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48023, 16.358)
-data = SubResource("Resource_a6hsx")
-camera = NodePath("ObservableCamera")
-
-[node name="ObservableCamera" parent="Player" instance=ExtResource("12_pbd5v")]
-
-[node name="PlayerUI" parent="Player" instance=ExtResource("5_pk6h2")]
-
 [node name="Cubes" type="Node3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Cubes"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0.5, 13.5)
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0.497672, 8.22213)
 material_override = ExtResource("5_e3rw1")
 use_collision = true
 
@@ -141,6 +133,37 @@ transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -5.56977
 material_override = ExtResource("8_wfw2x")
 use_collision = true
 
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_ffj6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21046, 5.48023, 15.4178)
+data = SubResource("Resource_a6hsx")
+camera = NodePath("ObservableCamera")
+
+[node name="ObservableCamera" parent="Player" instance=ExtResource("12_pbd5v")]
+
+[node name="PlayerUI" parent="Player" instance=ExtResource("5_pk6h2")]
+
 [node name="Entity" parent="." instance=ExtResource("10_gx550")]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -4, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14, 0, 0)
 data = SubResource("Resource_lcdf1")
+
+[node name="PrimaryPlatform" parent="." instance=ExtResource("16_k0i1g")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -58.261, -0.24, -0.047)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PrimaryPlatform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07125, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PrimaryPlatform/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0874557, -0.160701, -0.017334)
+shape = SubResource("BoxShape3D_mq4yo")
+
+[node name="SpawnPlatform" parent="." instance=ExtResource("17_6qcyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 19.5069)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SpawnPlatform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPlatform/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.322266, 0, -0.010376)
+shape = SubResource("BoxShape3D_5joda")
+
+[node name="SpectatorPlatform" parent="." instance=ExtResource("18_hsi7y")]
+transform = Transform3D(0.113515, 0, 0.993536, 0, 1, 0, -0.993536, 0, 0.113515, -19.0924, 5.84739, 15)
