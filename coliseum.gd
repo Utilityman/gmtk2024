@@ -78,18 +78,16 @@ func _ready() -> void:
 	tween_cubes(false)
 
 func setup_and_add_entity (entity: Entity, data: PlayerData) -> void:
-	add_child(entity)
-	var camera: ObservingCamera = camera_scene.instantiate()
-
-	entity.add_child(camera)
-	var skelington: Skeleton3D = entity.model.skeleton
-	entity.robo_data = data
-	print(skelington)
 	entity.data = data.data
 	entity.shoot_ability = data.shoot_ability
 	entity.melee = data.punch_ability
-	# data.arms= 0
-	# data.head = 3
+	entity.robo_data = data
+
+	add_child(entity)
+	var camera: ObservingCamera = camera_scene.instantiate()
+	entity.add_child(camera)
+
+	var skelington: Skeleton3D = entity.model.skeleton
 	Players.resize_arm(entity, data, skelington)
 	Players.resize_head(data, skelington)
 

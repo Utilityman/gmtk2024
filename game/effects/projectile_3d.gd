@@ -83,5 +83,6 @@ func _on_lifetime_timeout () -> void:
 
 func free_projectile() -> void:
 	# TODO: other sorts of behaviors such as fading out
-	await get_tree().create_timer(data.time_to_free).timeout
-	queue_free()
+	if get_tree():
+		await get_tree().create_timer(data.time_to_free).timeout
+		queue_free()
