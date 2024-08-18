@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dvvysgg27ufe7"]
+[gd_scene load_steps=25 format=3 uid="uid://dvvysgg27ufe7"]
 
 [ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="1_41d76"]
 [ext_resource type="Script" path="res://intermission.gd" id="1_nw06d"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://rpg/entity/spellbook.gd" id="9_rtxou"]
 [ext_resource type="Texture2D" uid="uid://coyq4ef8br3wo" path="res://icon.svg" id="11_aope5"]
 [ext_resource type="Texture2D" uid="uid://bkiwr1bsue1au" path="res://assets/nl/kenney/ui-pack/PNG/Blue/Default/button_rectangle_depth_border.png" id="11_dhlmn"]
+[ext_resource type="Texture2D" uid="uid://dpo7abqey6rnd" path="res://assets/ui/io/itch/pixelfrog-assets/UI/Buttons/Button_Red_9Slides.png" id="13_7yim5"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nedbd"]
 panorama = ExtResource("1_41d76")
@@ -67,6 +68,7 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="intermission" type="Node3D"]
 script = ExtResource("1_nw06d")
+shop_time = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bwqxk")
@@ -88,10 +90,6 @@ shoot_ability = ExtResource("3_3dqr3")
 melee = ExtResource("4_jgyul")
 data = SubResource("Resource_btp1e")
 speed = 0.0
-number_of_jumps = null
-jump_velocity = null
-gravity = null
-rotation_speed = null
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, -1.51808e-08, 8.60946e-08, 0, 0.984808, 0.173648, -8.74228e-08, 0.173648, -0.984808, 0, 1.25, -4)
@@ -134,6 +132,7 @@ columns = 2
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = SubResource("CanvasTexture_hhice")
+texture_disabled = ExtResource("13_7yim5")
 
 [node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/Arm1"]
 layout_mode = 1
@@ -149,12 +148,12 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "ARMS VO. 2"
 
-[node name="TextureButton2" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
+[node name="Head1" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = SubResource("CanvasTexture_hhice")
 
-[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/TextureButton2"]
+[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/Head1"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -168,12 +167,12 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "HEAD VO.2"
 
-[node name="TextureButton3" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
+[node name="Arm2" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = SubResource("CanvasTexture_hhice")
 
-[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/TextureButton3"]
+[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/Arm2"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -187,12 +186,12 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "ARMS VO.3"
 
-[node name="TextureButton4" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
+[node name="Head2" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = SubResource("CanvasTexture_hhice")
 
-[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/TextureButton4"]
+[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/Head2"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -206,12 +205,12 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "HEAD VO.3"
 
-[node name="TextureButton5" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
+[node name="Arm3" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = SubResource("CanvasTexture_hhice")
 
-[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/TextureButton5"]
+[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/Arm3"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -225,12 +224,12 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "ARMS VO.4"
 
-[node name="TextureButton6" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
+[node name="Head3" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = SubResource("CanvasTexture_hhice")
 
-[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/TextureButton6"]
+[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/Head3"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -279,10 +278,10 @@ text = "CONTINUE TO NEXT ROUND"
 label_settings = SubResource("LabelSettings_a2qds")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="Control/PanelContainer/GridContainer/Arm1" to="Control" method="_on_texture_button_pressed"]
-[connection signal="pressed" from="Control/PanelContainer/GridContainer/TextureButton2" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="Control/PanelContainer/GridContainer/TextureButton3" to="Control" method="_on_texture_button_pressed"]
-[connection signal="pressed" from="Control/PanelContainer/GridContainer/TextureButton4" to="Control" method="_on_texture_button_pressed"]
-[connection signal="pressed" from="Control/PanelContainer/GridContainer/TextureButton5" to="Control" method="_on_texture_button_pressed"]
-[connection signal="pressed" from="Control/PanelContainer/GridContainer/TextureButton6" to="Control" method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/GridContainer/Arm1" to="." method="_on_arm_v2_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/GridContainer/Head1" to="." method="_on_head_1_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/GridContainer/Arm2" to="." method="_on_arm_2_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/GridContainer/Head2" to="." method="_on_head_2_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/GridContainer/Arm3" to="." method="_on_arm_3_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/GridContainer/Head3" to="." method="_on_head_3_pressed"]
 [connection signal="pressed" from="Control/TextureButton" to="." method="_on_continue_button_pressed"]
