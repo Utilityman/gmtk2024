@@ -1,11 +1,11 @@
 [gd_scene load_steps=21 format=3 uid="uid://dgwn12a1swsxr"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_jvjoh"]
-[ext_resource type="PackedScene" uid="uid://b3koyon3b1egm" path="res://coliseum.tscn" id="2_3u1sn"]
+[ext_resource type="PackedScene" uid="uid://dvvysgg27ufe7" path="res://intermission.tscn" id="2_3i0kc"]
 [ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_gxp82"]
 [ext_resource type="PackedScene" uid="uid://owr0a6iuh5je" path="res://game/platforms/starting_platform.tscn" id="3_dhnni"]
 [ext_resource type="PackedScene" uid="uid://hqb4b7dnhbyi" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform.glb" id="4_87fd6"]
-[ext_resource type="PackedScene" uid="uid://hbcga53nyo6y" path="res://assets/vfx/platform_explosion.tscn" id="4_ten30"]
+[ext_resource type="PackedScene" uid="uid://dvosrcie5fyxl" path="res://assets/vfx/platform_explosion.tscn" id="4_ten30"]
 [ext_resource type="Script" path="res://addons/shaker/src/Vector3/shaker_component3D.gd" id="6_je2vh"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="7_fcn3g"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerTypeSineWave3D.gd" id="8_30r20"]
@@ -78,7 +78,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jvjoh")
-game_scene = ExtResource("2_3u1sn")
+game_scene = ExtResource("2_3i0kc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)

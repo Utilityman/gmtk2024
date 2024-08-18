@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://hbcga53nyo6y"]
+[gd_scene load_steps=14 format=3 uid="uid://dvosrcie5fyxl"]
 
 [ext_resource type="Script" path="res://assets/vfx/platform_explosion.gd" id="1_uy3bh"]
+[ext_resource type="PackedScene" uid="uid://5b17wp0so2qu" path="res://assets/vfx/screwslposion.tscn" id="2_gwexr"]
 
 [sub_resource type="Curve" id="Curve_ubm66"]
 _data = [Vector2(0, 0.85789), 0.0, 0.588278, 0, 0, Vector2(0.587065, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.7084, 0.0, 0, 0]
@@ -69,6 +70,8 @@ _data = {
 
 [node name="PlatformExplosion" type="Node3D"]
 script = ExtResource("1_uy3bh")
+
+[node name="Screwslposion" parent="." instance=ExtResource("2_gwexr")]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 visibility_range_fade_mode = 1

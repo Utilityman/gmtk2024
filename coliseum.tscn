@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b3koyon3b1egm"]
+[gd_scene load_steps=27 format=3 uid="uid://b3koyon3b1egm"]
 
 [ext_resource type="Script" path="res://coliseum.gd" id="1_g1hoj"]
 [ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_af7lc"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://rpg/ability/ability.gd" id="7_jj267"]
 [ext_resource type="Material" uid="uid://d0gmvf62uyhd0" path="res://addons/kenney_prototype_tools/materials/red/material_01.tres" id="8_wfw2x"]
 [ext_resource type="Script" path="res://rpg/entity/spellbook.gd" id="9_s3iro"]
+[ext_resource type="Script" path="res://player_data.gd" id="11_v6x4g"]
 [ext_resource type="PackedScene" uid="uid://dpgwy82yhmsgj" path="res://game/camera/observing_camera.tscn" id="12_pbd5v"]
 [ext_resource type="Resource" uid="uid://3whvp8sd7e3m" path="res://implementation/ability/shots/basic_shot.tres" id="15_1pnm2"]
 [ext_resource type="PackedScene" uid="uid://owr0a6iuh5je" path="res://game/platforms/starting_platform.tscn" id="16_bujbd"]
@@ -66,6 +67,7 @@ size = Vector3(3.86278, 0.460205, 3.90308)
 [node name="Coliseum" type="Node3D"]
 script = ExtResource("1_g1hoj")
 player_cuttoff = 10
+arena_time = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6ugcg")
@@ -133,7 +135,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03828, 5, 4)
 shoot_ability = ExtResource("15_1pnm2")
 melee = ExtResource("16_dwaw8")
 data = SubResource("Resource_a6hsx")
-camera = NodePath("ObservableCamera")
+robo_data = ExtResource("11_v6x4g")
 
 [node name="ObservableCamera" parent="Player" instance=ExtResource("12_pbd5v")]
 
