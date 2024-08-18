@@ -1,8 +1,6 @@
 class_name Coliseum extends Node3D
 
-const entity_scene: PackedScene = preload("res://entity/entity.tscn")
-
-var npc_names: Array[String] = ["Tony the Tank"]
+const npc_scene: PackedScene = preload("res://entity/non_player_entity.tscn")
 
 @export var intermission: PackedScene
 
@@ -32,7 +30,7 @@ func _ready() -> void:
 		node.queue_free()	
 
 	for data: PlayerData in Players.npcs:
-		var entity: Entity = entity_scene.instantiate()
+		var entity: Entity = npc_scene.instantiate()
 		entity.data = data.data
 		entity.shoot_ability = data.shoot_ability
 		entity.melee = data.punch_ability

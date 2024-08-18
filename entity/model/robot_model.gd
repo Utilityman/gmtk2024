@@ -17,7 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not is_dead:
 		if animation_time == 0:
-			if entity.velocity == Vector3.ZERO:
+			if entity.velocity.is_equal_approx(Vector3.ZERO):
 				animation_player.play("CharacterArmature|Idle")
 			if entity.velocity != Vector3.ZERO:
 				if entity.velocity.y > 0:

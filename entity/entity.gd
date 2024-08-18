@@ -123,7 +123,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = jump_velocity
 		_jump_counter -= 1
 
-	var direction: Vector3 = get_direction()
+	var direction: Vector3 = get_direction().normalized()
 
 	# Rotates the _camera_pivot_y only when theres Directional Input, allowing the NetworkedPlayer to see the front
 	# of the Character, when not inputing movement.

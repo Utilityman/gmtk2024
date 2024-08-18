@@ -5,11 +5,6 @@
 
 [node name="LocalPlayerEntity" instance=ExtResource("1_7vf46")]
 script = ExtResource("2_6n611")
-speed = null
-number_of_jumps = null
-jump_velocity = null
-gravity = null
-rotation_speed = null
 
 [node name="ProjectileSource" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.941231, -0.166698)

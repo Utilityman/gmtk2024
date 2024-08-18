@@ -10,7 +10,7 @@ const rotation_shake: ShakerTypeRandom3D = preload("res://game/platforms/startin
 @export var life_time: float = 15.0
 
 @onready var model: Node3D = $RootNode
-@onready var platform_collider: StaticBody3D = $PlatformCollider
+@onready var platform_collider: StaticBody3D = $NavigationRegion3D/PlatformCollider
 @onready var platform_area: Area3D = $Area3D
 @onready var exploision_point: Node3D = $ExplosionPoint
 @onready var shaker_timer: Timer = $ShakerTimer

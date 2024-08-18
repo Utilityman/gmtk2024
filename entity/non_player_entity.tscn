@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcp5qpiopwb6b"]
+
+[ext_resource type="PackedScene" uid="uid://sddqtriuefvq" path="res://entity/entity.tscn" id="1_ddjpt"]
+[ext_resource type="Script" path="res://entity/non_player_entity.gd" id="2_qeef5"]
+
+[node name="NPE" instance=ExtResource("1_ddjpt")]
+script = ExtResource("2_qeef5")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="12"]
+avoidance_enabled = true
+radius = 1.0

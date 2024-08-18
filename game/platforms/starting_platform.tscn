@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://owr0a6iuh5je"]
+[gd_scene load_steps=15 format=3 uid="uid://owr0a6iuh5je"]
 
 [ext_resource type="PackedScene" uid="uid://biaw6ewthr7gd" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-dHymLbsOMY.glb" id="1_e1b86"]
 [ext_resource type="Script" path="res://game/platforms/starting_platform.gd" id="2_8ec7e"]
@@ -7,6 +7,11 @@
 [ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerTypeSineWave3D.gd" id="5_mym4j"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="6_bcqn5"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerTypeRandom3D.gd" id="6_ruddf"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ipmec"]
+vertices = PackedVector3Array(-0.559142, 0.359315, -0.559083, -0.559142, 0.359315, 0.690917, 0.690858, 0.359315, 0.690917, 0.690858, 0.359315, -0.559083)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w6d5j"]
 size = Vector3(2.13812, 0.445251, 2.13135)
@@ -60,14 +65,17 @@ __follow_timeline = false
 [node name="StartingPlatform" groups=["STARTING_PLATFORM"] instance=ExtResource("1_e1b86")]
 script = ExtResource("2_8ec7e")
 
-[node name="RootNode" parent="." index="0"]
-transform = Transform3D(1, -1.09838e-07, -3.89045e-08, 1.09838e-07, 1, 3.59665e-07, 3.89045e-08, -3.59665e-07, 1, -0.00092277, 7.69272e-07, 0.017033)
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="0"]
+navigation_mesh = SubResource("NavigationMesh_ipmec")
 
-[node name="PlatformCollider" type="StaticBody3D" parent="." index="1"]
+[node name="PlatformCollider" type="StaticBody3D" parent="NavigationRegion3D" index="0"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlatformCollider" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/PlatformCollider" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00991821, -0.16806, 0.0065918)
 shape = SubResource("BoxShape3D_w6d5j")
+
+[node name="RootNode" parent="." index="1"]
+transform = Transform3D(1, -1.09838e-07, -3.89045e-08, 1.09838e-07, 1, 3.59665e-07, 3.89045e-08, -3.59665e-07, 1, -0.00092277, 7.69272e-07, 0.017033)
 
 [node name="Area3D" type="Area3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0866957, 0)
