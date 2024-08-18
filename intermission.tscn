@@ -84,9 +84,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0380859, -0.170258, 0.00262
 shape = SubResource("BoxShape3D_pgku7")
 
 [node name="Player" parent="." instance=ExtResource("2_3iylo")]
+shoot_ability = ExtResource("3_3dqr3")
 melee = ExtResource("4_jgyul")
 data = SubResource("Resource_btp1e")
 speed = 0.0
+number_of_jumps = null
+jump_velocity = null
+gravity = null
+rotation_speed = null
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, -1.51808e-08, 8.60946e-08, 0, 0.984808, 0.173648, -8.74228e-08, 0.173648, -0.984808, 0, 1.25, -4)

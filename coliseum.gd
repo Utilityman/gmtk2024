@@ -76,4 +76,5 @@ func _on_entity_death () -> void:
 	players_remaining -= 1
 	if players_remaining <= player_cuttoff:
 		print("END THE GAME!!!")
+		get_tree().change_scene_to_file("res://intermission.gd")
 		

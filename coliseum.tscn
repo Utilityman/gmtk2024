@@ -33,7 +33,7 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_mq4yo"]
 size = Vector3(3.86278, 0.460205, 3.90308)
 
-[sub_resource type="Resource" id="Resource_yque7"]
+[sub_resource type="Resource" id="Resource_ogoac"]
 script = ExtResource("5_rrubv")
 hitpoints = 50
 vitality = 0
@@ -44,7 +44,7 @@ constitution = 0
 armor = 0
 ward = 0
 
-[sub_resource type="Resource" id="Resource_gkwfb"]
+[sub_resource type="Resource" id="Resource_gkvpa"]
 script = ExtResource("9_s3iro")
 abilities = Array[ExtResource("7_jj267")]([ExtResource("15_1pnm2")])
 
@@ -52,8 +52,8 @@ abilities = Array[ExtResource("7_jj267")]([ExtResource("15_1pnm2")])
 script = ExtResource("5_r372i")
 name = "Tot"
 level = 1
-base_stats = SubResource("Resource_yque7")
-spellbook = SubResource("Resource_gkwfb")
+base_stats = SubResource("Resource_ogoac")
+spellbook = SubResource("Resource_gkvpa")
 
 [node name="Coliseum" type="Node3D"]
 script = ExtResource("1_g1hoj")
@@ -228,12 +228,16 @@ offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_ffj6k")]
+[node name="Player" parent="." instance=ExtResource("3_ffj6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03828, 5, 4)
 shoot_ability = ExtResource("15_1pnm2")
 melee = ExtResource("16_dwaw8")
 data = SubResource("Resource_a6hsx")
-camera = NodePath("ObservableCamera")
+speed = null
+number_of_jumps = null
+jump_velocity = null
+gravity = null
+rotation_speed = null
 
 [node name="ObservableCamera" parent="Player" instance=ExtResource("12_pbd5v")]
 
