@@ -3,6 +3,7 @@ class_name RobotModel extends Node3D
 @export var entity: Entity
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var skeleton: Skeleton3D = $RootNode/CharacterArmature/Skeleton3D
 
 var animation_time: float = 0.0
 var is_dead: bool = false

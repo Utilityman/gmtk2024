@@ -8,9 +8,11 @@ extends Control
 @onready var explosion1: PlatformExplosion = $Background/Explosion1
 @onready var explosion2: PlatformExplosion = $Background/Explosion2
 
+var player_data :PlayerData = Players.player
+
 func _ready() -> void:
 	start_button.pressed.connect(_on_start)
-
+	
 	random_explode(explosion1)
 	random_explode(explosion2)
 
