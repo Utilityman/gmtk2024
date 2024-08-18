@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvvysgg27ufe7"]
+[gd_scene load_steps=24 format=3 uid="uid://dvvysgg27ufe7"]
 
 [ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="1_41d76"]
 [ext_resource type="Script" path="res://intermission.gd" id="1_nw06d"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://rpg/entity/spellbook.gd" id="9_rtxou"]
 [ext_resource type="Texture2D" uid="uid://coyq4ef8br3wo" path="res://icon.svg" id="11_aope5"]
 [ext_resource type="Texture2D" uid="uid://bkiwr1bsue1au" path="res://assets/nl/kenney/ui-pack/PNG/Blue/Default/button_rectangle_depth_border.png" id="11_dhlmn"]
-[ext_resource type="Texture2D" uid="uid://dpo7abqey6rnd" path="res://assets/ui/io/itch/pixelfrog-assets/UI/Buttons/Button_Red_9Slides.png" id="13_7yim5"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nedbd"]
 panorama = ExtResource("1_41d76")
@@ -68,7 +67,6 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="intermission" type="Node3D"]
 script = ExtResource("1_nw06d")
-shop_time = null
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -90,7 +88,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0380859, -0.170258, 0.00262
 shape = SubResource("BoxShape3D_pgku7")
 
 [node name="Player" parent="." instance=ExtResource("2_3iylo")]
-shoot_ability = ExtResource("3_3dqr3")
 melee = ExtResource("4_jgyul")
 data = SubResource("Resource_btp1e")
 speed = 0.0
@@ -136,7 +133,6 @@ columns = 2
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = SubResource("CanvasTexture_hhice")
-texture_disabled = ExtResource("13_7yim5")
 
 [node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/Arm1"]
 layout_mode = 1

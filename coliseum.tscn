@@ -230,7 +230,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03828, 5, 4)
 shoot_ability = ExtResource("15_1pnm2")
 melee = ExtResource("16_dwaw8")
 data = SubResource("Resource_a6hsx")
-camera = NodePath("ObservableCamera")
+camera = NodePath("")
 
 [node name="ObservableCamera" parent="Player" instance=ExtResource("12_pbd5v")]
 
