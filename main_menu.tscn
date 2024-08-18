@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_jvjoh"]
 [ext_resource type="PackedScene" uid="uid://b3koyon3b1egm" path="res://coliseum.tscn" id="2_3u1sn"]
-[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_gxp82"]
+[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_gxp82"]
 [ext_resource type="PackedScene" uid="uid://owr0a6iuh5je" path="res://game/platforms/starting_platform.tscn" id="3_dhnni"]
 [ext_resource type="PackedScene" uid="uid://hqb4b7dnhbyi" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform.glb" id="4_87fd6"]
 [ext_resource type="PackedScene" uid="uid://hbcga53nyo6y" path="res://assets/vfx/platform_explosion.tscn" id="4_ten30"]
