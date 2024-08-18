@@ -3,8 +3,10 @@ class_name StartingPlatform extends Node3D
 const explosion: PackedScene = preload("res://assets/vfx/platform_explosion.tscn")
 const rotation_shake: ShakerTypeRandom3D = preload("res://game/platforms/starting_platform_rotation_shake.tres")
 
-# TODO: make the shake more violent prior to exploding
+# TODO: I want a shader to slowly color the model red until it explodes
+# TODO: want to actually queue free the platform after the explosion animation plays
 
+@export var is_active: bool = true
 @export var approach_direction: Vector3 = Vector3.ZERO
 @export var speed: float = 1.0
 @export var life_time: float = 15.0
@@ -21,7 +23,6 @@ var captured_nodes: Array[Node3D] = []
 
 var started_destruction: bool = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	platform_area.body_entered.connect(_on_body_entered)
 	platform_area.body_exited.connect(_on_body_exited)
@@ -30,8 +31,6 @@ func _ready() -> void:
 	explosion_timer.start(life_time - 0.5)
 	explosion_timer.timeout.connect(_on_explosion_timeout)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	var movement: Vector3 = approach_direction * speed * delta
 	global_position += movement
@@ -54,7 +53,6 @@ func _on_explosion_timeout () -> void:
 
 func _on_body_entered (node: Node3D) -> void:
 	captured_nodes.append(node)
-	
 
 func _on_body_exited (node: Node3D) -> void:
 	captured_nodes.erase(node)

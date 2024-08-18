@@ -1,11 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcp5qpiopwb6b"]
+[gd_scene load_steps=7 format=3 uid="uid://dcp5qpiopwb6b"]
 
 [ext_resource type="PackedScene" uid="uid://sddqtriuefvq" path="res://entity/entity.tscn" id="1_ddjpt"]
 [ext_resource type="Script" path="res://entity/non_player_entity.gd" id="2_qeef5"]
+[ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="3_o5aar"]
+[ext_resource type="PackedScene" uid="uid://bh4pgwvhomcp8" path="res://entity/non_player_ai.tscn" id="4_r332j"]
+[ext_resource type="Script" path="res://entity/entity_sensor.gd" id="5_8llkb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kq0yp"]
+radius = 100.0
 
 [node name="NPE" instance=ExtResource("1_ddjpt")]
 script = ExtResource("2_qeef5")
+enable_navigation = false
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="12"]
 avoidance_enabled = true
 radius = 1.0
+debug_enabled = true
+
+[node name="NavigationTester3D" type="NavigationAgent3D" parent="." index="13"]
+avoidance_enabled = true
+radius = 1.0
+debug_enabled = true
+
+[node name="Blackboard" type="Node" parent="." index="14"]
+script = ExtResource("3_o5aar")
+
+[node name="NonPlayerAI" parent="." index="15" node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("4_r332j")]
+blackboard = NodePath("@Node@25440")
+actor = NodePath("..")
+
+[node name="EntitySensor" type="Area3D" parent="." index="16"]
+collision_mask = 2
+script = ExtResource("5_8llkb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntitySensor" index="0"]
+shape = SubResource("SphereShape3D_kq0yp")

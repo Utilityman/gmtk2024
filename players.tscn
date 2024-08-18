@@ -4,4 +4,3 @@
 
 [node name="Players" type="Node3D"]
 script = ExtResource("1_m0lqi")
-starting_npcs = null
