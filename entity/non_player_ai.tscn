@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://bh4pgwvhomcp8"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_k35v4"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="2_c3sde"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence_star.gd" id="2_gq3ax"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/failer.gd" id="4_v3k3g"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/delayer.gd" id="5_35hnl"]
+[ext_resource type="Script" path="res://entity/beehave/set_random_navigation.gd" id="7_htpk2"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="7_xm13f"]
+[ext_resource type="Script" path="res://entity/beehave/start_navigation.gd" id="8_6qch5"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="9_4em15"]
+[ext_resource type="Script" path="res://entity/beehave/wait_for_destination.gd" id="10_jeiyr"]
+[ext_resource type="Script" path="res://entity/beehave/stop_navgiation.gd" id="11_yffbq"]
+
+[node name="BeehaveTree" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("1_k35v4")
+blackboard = NodePath("@Node@26279")
+actor = NodePath("..")
+
+[node name="SelectorReactiveComposite" type="Node" parent="."]
+script = ExtResource("2_c3sde")
+
+[node name="BattleLogic" type="Node" parent="SelectorReactiveComposite"]
+script = ExtResource("2_gq3ax")
+
+[node name="AlwaysFailDecorator" type="Node" parent="SelectorReactiveComposite/BattleLogic"]
+script = ExtResource("4_v3k3g")
+
+[node name="StartNavigation" type="Node" parent="SelectorReactiveComposite/BattleLogic/AlwaysFailDecorator"]
+script = ExtResource("8_6qch5")
+
+[node name="TimeLimiterDecorator" type="Node" parent="SelectorReactiveComposite/BattleLogic"]
+script = ExtResource("9_4em15")
+wait_time = 6.0
+
+[node name="WaitForDestination" type="Node" parent="SelectorReactiveComposite/BattleLogic/TimeLimiterDecorator"]
+script = ExtResource("10_jeiyr")
+
+[node name="PreBattleLogic" type="Node" parent="SelectorReactiveComposite"]
+script = ExtResource("7_xm13f")
+
+[node name="DelayDecorator" type="Node" parent="SelectorReactiveComposite/PreBattleLogic"]
+script = ExtResource("5_35hnl")
+wait_time = 3.0
+
+[node name="SetRandomNavigation" type="Node" parent="SelectorReactiveComposite/PreBattleLogic/DelayDecorator"]
+script = ExtResource("7_htpk2")
+
+[node name="StartNavigation" type="Node" parent="SelectorReactiveComposite/PreBattleLogic"]
+script = ExtResource("8_6qch5")
+
+[node name="TimeLimiterDecorator" type="Node" parent="SelectorReactiveComposite/PreBattleLogic"]
+script = ExtResource("9_4em15")
+wait_time = 6.0
+
+[node name="WaitForDestination" type="Node" parent="SelectorReactiveComposite/PreBattleLogic/TimeLimiterDecorator"]
+script = ExtResource("10_jeiyr")
+
+[node name="StopNavigation" type="Node" parent="SelectorReactiveComposite/PreBattleLogic"]
+script = ExtResource("11_yffbq")

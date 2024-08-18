@@ -7,6 +7,9 @@ const npc_scene: PackedScene = preload("res://entity/non_player_entity.tscn")
 @export var player_cuttoff: int = 1
 @export var arena_time: int = 45
 
+@onready var cubes: Node3D = $NavigationRegion3D/Cubes
+@onready var navgiation_region: NavigationRegion3D = $NavigationRegion3D
+
 @onready var player: Entity = $Player
 @onready var timer: Timer = $Timer
 
@@ -21,7 +24,6 @@ func _ready() -> void:
 	
 	var platforms: Array[Node] = get_tree().get_nodes_in_group("STARTING_PLATFORM")
 	var number_of_players: int = 1 + Players.npcs.size()
-	print("Number of Players: " + str(number_of_players))
 	var difference: int = platforms.size() - number_of_players
 
 	for i in range(difference):
@@ -60,8 +62,16 @@ func _ready() -> void:
 
 	goal_label.text = "Survive to be in top " + str(player_cuttoff) + "!"
 
+	tween_cubes(false)
+
+func tween_cubes (up: bool) -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(cubes, "position", Vector3(0, 0 if up else -3, 0), 5.0)
+	tween.tween_callback(func () -> void: tween_cubes(!up))
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if not navgiation_region.is_baking(): navgiation_region.bake_navigation_mesh()
 	timer_label.text = "%d:%02d" % [floor($Timer.time_left / 60), int($Timer.time_left) % 60]
 	if timer.time_left < 30.0:
 		timer_label.text = "%10.1f" % timer.time_left

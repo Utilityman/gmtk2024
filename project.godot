@@ -24,6 +24,8 @@ Settings="*res://settings/settings.tscn"
 AbilityDatabase="*res://game/database/ability_database.tscn"
 Shaker="*res://addons/shaker/src/Shaker.gd"
 Players="*res://players.tscn"
+BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
+BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 
 [debug]
 
@@ -31,7 +33,7 @@ gdscript/warnings/untyped_declaration=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-logger/plugin.cfg", "res://addons/shaker/plugin.cfg")
+enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/godot-logger/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
 [file_customization]
 
@@ -228,6 +230,10 @@ MELEE={
 [layer_names]
 
 3d_physics/layer_2="Entity"
+
+[navigation]
+
+3d/default_cell_height=0.05
 
 [rendering]
 
