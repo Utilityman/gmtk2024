@@ -1,8 +1,13 @@
 class_name NonPlayerEntity extends Entity
 
 @export var enable_navigation: bool = false
-@export var mode: String
+@export var mode: String:
+    set(new_mode):
+        mode = new_mode
+        if mode_label and mode_label.is_node_ready():
+            mode_label.text = mode
 
+@onready var mode_label: Label3D = $Label3D
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var nav_tester: NavigationAgent3D = $NavigationTester3D
 @onready var sensor: Area3D = $EntitySensor
@@ -26,7 +31,6 @@ func _physics_process(delta: float) -> void:
 func get_direction () -> Vector3: 
     if not is_alive or not enable_navigation: return Vector3.ZERO
     return global_position.direction_to(nav_agent.get_next_path_position())
-    # return -agent_velocity
 
 func face_target () -> void:
     if is_alive:
@@ -34,7 +38,6 @@ func face_target () -> void:
 
 # this isn't working again :( and I really want it to
 func _set_computed_velocity (computed_velocity: Vector3) -> void:
-    print("What is GOOD")
     agent_velocity = computed_velocity
 
 func set_navigating (is_navigating: bool) -> void:

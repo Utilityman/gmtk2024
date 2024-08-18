@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="9_4em15"]
 [ext_resource type="Script" path="res://entity/beehave/wait_for_destination.gd" id="10_jeiyr"]
 [ext_resource type="Script" path="res://entity/beehave/stop_navgiation.gd" id="11_yffbq"]
-[ext_resource type="Script" path="res://entity/beehave/wait_for_dynamic_navigation.gd" id="12_upskd"]
+[ext_resource type="Script" path="res://entity/beehave/punch_action.gd" id="17_2kvaw"]
 
 [node name="BeehaveTree" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_k35v4")
@@ -51,7 +51,7 @@ mode = "punch"
 
 [node name="SetTargetNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence"]
 script = ExtResource("5_x5g5f")
-radius = 0.3
+radius = 2.5
 
 [node name="StartNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence"]
 script = ExtResource("8_6qch5")
@@ -60,11 +60,17 @@ script = ExtResource("8_6qch5")
 script = ExtResource("9_4em15")
 wait_time = 1.0
 
-[node name="WaitForDynamicNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence/TimeLimiterDecorator"]
-script = ExtResource("12_upskd")
+[node name="WaitForDestination" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence/TimeLimiterDecorator"]
+script = ExtResource("10_jeiyr")
 
 [node name="StopNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence"]
 script = ExtResource("11_yffbq")
+
+[node name="TurnTowardsTarget" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence"]
+script = ExtResource("5_0dvws")
+
+[node name="PunchAction" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence"]
+script = ExtResource("17_2kvaw")
 
 [node name="ShootSequence" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite"]
 script = ExtResource("7_xm13f")

@@ -28,7 +28,6 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
     while potential_targets.size() > 0:
         var potential_target: Entity = potential_targets.pick_random() as Entity
         potential_targets.erase(potential_target)
-        if potential_target is LocalPlayerEntity: continue
 
         if entity.is_navigatable(potential_target.global_position):
             target_iterations = 0

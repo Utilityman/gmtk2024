@@ -5,9 +5,9 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 
     if entity.mode: return SUCCESS
 
-    # var puncher: bool = randi() % 2 == 0
-    # if puncher: entity.mode = "punch"
-    # else: entity.mode = "shoot"
-    entity.mode = "punch"
+    var puncher: bool = randi() % 2 == 0
+    if puncher: entity.mode = "punch"
+    else: entity.mode = "shoot"
+    # entity.mode = "punch"
 
     return SUCCESS
