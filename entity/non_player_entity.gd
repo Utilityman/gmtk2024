@@ -3,6 +3,8 @@ class_name NonPlayerEntity extends Entity
 @export var enable_navigation: bool = false
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var nav_tester: NavigationAgent3D = $NavigationTester3D
+@onready var sensor: Area3D = $EntitySensor
 
 var agent_velocity: Vector3 = Vector3.ZERO
 
@@ -14,18 +16,21 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
     super._physics_process(delta)
 
-    var direction: Vector3 = nav_agent.get_next_path_position() - self.global_position
+    # # var direction: Vector3 = nav_agent.get_next_path_position() - self.global_position
 
-    # if the direction is super small, don't even bother
-    if direction.distance_squared_to(Vector3.ZERO) < 0.1: direction = Vector3.ZERO
-    nav_agent.velocity = direction
+    # # if the direction is super small, don't even bother
+    # # if direction.distance_squared_to(Vector3.ZERO) < 0.1: direction = Vector3.ZERO
+    # # nav_agent.velocity = direction
 
-    var y_rot: float = atan2(-velocity.x, -velocity.z)
-    rotation.y = lerp_angle(rotation.y, y_rot, 10.0 * delta)
+    if velocity:
+        var y_rot: float = atan2(-velocity.x, -velocity.z)
+        rotation.y = lerp_angle(rotation.y, y_rot, 10.0 * delta)
 
 func get_direction () -> Vector3: 
     if not is_alive or not enable_navigation: return Vector3.ZERO
-    return  nav_agent.get_next_path_position() - self.global_position
+
+    
+    return nav_agent.get_next_path_position() - self.global_position
 
 # this isn't working again :(
 func _set_computed_velocity (computed_velocity: Vector3) -> void:
@@ -37,13 +42,24 @@ func set_navigating (is_navigating: bool) -> void:
 func is_at_destination () -> bool:
     return nav_agent.is_target_reached()
 
+func is_destination_reachable () -> bool:
+    if nav_agent.is_target_reachable(): return true
+    return false
+
+func is_navigatable (vector: Vector3) -> bool:
+    nav_tester.target_position = vector
+    # print("Is Reachable?: " + str(nav_tester.is_target_reachable()))
+    return nav_tester.is_target_reachable()
+
+func set_navigation_target (position: Vector3) -> void:
+    # nav_agent.target_position = NavigationServer3D.map_get_closest_point(map, navigation_target)
+    pass
+
 func set_random_navigation_target () -> void:
-    var navigation_target: Vector3 = random_on_unit_circle_v3()
-    print("Guessed Navigation Target: " + str(navigation_target))
+    var navigation_target: Vector3 = random_on_unit_circle_v3() * 5 + global_position
 
     var map: RID = nav_agent.get_navigation_map()
     nav_agent.target_position = NavigationServer3D.map_get_closest_point(map, navigation_target)
-    print("Navigation Target Position: " + str(nav_agent.target_position))
 
 func random_on_unit_circle_v3() -> Vector3:
     var _v2: Vector2 = random_on_unit_circle()

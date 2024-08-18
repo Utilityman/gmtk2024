@@ -23,6 +23,10 @@ func _ready() -> void:
 	# TODO: don't export number of players, and player cutoff. Get that from some other global (that is keeping track of how many times we've been to the coliseum)
 	
 	var platforms: Array[Node] = get_tree().get_nodes_in_group("STARTING_PLATFORM")
+	platforms = platforms.filter(func (platform: Node) -> bool: 
+		var p: StartingPlatform = platform as StartingPlatform
+		return p.is_active
+	)
 	var number_of_players: int = 1 + Players.npcs.size()
 	var difference: int = platforms.size() - number_of_players
 

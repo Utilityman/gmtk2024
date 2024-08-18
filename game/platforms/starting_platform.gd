@@ -6,6 +6,7 @@ const rotation_shake: ShakerTypeRandom3D = preload("res://game/platforms/startin
 # TODO: I want a shader to slowly color the model red until it explodes
 # TODO: want to actually queue free the platform after the explosion animation plays
 
+@export var is_active: bool = true
 @export var approach_direction: Vector3 = Vector3.ZERO
 @export var speed: float = 1.0
 @export var life_time: float = 15.0
@@ -54,6 +55,5 @@ func _on_body_entered (node: Node3D) -> void:
 	captured_nodes.append(node)
 
 func _on_body_exited (node: Node3D) -> void:
-	print("I lost one")
 	captured_nodes.erase(node)
 
