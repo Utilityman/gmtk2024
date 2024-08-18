@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxncb2sfemrc5"]
+[gd_scene load_steps=5 format=3 uid="uid://cxncb2sfemrc5"]
 
 [ext_resource type="PackedScene" uid="uid://8soewehstqdw" path="res://assets/pizza/poly/CyberpunkGameKit/Robot Enemy Flying.glb" id="1_w7upw"]
 [ext_resource type="Script" path="res://entity/model/robot_model.gd" id="2_n7mgv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yiblc"]
+radius = 0.002
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fhiy0"]
+radius = 0.002
 
 [node name="RobotModel" instance=ExtResource("1_w7upw")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 0)
@@ -22,3 +28,25 @@ bones/8/rotation = Quaternion(-0.475722, -0.181329, -0.100908, 0.854767)
 bones/9/rotation = Quaternion(-0.364442, 0.0685479, 0.595766, 0.712423)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/scale = Vector3(5.00048, 1.00048, 1.00048)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="RootNode/CharacterArmature/Skeleton3D" index="2"]
+transform = Transform3D(-0.252018, -0.238356, 0.938933, -0.410411, -0.852542, -0.326583, 0.87748, -0.467205, 0.116919, 0.00532545, -0.00225578, 0.00287838)
+bone_name = "Hand.L"
+bone_idx = 5
+
+[node name="Area3D" type="Area3D" parent="RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D" index="0"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D/Area3D" index="0"]
+shape = SubResource("SphereShape3D_yiblc")
+
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="RootNode/CharacterArmature/Skeleton3D" index="3"]
+transform = Transform3D(-0.263033, 0.273776, -0.926165, 0.272714, -0.899781, -0.343428, -0.926478, -0.342582, 0.161854, -0.0052317, -0.00238142, 0.00320822)
+bone_name = "Hand.R"
+bone_idx = 10
+
+[node name="Area3D" type="Area3D" parent="RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D2/Area3D" index="0"]
+shape = SubResource("SphereShape3D_fhiy0")

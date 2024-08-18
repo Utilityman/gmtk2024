@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dvvysgg27ufe7"]
+[gd_scene load_steps=22 format=3 uid="uid://dvvysgg27ufe7"]
 
 [ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="1_41d76"]
 [ext_resource type="Script" path="res://intermission.gd" id="1_nw06d"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://biaw6ewthr7gd" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-dHymLbsOMY.glb" id="7_5sry0"]
 [ext_resource type="Script" path="res://rpg/ability/ability.gd" id="8_b136o"]
 [ext_resource type="Script" path="res://rpg/entity/spellbook.gd" id="9_rtxou"]
-[ext_resource type="Texture2D" uid="uid://coyq4ef8br3wo" path="res://icon.svg" id="11_aope5"]
 [ext_resource type="Texture2D" uid="uid://bkiwr1bsue1au" path="res://assets/nl/kenney/ui-pack/PNG/Blue/Default/button_rectangle_depth_border.png" id="11_dhlmn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nedbd"]
@@ -59,9 +58,6 @@ region_rect = Rect2(0, 0, 192, 64)
 [sub_resource type="LabelSettings" id="LabelSettings_6750k"]
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_hhice"]
-diffuse_texture = ExtResource("11_aope5")
-
 [sub_resource type="LabelSettings" id="LabelSettings_a2qds"]
 font_color = Color(0, 0, 0, 1)
 
@@ -100,16 +96,19 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -8.0
+offset_right = -9.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Control"]
-custom_minimum_size = Vector2(260, 560)
 layout_mode = 0
-offset_left = 76.0
-offset_top = 37.0
-offset_right = 367.0
-offset_bottom = 597.0
+offset_left = 38.0
+offset_top = 40.0
+offset_right = 370.0
+offset_bottom = 233.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_1gsxb")
 
 [node name="BoxContainer" type="PanelContainer" parent="Control/PanelContainer"]
@@ -129,119 +128,35 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 2
 
-[node name="Arm1" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
+[node name="Arm1" type="Button" parent="Control/PanelContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = SubResource("CanvasTexture_hhice")
+text = "Arm Upgrade 1"
 
-[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/Arm1"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -29.0
-offset_top = -23.0
-offset_right = 29.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "ARMS VO. 2"
-
-[node name="Head1" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
+[node name="Head1" type="Button" parent="Control/PanelContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = SubResource("CanvasTexture_hhice")
+text = "Head Upgrade 1"
 
-[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/Head1"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -42.5
-offset_top = -23.0
-offset_right = 42.5
-grow_horizontal = 2
-grow_vertical = 0
-text = "HEAD VO.2"
-
-[node name="Arm2" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
+[node name="Arm2" type="Button" parent="Control/PanelContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = SubResource("CanvasTexture_hhice")
+text = "Arm Upgrade 2"
 
-[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/Arm2"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -42.5
-offset_top = -23.0
-offset_right = 42.5
-grow_horizontal = 2
-grow_vertical = 0
-text = "ARMS VO.3"
-
-[node name="Head2" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
+[node name="Head2" type="Button" parent="Control/PanelContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = SubResource("CanvasTexture_hhice")
+text = "Head Upgrade 2"
 
-[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/Head2"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -42.5
-offset_top = -23.0
-offset_right = 42.5
-grow_horizontal = 2
-grow_vertical = 0
-text = "HEAD VO.3"
-
-[node name="Arm3" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
+[node name="Arm3" type="Button" parent="Control/PanelContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = SubResource("CanvasTexture_hhice")
+text = "Arm Upgrade3"
 
-[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/Arm3"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -42.5
-offset_top = -23.0
-offset_right = 42.5
-grow_horizontal = 2
-grow_vertical = 0
-text = "ARMS VO.4"
-
-[node name="Head3" type="TextureButton" parent="Control/PanelContainer/GridContainer"]
+[node name="Head3" type="Button" parent="Control/PanelContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = SubResource("CanvasTexture_hhice")
-
-[node name="Label" type="Label" parent="Control/PanelContainer/GridContainer/Head3"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -42.5
-offset_top = -23.0
-offset_right = 42.5
-grow_horizontal = 2
-grow_vertical = 0
-text = "HEAD VO.4"
+text = "Head Upgrade 3"
 
 [node name="RemainingTimeLabel" type="Label" parent="Control"]
 layout_mode = 0
@@ -260,10 +175,10 @@ offset_bottom = 31.0
 
 [node name="TextureButton" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_left = 837.0
-offset_top = 529.0
-offset_right = 1095.0
-offset_bottom = 601.0
+offset_left = 873.0
+offset_top = 546.0
+offset_right = 1131.0
+offset_bottom = 618.0
 texture_normal = ExtResource("11_dhlmn")
 ignore_texture_size = true
 stretch_mode = 0
