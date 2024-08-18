@@ -39,7 +39,7 @@ func setup_player (player_name: String) -> void:
 	
 func resize_arm(entity: Entity, data: PlayerData, skeleton: Skeleton3D) -> void:
 	var scale: float = 0
-	var collison_scale: float = 0 
+	var collison_scale: float = 1
 	if data.arms == 0:
 		scale = 1
 	if data.arms == 1:
