@@ -166,6 +166,7 @@ func use_ability_by_id(ability_id: String, entity_id: String) -> void:
 # 			then perhaps if the user does not have a target it will allow the selection of a target(?)
 # 		Then for something like Death and Decay it will query for a ground location 
 func use_ability(original_ability: Ability, ability_target: Entity) -> void:
+	if not is_alive: return
 	if ! original_ability:
 		print('missing ability!')
 		return

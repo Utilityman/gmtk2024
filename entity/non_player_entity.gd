@@ -1,13 +1,18 @@
 class_name NonPlayerEntity extends Entity
 
 @export var enable_navigation: bool = false
+@export var mode: String:
+    set(new_mode):
+        mode = new_mode
+        if mode_label and mode_label.is_node_ready():
+            mode_label.text = mode
 
+@onready var mode_label: Label3D = $Label3D
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var nav_tester: NavigationAgent3D = $NavigationTester3D
 @onready var sensor: Area3D = $EntitySensor
 
 var agent_velocity: Vector3 = Vector3.ZERO
-
 
 func _ready() -> void:
     super._ready()
@@ -16,11 +21,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
     super._physics_process(delta)
 
-    # # var direction: Vector3 = nav_agent.get_next_path_position() - self.global_position
-
-    # # if the direction is super small, don't even bother
-    # # if direction.distance_squared_to(Vector3.ZERO) < 0.1: direction = Vector3.ZERO
-    # # nav_agent.velocity = direction
+    var direction: Vector3 = global_position.direction_to(nav_agent.get_next_path_position()) if is_alive else Vector3.ZERO
+    nav_agent.velocity = direction
 
     if velocity:
         var y_rot: float = atan2(-velocity.x, -velocity.z)
@@ -28,11 +30,13 @@ func _physics_process(delta: float) -> void:
 
 func get_direction () -> Vector3: 
     if not is_alive or not enable_navigation: return Vector3.ZERO
+    return global_position.direction_to(nav_agent.get_next_path_position())
 
-    
-    return nav_agent.get_next_path_position() - self.global_position
+func face_target () -> void:
+    if is_alive:
+        look_at(target.global_position)
 
-# this isn't working again :(
+# this isn't working again :( and I really want it to
 func _set_computed_velocity (computed_velocity: Vector3) -> void:
     agent_velocity = computed_velocity
 
@@ -51,9 +55,11 @@ func is_navigatable (vector: Vector3) -> bool:
     # print("Is Reachable?: " + str(nav_tester.is_target_reachable()))
     return nav_tester.is_target_reachable()
 
-func set_navigation_target (position: Vector3) -> void:
-    # nav_agent.target_position = NavigationServer3D.map_get_closest_point(map, navigation_target)
-    pass
+func set_navigation_target (target: Vector3, additional_radius: float) -> void:
+    var navigation_target: Vector3 = random_on_unit_circle_v3() * additional_radius + target
+
+    var map: RID = nav_agent.get_navigation_map()
+    nav_agent.target_position = NavigationServer3D.map_get_closest_point(map, navigation_target)
 
 func set_random_navigation_target () -> void:
     var navigation_target: Vector3 = random_on_unit_circle_v3() * 5 + global_position

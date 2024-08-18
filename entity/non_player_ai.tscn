@@ -1,47 +1,111 @@
-[gd_scene load_steps=13 format=3 uid="uid://bh4pgwvhomcp8"]
+[gd_scene load_steps=19 format=3 uid="uid://bh4pgwvhomcp8"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_k35v4"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="2_c3sde"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence_star.gd" id="2_gq3ax"]
+[ext_resource type="Script" path="res://entity/beehave/is_dead_condition.gd" id="3_o84fy"]
 [ext_resource type="Script" path="res://entity/beehave/get_enemy.gd" id="4_fq8nl"]
+[ext_resource type="Script" path="res://entity/beehave/turn_towards_target.gd" id="5_0dvws"]
 [ext_resource type="Script" path="res://entity/beehave/set_target_navigation.gd" id="5_x5g5f"]
+[ext_resource type="Script" path="res://entity/beehave/set_mode.gd" id="6_ae4ra"]
+[ext_resource type="Script" path="res://entity/beehave/shoot_action.gd" id="6_prhgj"]
 [ext_resource type="Script" path="res://entity/beehave/set_random_navigation.gd" id="7_htpk2"]
+[ext_resource type="Script" path="res://entity/beehave/mode_conditional.gd" id="7_qybrf"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="7_upftt"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="7_xm13f"]
 [ext_resource type="Script" path="res://entity/beehave/random_delay_decorator.gd" id="8_03tx5"]
 [ext_resource type="Script" path="res://entity/beehave/start_navigation.gd" id="8_6qch5"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="9_4em15"]
 [ext_resource type="Script" path="res://entity/beehave/wait_for_destination.gd" id="10_jeiyr"]
 [ext_resource type="Script" path="res://entity/beehave/stop_navgiation.gd" id="11_yffbq"]
+[ext_resource type="Script" path="res://entity/beehave/punch_action.gd" id="17_2kvaw"]
 
 [node name="BeehaveTree" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_k35v4")
 blackboard = NodePath("@Node@17307")
-actor = NodePath("..")
+actor = NodePath("")
 
 [node name="SelectorReactiveComposite" type="Node" parent="."]
 script = ExtResource("2_c3sde")
 
+[node name="IsDeadCondition" type="Node" parent="SelectorReactiveComposite"]
+script = ExtResource("3_o84fy")
+
 [node name="BattleSequence" type="Node" parent="SelectorReactiveComposite"]
-script = ExtResource("2_gq3ax")
+script = ExtResource("7_xm13f")
 
 [node name="GetEnemy" type="Node" parent="SelectorReactiveComposite/BattleSequence"]
 script = ExtResource("4_fq8nl")
 
-[node name="SetTargetNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence"]
-script = ExtResource("5_x5g5f")
+[node name="SetMode" type="Node" parent="SelectorReactiveComposite/BattleSequence"]
+script = ExtResource("6_ae4ra")
 
-[node name="StartNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence"]
+[node name="SelectorComposite" type="Node" parent="SelectorReactiveComposite/BattleSequence"]
+script = ExtResource("7_upftt")
+
+[node name="PunchSequence" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite"]
+script = ExtResource("7_xm13f")
+
+[node name="PunchConditional" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence"]
+script = ExtResource("7_qybrf")
+mode = "punch"
+
+[node name="SetTargetNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence"]
+script = ExtResource("5_x5g5f")
+radius = 2.5
+
+[node name="StartNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence"]
 script = ExtResource("8_6qch5")
 
-[node name="TimeLimiterDecorator" type="Node" parent="SelectorReactiveComposite/BattleSequence"]
+[node name="TimeLimiterDecorator" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence"]
 script = ExtResource("9_4em15")
-wait_time = 6.0
+wait_time = 1.0
 
-[node name="WaitForDestination" type="Node" parent="SelectorReactiveComposite/BattleSequence/TimeLimiterDecorator"]
+[node name="WaitForDestination" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence/TimeLimiterDecorator"]
 script = ExtResource("10_jeiyr")
 
-[node name="StopNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence"]
+[node name="StopNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence"]
 script = ExtResource("11_yffbq")
+
+[node name="TurnTowardsTarget" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence"]
+script = ExtResource("5_0dvws")
+
+[node name="PunchAction" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/PunchSequence"]
+script = ExtResource("17_2kvaw")
+
+[node name="ShootSequence" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite"]
+script = ExtResource("7_xm13f")
+
+[node name="ShootConditional" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/ShootSequence"]
+script = ExtResource("7_qybrf")
+mode = "shoot"
+
+[node name="RandomDelayDecorator" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/ShootSequence"]
+script = ExtResource("8_03tx5")
+delta = 0.25
+wait_time = 0.25
+
+[node name="SetTargetNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/ShootSequence/RandomDelayDecorator"]
+script = ExtResource("5_x5g5f")
+radius = 4.0
+
+[node name="StartNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/ShootSequence"]
+script = ExtResource("8_6qch5")
+
+[node name="TimeLimiterDecorator" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/ShootSequence"]
+script = ExtResource("9_4em15")
+wait_time = 3.0
+
+[node name="WaitForDestination" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/ShootSequence/TimeLimiterDecorator"]
+script = ExtResource("10_jeiyr")
+
+[node name="StopNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/ShootSequence"]
+script = ExtResource("11_yffbq")
+
+[node name="TurnTowardsTarget" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/ShootSequence"]
+script = ExtResource("5_0dvws")
+
+[node name="ShootAction" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/ShootSequence"]
+script = ExtResource("6_prhgj")
 
 [node name="IdlingSequence" type="Node" parent="SelectorReactiveComposite"]
 script = ExtResource("7_xm13f")

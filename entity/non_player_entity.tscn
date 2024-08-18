@@ -12,6 +12,7 @@ radius = 100.0
 [node name="NPE" instance=ExtResource("1_ddjpt")]
 script = ExtResource("2_qeef5")
 enable_navigation = false
+mode = ""
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="12"]
 avoidance_enabled = true
@@ -26,13 +27,18 @@ debug_enabled = true
 [node name="Blackboard" type="Node" parent="." index="14"]
 script = ExtResource("3_o5aar")
 
-[node name="NonPlayerAI" parent="." index="15" node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("4_r332j")]
-blackboard = NodePath("@Node@25440")
-actor = NodePath("..")
+[node name="NonPlayerAI" parent="." index="15" node_paths=PackedStringArray("blackboard") instance=ExtResource("4_r332j")]
+blackboard = NodePath("@Node@47783")
 
-[node name="EntitySensor" type="Area3D" parent="." index="16"]
+[node name="EntitySensor" type="Area3D" parent="." index="16" node_paths=PackedStringArray("controller")]
 collision_mask = 2
 script = ExtResource("5_8llkb")
+controller = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EntitySensor" index="0"]
 shape = SubResource("SphereShape3D_kq0yp")
+
+[node name="Label3D" type="Label3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.12284, 0)
+billboard = 1
+font_size = 72

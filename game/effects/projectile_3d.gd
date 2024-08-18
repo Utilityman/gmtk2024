@@ -65,7 +65,6 @@ func _physics_process(delta: float) -> void:
 	position += local_direction * local_speed * delta
 
 func _on_body_entered(body: Node3D) -> void:
-	print("Body Entered!:" + str(body))
 	# never do anything in this case
 	if body == source: return
 
