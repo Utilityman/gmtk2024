@@ -74,11 +74,10 @@ func setup_and_add_entity (entity: Entity, data: PlayerData, add_camera: bool = 
 	entity.data = data.data
 	entity.shoot_ability = data.shoot_ability
 	entity.melee = data.punch_ability
-	add_child(entity)
+	add_child(entity, true)
 
 	var skelington: Skeleton3D = entity.model.skeleton
 	entity.robo_data = data
-	print(skelington)
 	entity.data = data.data
 	entity.shoot_ability = data.shoot_ability
 	entity.melee = data.punch_ability

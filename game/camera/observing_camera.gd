@@ -20,7 +20,6 @@ signal on_entity_raycast
 @onready var _camera_pivot_x: Node3D = $CameraPivotY/CameraPivotX
 @onready var _spring_arm: SpringArm3D = $CameraPivotY/CameraPivotX/SpringArm
 @onready var _camera: Camera3D = $CameraPivotY/CameraPivotX/SpringArm/Camera
-@onready var _raycast_selector: RayCast3D = $CameraPivotY/CameraPivotX/SpringArm/Camera/RayCast3D
 
 const HALF_PI: float = PI / 2
 
@@ -51,18 +50,6 @@ func _input(event: InputEvent) -> void:
 		if Input.is_action_pressed(&"CAMERA_ZOOM_DOWN"):
 			camera_spring_length = clampf(camera_spring_length - camera_zoom_step, camera_min_zoom, camera_max_zoom)
 
-	if Input.is_action_just_pressed(&"WORLD_SELECT") and (event as InputEventMouseButton):
-		var mouse_position: Vector2 = get_viewport().get_mouse_position()
-		# TODO: raycast length magic number?
-		_raycast_selector.target_position = _camera.project_local_ray_normal(mouse_position) * 100.0
-		_raycast_selector.force_raycast_update()
-		if _raycast_selector.is_colliding():
-			var collider: Object = _raycast_selector.get_collider()
-			if collider is Entity:
-				on_entity_raycast.emit(collider)
-			else:
-				Logger.info(str(collider))
-
 func _physics_process(delta: float) -> void:
 	if entity:
 		# annoying stupid code to get the camera controls going
@@ -79,7 +66,6 @@ func _process(delta: float) -> void:
 			camera_spring_length, 
 			delta * camera_zoom_smoothness
 		)
-
 
 func look_forward(delta: float, forward: Vector3) -> void:
 	var angle: float = atan2(forward.z, -forward.x) - HALF_PI

@@ -74,8 +74,8 @@ func resize_arm(entity: Entity, data: PlayerData, skeleton: Skeleton3D) -> void:
 
 	#Decrease hand collision shapes
 	if data.arms != 0:
-		var left_hand_collision: CollisionShape3D= entity.get_node("RobotModel/RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D")
-		var right_hand_collision: CollisionShape3D = entity.get_node("RobotModel/RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D2/Area3D/CollisionShape3D")
+		var left_hand_collision: CollisionShape3D= entity.get_node("RobotModel/RootNode/CharacterArmature/Skeleton3D/LeftArmHitbox/Area3D/CollisionShape3D")
+		var right_hand_collision: CollisionShape3D = entity.get_node("RobotModel/RootNode/CharacterArmature/Skeleton3D/RightArmHitbox/Area3D/CollisionShape3D")
 		var hand_shape: SphereShape3D = left_hand_collision.shape
 		hand_shape.radius = 0.0015
 		left_hand_collision.shape = hand_shape

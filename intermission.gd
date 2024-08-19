@@ -11,21 +11,21 @@ extends Node3D
 @onready var head3_button: Button = $Control/PanelContainer/GridContainer/Head3
 @onready var player_body: Skeleton3D = $Player/RobotModel/RootNode/CharacterArmature/Skeleton3D
 @onready var player_collision: CollisionShape3D = $Player/Collision
-@onready var left_hand_collision : CollisionShape3D = $Player/RobotModel/RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D
-@onready var right_hand_collision : CollisionShape3D = $Player/RobotModel/RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D2/Area3D/CollisionShape3D
+# @onready var left_hand_collision : CollisionShape3D = $Player/RobotModel/RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D
+# @onready var right_hand_collision : CollisionShape3D = $Player/RobotModel/RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D2/Area3D/CollisionShape3D
 @onready var screws: GPUParticles3D = $Screws/GPUParticles3D
 
 var player_data: PlayerData = Players.player
 var target_scale: Vector3 = Vector3(2, 2, 2)
 
+const punch_v2: Ability = preload("res://implementation/ability/shots/punch_v2.tres")
+
+@onready var entity: Entity = $Player
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	timer.start(shop_time)
-	print(left_hand_collision)
-	print(right_hand_collision)
-	print(player_data)
-	print(player_body)
 	player_data.money = 1000
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -59,19 +59,26 @@ func _on_continue_button_pressed() -> void:
 
 #all money values are hard coded rn and super made up
 func _on_arm_v2_pressed() -> void:
+	# this is the stuff that needs to happen, all else is visuals and such
+	player_data.money = player_data.money - 60
+	player_data.punch_ability = punch_v2
+	player_data.arms = 1
+	player_data.data.base_stats.hitpoints += 100
+
 	print("purchased arms vo. 2")
 	screws.emitting = true
-	player_data.money = player_data.money - 60
-	player_data.arms = 1
+	entity.melee = punch_v2
+
+
 	var bone_index_r: int = player_body.find_bone("Shoulder.R")
 	var bone_index_l: int = player_body.find_bone("Shoulder.L")
 
 	var pose_r: Transform3D = player_body.get_bone_pose(bone_index_r)
 	var pose_l: Transform3D = player_body.get_bone_pose(bone_index_l)
 
-	var scale: int = 3
-	pose_r = pose_r.scaled(Vector3(scale, scale, scale))
-	pose_l = pose_l.scaled(Vector3(scale, scale, scale))
+	var scl: int = 3
+	pose_r = pose_r.scaled(Vector3(scl, scl, scl))
+	pose_l = pose_l.scaled(Vector3(scl, scl, scl))
 
 	player_body.set_bone_pose(bone_index_r, pose_r)
 	player_body.set_bone_pose(bone_index_l, pose_l)
@@ -82,13 +89,12 @@ func _on_arm_v2_pressed() -> void:
 
 	#Decrease hand collision shapes
 
-	var hand_shape: SphereShape3D = left_hand_collision.shape
-	hand_shape.radius = 0.0015
-	left_hand_collision.shape = hand_shape
-	right_hand_collision.shape = hand_shape
+	# var hand_shape: SphereShape3D = left_hand_collision.shape
+	# hand_shape.radius = 0.0015
+	# left_hand_collision.shape = hand_shape
+	# right_hand_collision.shape = hand_shape
 	arms1_button.disabled = true
 	arms2_button.disabled = false
-	
 
 func _on_head_1_pressed() -> void:
 	player_data.money = player_data.money - 60
@@ -114,9 +120,7 @@ func _on_head_1_pressed() -> void:
 	
 	head1_button.disabled = true
 	head2_button.disabled = false
-	
-	
-	
+
 func _on_arm_2_pressed() -> void:
 	player_data.money = player_data.money - 80
 	player_data.arms = 2

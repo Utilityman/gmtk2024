@@ -24,9 +24,12 @@ var enabled: bool = false
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
 @onready var timer: Timer = $Lifetime
 @onready var visual_effects: Node3D = $VisualEffects
+
+var has_hit: bool = false
  
 func _ready() -> void:
-	if (enabled): body_entered.connect(_on_body_entered)
+	# if (enabled): body_entered.connect(_on_body_entered)
+	area_entered.connect(_on_area_entered)
 
 	if data and data.shape: collision_shape.shape = data.shape
 	if data and data.life_time: 
@@ -66,17 +69,28 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	# never do anything in this case
+	pass
+	
+	# TODO: abilities that hit the ground and do something
+
+func _on_area_entered(area: Area3D) -> void:
+	if has_hit: return
+	var body: Node3D = area.get_parent()
+	while body is not Entity:
+		body = body.get_parent()
+
+	print("body entered with: " + str(body))
 	if body == source: return
 
 	if body is Entity:
 		if data.hit_style == "any":
+			has_hit = true
 			on_entity_hit.emit(body)
 			free_projectile()
 		elif body == target:
+			has_hit = true
 			on_entity_hit.emit(body)
 			free_projectile()
-	
-	# TODO: abilities that hit the ground and do something
 
 func _on_lifetime_timeout () -> void:    
 	free_projectile()

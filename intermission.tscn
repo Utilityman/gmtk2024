@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dvvysgg27ufe7"]
+[gd_scene load_steps=24 format=3 uid="uid://dvvysgg27ufe7"]
 
 [ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="1_41d76"]
 [ext_resource type="Script" path="res://intermission.gd" id="1_nw06d"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://rpg/entity/spellbook.gd" id="9_rtxou"]
 [ext_resource type="Texture2D" uid="uid://bkiwr1bsue1au" path="res://assets/nl/kenney/ui-pack/PNG/Blue/Default/button_rectangle_depth_border.png" id="11_dhlmn"]
 [ext_resource type="PackedScene" uid="uid://5b17wp0so2qu" path="res://assets/vfx/screwslposion.tscn" id="12_xkinv"]
+[ext_resource type="PackedScene" uid="uid://bf88d7im2w6ob" path="res://interface/pause_menu.tscn" id="13_e72lk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nedbd"]
 panorama = ExtResource("1_41d76")
@@ -195,6 +196,8 @@ label_settings = SubResource("LabelSettings_a2qds")
 
 [node name="Screws" parent="." instance=ExtResource("12_xkinv")]
 transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 3, 0)
+
+[node name="PauseMenu" parent="." instance=ExtResource("13_e72lk")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Control/PanelContainer/GridContainer/Arm1" to="." method="_on_arm_v2_pressed"]

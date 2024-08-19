@@ -1,13 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxncb2sfemrc5"]
+[gd_scene load_steps=7 format=3 uid="uid://cxncb2sfemrc5"]
 
 [ext_resource type="PackedScene" uid="uid://8soewehstqdw" path="res://assets/pizza/poly/CyberpunkGameKit/Robot Enemy Flying.glb" id="1_w7upw"]
 [ext_resource type="Script" path="res://entity/model/robot_model.gd" id="2_n7mgv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yiblc"]
-radius = 0.002
+radius = 0.00166004
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fhiy0"]
+radius = 0.00166004
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u6px5"]
 radius = 0.002
+height = 0.015
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7htbs"]
+radius = 0.0039333
+height = 0.02
 
 [node name="RobotModel" instance=ExtResource("1_w7upw")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 0)
@@ -29,24 +37,48 @@ bones/9/rotation = Quaternion(-0.364442, 0.0685479, 0.595766, 0.712423)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/scale = Vector3(5.00048, 1.00048, 1.00048)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="RootNode/CharacterArmature/Skeleton3D" index="2"]
-transform = Transform3D(-0.252018, -0.238356, 0.938933, -0.410411, -0.852542, -0.326583, 0.87748, -0.467205, 0.116919, 0.00532545, -0.00225578, 0.00287838)
+[node name="LeftArmHitbox" type="BoneAttachment3D" parent="RootNode/CharacterArmature/Skeleton3D" index="2"]
+transform = Transform3D(-0.252018, -0.238358, 0.938932, -0.410411, -0.852542, -0.326584, 0.87748, -0.467205, 0.116919, 0.00532545, -0.00225578, 0.00287838)
 bone_name = "Hand.L"
 bone_idx = 5
 
-[node name="Area3D" type="Area3D" parent="RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D" index="0"]
+[node name="Area3D" type="Area3D" parent="RootNode/CharacterArmature/Skeleton3D/LeftArmHitbox" index="0"]
 collision_layer = 16
 collision_mask = 16
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D/Area3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/CharacterArmature/Skeleton3D/LeftArmHitbox/Area3D" index="0"]
 shape = SubResource("SphereShape3D_yiblc")
 
-[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="RootNode/CharacterArmature/Skeleton3D" index="3"]
-transform = Transform3D(-0.263033, 0.273776, -0.926165, 0.272714, -0.899781, -0.343428, -0.926478, -0.342582, 0.161854, -0.0052317, -0.00238142, 0.00320822)
+[node name="RightArmHitbox" type="BoneAttachment3D" parent="RootNode/CharacterArmature/Skeleton3D" index="3"]
+transform = Transform3D(-0.263033, 0.273777, -0.926165, 0.272715, -0.89978, -0.343429, -0.926478, -0.342583, 0.161853, -0.0052317, -0.00238141, 0.00320821)
 bone_name = "Hand.R"
 bone_idx = 10
 
-[node name="Area3D" type="Area3D" parent="RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D2" index="0"]
+[node name="Area3D" type="Area3D" parent="RootNode/CharacterArmature/Skeleton3D/RightArmHitbox" index="0"]
+collision_layer = 16
+collision_mask = 16
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D2/Area3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/CharacterArmature/Skeleton3D/RightArmHitbox/Area3D" index="0"]
 shape = SubResource("SphereShape3D_fhiy0")
+
+[node name="BodyHitbox" type="BoneAttachment3D" parent="RootNode/CharacterArmature/Skeleton3D" index="4"]
+transform = Transform3D(1.00048, -1.04734e-10, 1.79994e-07, 1.79972e-07, 0.016308, -1.00035, -2.82921e-09, 1.00035, 0.016308, -3.43776e-06, -5.03866e-05, 0.00378199)
+bone_name = "Head"
+bone_idx = 1
+
+[node name="Area3D" type="Area3D" parent="RootNode/CharacterArmature/Skeleton3D/BodyHitbox" index="0"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/CharacterArmature/Skeleton3D/BodyHitbox/Area3D" index="0"]
+shape = SubResource("CapsuleShape3D_u6px5")
+
+[node name="DefaultHitbox" type="Area3D" parent="RootNode/CharacterArmature/Skeleton3D" index="5"]
+transform = Transform3D(1, 7.10543e-15, 8.47033e-22, -7.10543e-15, 1, 0, 8.47033e-22, 0, 1, 0, 0, 0)
+visible = false
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/CharacterArmature/Skeleton3D/DefaultHitbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_7htbs")

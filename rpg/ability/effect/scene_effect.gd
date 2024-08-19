@@ -11,5 +11,5 @@ func apply (context: EffectContext) -> void:
 
 	var scene: ReplicatedScene3D = scene_data.as_replicated_scene()
 	entity.projectile_source.add_child(scene, true)
-	await scene.get_tree().create_timer(duration).timeout
-	scene.queue_free()
+	# await scene.get_tree().create_timer(duration).timeout
+	# scene.queue_free()

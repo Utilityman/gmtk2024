@@ -30,7 +30,9 @@ func get_direction () -> Vector3:
 
 func face_target () -> void:
     if is_alive:
-        look_at(target.global_position)
+        var target_pos: Vector3 = target.global_position
+        target_pos.y = global_position.y
+        look_at(target_pos)
 
 # this isn't working again :( and I really want it to
 func _set_computed_velocity (computed_velocity: Vector3) -> void:

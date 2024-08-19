@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dgwn12a1swsxr"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_jvjoh"]
-[ext_resource type="PackedScene" uid="uid://b3koyon3b1egm" path="res://coliseum.tscn" id="2_d68uo"]
+[ext_resource type="PackedScene" uid="uid://dvvysgg27ufe7" path="res://intermission.tscn" id="2_cbec8"]
 [ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_gxp82"]
 [ext_resource type="PackedScene" uid="uid://owr0a6iuh5je" path="res://game/platforms/starting_platform.tscn" id="3_dhnni"]
 [ext_resource type="FontFile" uid="uid://t51b6g3161l2" path="res://assets/com/google/fonts/BungeeTint-Regular.ttf" id="3_isns0"]
@@ -29,7 +29,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jvjoh")
-game_scene = ExtResource("2_d68uo")
+game_scene = ExtResource("2_cbec8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
