@@ -21,7 +21,7 @@
 
 [node name="BeehaveTree" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_k35v4")
-blackboard = NodePath("@Node@18603")
+blackboard = NodePath("@Node@70996")
 actor = NodePath("")
 
 [node name="SelectorReactiveComposite" type="Node" parent="."]
@@ -86,7 +86,7 @@ wait_time = 0.25
 
 [node name="SetTargetNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/ShootSequence/RandomDelayDecorator"]
 script = ExtResource("5_x5g5f")
-radius = 4.0
+radius = 12.0
 
 [node name="StartNavigation" type="Node" parent="SelectorReactiveComposite/BattleSequence/SelectorComposite/ShootSequence"]
 script = ExtResource("8_6qch5")

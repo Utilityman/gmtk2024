@@ -20,6 +20,7 @@ var target_scale: Vector3 = Vector3(2, 2, 2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	timer.start(shop_time)
 	print(left_hand_collision)
 	print(right_hand_collision)

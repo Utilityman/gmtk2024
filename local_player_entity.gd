@@ -5,7 +5,7 @@ class_name LocalPlayerEntity extends Entity
 
 func should_jump() -> bool:
 	if not is_alive: return false
-	return Input.is_action_just_pressed(&"JUMP")
+	return false
 
 func get_direction() -> Vector3:
 	if not is_alive: return Vector3.ZERO

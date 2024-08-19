@@ -111,7 +111,7 @@ func get_direction () -> Vector3:
 func get_rotate_direction () -> float:
 	return 0.0
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	health_bar.value = stats_component.health.current / stats_component.health.value
 
 func _physics_process(delta: float) -> void:

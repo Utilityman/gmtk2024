@@ -1,4 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccmjsv24rvqkb"]
+[gd_scene load_steps=6 format=3 uid="uid://ccmjsv24rvqkb"]
+
+[sub_resource type="Curve" id="Curve_wo0h5"]
+_data = [Vector2(0.00995025, 0), 0.0, 0.0, 0, 0, Vector2(0.997512, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kvejw"]
+curve = SubResource("Curve_wo0h5")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o6uwo"]
 emission_shape = 1
@@ -6,7 +13,8 @@ emission_sphere_radius = 0.2
 angular_velocity_min = -0.150016
 angular_velocity_max = 1.49998
 gravity = Vector3(0, 0, 0)
-color = Color(0.565541, 0.74339, 0.895918, 0.0941176)
+color = Color(0.403922, 0.631373, 0.815686, 0.25098)
+alpha_curve = SubResource("CurveTexture_kvejw")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ars8s"]
 transparency = 1
