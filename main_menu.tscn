@@ -65,6 +65,7 @@ theme_override_font_sizes/font_size = 72
 text = "Growbot Arena"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -93,6 +94,12 @@ layout_mode = 2
 size_flags_horizontal = 6
 text = "Start
 "
+
+[node name="Credits" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Credits"
 
 [node name="Background" type="Node3D" parent="."]
 

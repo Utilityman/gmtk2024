@@ -3,6 +3,8 @@ class_name ObservingCamera extends Node3D
 
 signal on_entity_raycast
 
+@export var entity: Entity
+
 # TODO: these are good and sensible defaults, maybe want to have some sort of way to override them?
 @export_category("Camera Configuration")
 @export var camera_spring_length: float = 5.0
@@ -26,6 +28,7 @@ const HALF_PI: float = PI / 2
 var last_cursor_position: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	last_cursor_position = get_viewport().get_mouse_position()
 
 func set_as_current () -> void:
@@ -38,19 +41,11 @@ func configure (node: Node3D) -> void:
 
 func _input(event: InputEvent) -> void:
 	if _camera.current == true:
-		if event is InputEventMouseMotion:
-			var mouse_motion: InputEventMouseMotion = event as InputEventMouseMotion
-			print("Do stuff with the camera and the model!")
-		if Input.is_action_pressed(&"CAMERA_ROTATION") and (event as InputEventMouseMotion):
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
+		if event as InputEventMouseMotion:
 			_camera_pivot_y.rotate_y(-event.relative.x * mouse_sensitivity)
 
 			_camera_pivot_x.rotate_x(-event.relative.y * mouse_sensitivity)
 			_camera_pivot_x.rotation_degrees.x = clampf(_camera_pivot_x.rotation_degrees.x, look_down_max_angle, look_up_max_angle)
-		if Input.is_action_just_released(&"CAMERA_ROTATION"):
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			Input.warp_mouse(last_cursor_position)
 		if Input.is_action_pressed(&"CAMERA_ZOOM_UP"):
 			camera_spring_length = clampf(camera_spring_length + camera_zoom_step, camera_min_zoom, camera_max_zoom)
 		if Input.is_action_pressed(&"CAMERA_ZOOM_DOWN"):
@@ -68,6 +63,13 @@ func _input(event: InputEvent) -> void:
 			else:
 				Logger.info(str(collider))
 
+func _physics_process(delta: float) -> void:
+	if entity:
+		# annoying stupid code to get the camera controls going
+		# entity.rotation.y = lerp(entity.rotation.y, _camera_pivot_y.rotation.y, 12.0 * delta)
+		if entity.is_alive: entity.rotation.y = lerp_angle(entity.rotation.y, _camera_pivot_y.rotation.y, 12.0 * delta)
+		_camera_pivot_y.global_position = global_position
+
 func _process(delta: float) -> void:
 	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 		last_cursor_position = get_viewport().get_mouse_position()
@@ -77,6 +79,7 @@ func _process(delta: float) -> void:
 			camera_spring_length, 
 			delta * camera_zoom_smoothness
 		)
+
 
 func look_forward(delta: float, forward: Vector3) -> void:
 	var angle: float = atan2(forward.z, -forward.x) - HALF_PI

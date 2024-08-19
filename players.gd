@@ -14,10 +14,11 @@ var npcs: Array[PlayerData]
 var player: PlayerData
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func load() -> void:
+	npcs.clear()
 	for i: int in range(starting_npcs):
 		var botname: String = default_names.pick_random()
-		default_names.erase(botname)
+		# default_names.erase(botname)
 
 		var player_data: PlayerData = create_setup_player_data(botname)
 		npcs.append(player_data)

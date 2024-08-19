@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3koyon3b1egm"]
+[gd_scene load_steps=16 format=3 uid="uid://b3koyon3b1egm"]
 
 [ext_resource type="Script" path="res://coliseum.gd" id="1_g1hoj"]
 [ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_af7lc"]
+[ext_resource type="PackedScene" uid="uid://bf88d7im2w6ob" path="res://interface/pause_menu.tscn" id="4_846on"]
 [ext_resource type="FontFile" uid="uid://t51b6g3161l2" path="res://assets/com/google/fonts/BungeeTint-Regular.ttf" id="4_ba1sg"]
 [ext_resource type="PackedScene" uid="uid://b4evfy2navalt" path="res://assets/vfx/spectators_01.tscn" id="6_67ogh"]
 [ext_resource type="PackedScene" uid="uid://cxn20khnv6467" path="res://assets/vfx/spectators_02.tscn" id="7_h7epc"]
@@ -39,7 +40,6 @@ size = Vector3(336.498, 1, 260.399)
 
 [node name="Coliseum" type="Node3D"]
 script = ExtResource("1_g1hoj")
-arena_time = 60
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6ugcg")
@@ -93,17 +93,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Players:"
 
-[node name="Timer" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 24
-
 [node name="FinishLabel" type="Label" parent="Control"]
 unique_name_in_owner = true
 visible = false
@@ -124,6 +113,9 @@ theme_override_constants/outline_size = 0
 theme_override_constants/shadow_outline_size = 32
 theme_override_font_sizes/font_size = 168
 text = "FINISH!"
+
+[node name="PauseMenu" parent="Control" instance=ExtResource("4_846on")]
+layout_mode = 1
 
 [node name="StartingPlatforms" type="Node3D" parent="."]
 
@@ -247,7 +239,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)
 transform = Transform3D(0.984595, 0, -0.174851, 0, 1, 0, 0.174851, 0, 0.984595, 8.12232, 0, -33.6503)
 
 [node name="Spectators03" parent="Spectators/ZNegative" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.997536, 0, -0.0701569, 0, 1, 0, 0.0701569, 0, 0.997536, -13.5161, 0, -34.2902)
+transform = Transform3D(0.997536, 0, -0.0701569, 0, 1, 0, 0.0701569, 0, 0.997536, -13.5161, -0.614494, -34.2902)
 
 [node name="Spectators02" parent="Spectators/ZNegative" instance=ExtResource("7_h7epc")]
 transform = Transform3D(-0.996613, 0, 0.0822343, 0, 1, 0, -0.0822343, 0, -0.996613, 17.119, 0, -35.9095)
@@ -256,7 +248,7 @@ transform = Transform3D(-0.996613, 0, 0.0822343, 0, 1, 0, -0.0822343, 0, -0.9966
 transform = Transform3D(-0.993419, 0, -0.114538, 0, 1, 0, 0.114538, 0, -0.993419, -6.37686, 0, -34.7788)
 
 [node name="Spectators17" parent="Spectators/ZNegative" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 3.24198, 0.0744705, -34.4127)
+transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 3.24198, 0.612358, -34.4127)
 
 [node name="Spectators06" parent="Spectators/ZNegative" instance=ExtResource("6_67ogh")]
 transform = Transform3D(0.880577, 0, -0.473904, 0, 1, 0, 0.473904, 0, 0.880577, 20.9097, 0, -29.1418)
@@ -268,10 +260,10 @@ transform = Transform3D(-0.862089, 0, -0.506756, 0, 1, 0, 0.506756, 0, -0.862089
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.653, -10)
 
 [node name="Spectators01" parent="Spectators/ZNegative5" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.984595, 0, -0.174851, 0, 1, 0, 0.174851, 0, 0.984595, 10.0226, 0, -32.3439)
+transform = Transform3D(0.984595, 0, -0.174851, 0, 1, 0, 0.174851, 0, 0.984595, 10.0226, -0.774879, -32.3439)
 
 [node name="Spectators03" parent="Spectators/ZNegative5" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.997536, 0, -0.0701569, 0, 1, 0, 0.0701569, 0, 0.997536, -14.3495, 0, -30.1914)
+transform = Transform3D(0.997536, 0, -0.0701569, 0, 1, 0, 0.0701569, 0, 0.997536, -14.3495, -0.937897, -30.1914)
 
 [node name="Spectators02" parent="Spectators/ZNegative5" instance=ExtResource("7_h7epc")]
 transform = Transform3D(-0.996613, 0, 0.0822343, 0, 1, 0, -0.0822343, 0, -0.996613, 17.119, 0, -33.0073)
@@ -280,13 +272,13 @@ transform = Transform3D(-0.996613, 0, 0.0822343, 0, 1, 0, -0.0822343, 0, -0.9966
 transform = Transform3D(-0.940833, 0, -0.338869, 0, 1, 0, 0.338869, 0, -0.940833, -6.37686, 0, -31.407)
 
 [node name="Spectators17" parent="Spectators/ZNegative5" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 0.719098, 0.0744705, -29.5616)
+transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 0.719098, 1.14375, -29.5616)
 
 [node name="Spectators06" parent="Spectators/ZNegative5" instance=ExtResource("6_67ogh")]
 transform = Transform3D(0.714607, 0, -0.699526, 0, 1, 0, 0.699526, 0, 0.714607, 27.3742, 0, -25.205)
 
 [node name="Spectators20" parent="Spectators/ZNegative5" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.862089, 0, -0.506756, 0, 1, 0, 0.506756, 0, -0.862089, -25.9909, 0, -23.9816)
+transform = Transform3D(-0.862089, 0, -0.506756, 0, 1, 0, 0.506756, 0, -0.862089, -25.9909, 1.26863, -23.9816)
 
 [node name="ZNegative2" type="Node3D" parent="Spectators"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -298,40 +290,40 @@ transform = Transform3D(0.984595, 0, -0.174851, 0, 1, 0, 0.174851, 0, 0.984595, 
 transform = Transform3D(0.997536, 0, -0.0701569, 0, 1, 0, 0.0701569, 0, 0.997536, -13.5161, 0, -34.2902)
 
 [node name="Spectators02" parent="Spectators/ZNegative2" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.996613, 0, 0.0822343, 0, 1, 0, -0.0822343, 0, -0.996613, 17.119, 0, -35.9095)
+transform = Transform3D(-0.996613, 0, 0.0822343, 0, 1, 0, -0.0822343, 0, -0.996613, 17.119, 0.544479, -35.9095)
 
 [node name="Spectators19" parent="Spectators/ZNegative2" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.993419, 0, -0.114538, 0, 1, 0, 0.114538, 0, -0.993419, -6.37686, 0, -34.7788)
+transform = Transform3D(-0.993419, 0, -0.114538, 0, 1, 0, 0.114538, 0, -0.993419, -6.37686, 0.640427, -34.7788)
 
 [node name="Spectators17" parent="Spectators/ZNegative2" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 3.24198, 0.0744705, -34.4127)
+transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 3.24198, -0.534401, -34.4127)
 
 [node name="Spectators06" parent="Spectators/ZNegative2" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.880577, 0, -0.473904, 0, 1, 0, 0.473904, 0, 0.880577, 20.9097, 0, -29.1418)
+transform = Transform3D(0.880577, 0, -0.473904, 0, 1, 0, 0.473904, 0, 0.880577, 20.9097, 0.911758, -29.1418)
 
 [node name="Spectators20" parent="Spectators/ZNegative2" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.862089, 0, -0.506756, 0, 1, 0, 0.506756, 0, -0.862089, -22.9422, 0, -30.8659)
+transform = Transform3D(-0.862089, 0, -0.506756, 0, 1, 0, 0.506756, 0, -0.862089, -22.9422, 0.632416, -30.8659)
 
 [node name="ZNegative6" type="Node3D" parent="Spectators"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 2.6, 0)
 
 [node name="Spectators01" parent="Spectators/ZNegative6" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.984595, 0, -0.174851, 0, 1, 0, 0.174851, 0, 0.984595, 10.0226, 0, -32.3439)
+transform = Transform3D(0.984595, 0, -0.174851, 0, 1, 0, 0.174851, 0, 0.984595, 10.0226, 0.345634, -32.3439)
 
 [node name="Spectators03" parent="Spectators/ZNegative6" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.997536, 0, -0.0701569, 0, 1, 0, 0.0701569, 0, 0.997536, -14.3495, 0, -30.1914)
+transform = Transform3D(0.997536, 0, -0.0701569, 0, 1, 0, 0.0701569, 0, 0.997536, -14.3495, 1.50121, -30.1914)
 
 [node name="Spectators02" parent="Spectators/ZNegative6" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.996613, 0, 0.0822343, 0, 1, 0, -0.0822343, 0, -0.996613, 17.119, 0, -33.0073)
+transform = Transform3D(-0.996613, 0, 0.0822343, 0, 1, 0, -0.0822343, 0, -0.996613, 17.119, -0.455475, -33.0073)
 
 [node name="Spectators19" parent="Spectators/ZNegative6" instance=ExtResource("7_h7epc")]
 transform = Transform3D(-0.940833, 0, -0.338869, 0, 1, 0, 0.338869, 0, -0.940833, -6.37686, 0, -31.407)
 
 [node name="Spectators17" parent="Spectators/ZNegative6" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 0.719098, 0.0744705, -29.5616)
+transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 0.719098, 0.582718, -29.5616)
 
 [node name="Spectators06" parent="Spectators/ZNegative6" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.714607, 0, -0.699526, 0, 1, 0, 0.699526, 0, 0.714607, 27.3742, 0, -25.205)
+transform = Transform3D(0.714607, 0, -0.699526, 0, 1, 0, 0.699526, 0, 0.714607, 27.3742, -0.483154, -25.205)
 
 [node name="Spectators20" parent="Spectators/ZNegative6" instance=ExtResource("7_h7epc")]
 transform = Transform3D(-0.862089, 0, -0.506756, 0, 1, 0, 0.506756, 0, -0.862089, -25.9909, 0, -23.9816)
@@ -346,67 +338,67 @@ transform = Transform3D(0.984595, 0, -0.174851, 0, 1, 0, 0.174851, 0, 0.984595, 
 transform = Transform3D(0.997536, 0, -0.0701569, 0, 1, 0, 0.0701569, 0, 0.997536, -14.3495, 0, -30.1914)
 
 [node name="Spectators02" parent="Spectators/ZNegative7" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.996613, 0, 0.0822343, 0, 1, 0, -0.0822343, 0, -0.996613, 17.119, 0, -33.0073)
+transform = Transform3D(-0.996613, 0, 0.0822343, 0, 1, 0, -0.0822343, 0, -0.996613, 17.119, 1.02146, -33.0073)
 
 [node name="Spectators19" parent="Spectators/ZNegative7" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.940833, 0, -0.338869, 0, 1, 0, 0.338869, 0, -0.940833, -6.37686, 0, -31.407)
+transform = Transform3D(-0.940833, 0, -0.338869, 0, 1, 0, 0.338869, 0, -0.940833, -6.37686, -0.252571, -31.407)
 
 [node name="Spectators17" parent="Spectators/ZNegative7" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 0.719098, 0.0744705, -29.5616)
+transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 0.719098, 0.71756, -29.5616)
 
 [node name="Spectators06" parent="Spectators/ZNegative7" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.714607, 0, -0.699526, 0, 1, 0, 0.699526, 0, 0.714607, 27.3742, 0, -25.205)
+transform = Transform3D(0.714607, 0, -0.699526, 0, 1, 0, 0.699526, 0, 0.714607, 27.3742, 0.656609, -25.205)
 
 [node name="Spectators20" parent="Spectators/ZNegative7" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.862089, 0, -0.506756, 0, 1, 0, 0.506756, 0, -0.862089, -25.9909, 0, -23.9816)
+transform = Transform3D(-0.445354, 0, -0.895354, 0, 1, 0, 0.895354, 0, -0.445354, -25.9909, 0.45211, -23.9816)
 
 [node name="ZNegative8" type="Node3D" parent="Spectators"]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 10, 2.6, 0)
 
 [node name="Spectators01" parent="Spectators/ZNegative8" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.984595, 0, -0.174851, 0, 1, 0, 0.174851, 0, 0.984595, 10.0226, 0, -32.3439)
+transform = Transform3D(0.984595, 0, -0.174851, 0, 1, 0, 0.174851, 0, 0.984595, 10.0226, 0.576996, -32.3439)
 
 [node name="Spectators03" parent="Spectators/ZNegative8" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.997536, 0, -0.0701569, 0, 1, 0, 0.0701569, 0, 0.997536, -14.3495, 0, -30.1914)
+transform = Transform3D(0.997536, 0, -0.0701569, 0, 1, 0, 0.0701569, 0, 0.997536, -14.3495, 1.12545, -30.1914)
 
 [node name="Spectators02" parent="Spectators/ZNegative8" instance=ExtResource("7_h7epc")]
 transform = Transform3D(-0.996613, 0, 0.0822343, 0, 1, 0, -0.0822343, 0, -0.996613, 17.119, 0, -33.0073)
 
 [node name="Spectators19" parent="Spectators/ZNegative8" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.940833, 0, -0.338869, 0, 1, 0, 0.338869, 0, -0.940833, -6.37686, 0, -31.407)
+transform = Transform3D(-0.940833, 0, -0.338869, 0, 1, 0, 0.338869, 0, -0.940833, -6.37686, -0.567505, -31.407)
 
 [node name="Spectators17" parent="Spectators/ZNegative8" instance=ExtResource("7_h7epc")]
 transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 0.719098, 0.0744705, -29.5616)
 
 [node name="Spectators06" parent="Spectators/ZNegative8" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.714607, 0, -0.699526, 0, 1, 0, 0.699526, 0, 0.714607, 27.3742, 0, -25.205)
+transform = Transform3D(0.714607, 0, -0.699526, 0, 1, 0, 0.699526, 0, 0.714607, 27.3742, 0.33931, -25.205)
 
 [node name="Spectators20" parent="Spectators/ZNegative8" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.862089, 0, -0.506756, 0, 1, 0, 0.506756, 0, -0.862089, -25.9909, 0, -23.9816)
+transform = Transform3D(-0.862089, 0, -0.506756, 0, 1, 0, 0.506756, 0, -0.862089, -25.9909, 1.06289, -23.9816)
 
 [node name="ZNegative3" type="Node3D" parent="Spectators"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Spectators01" parent="Spectators/ZNegative3" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.984595, 0, -0.174851, 0, 1, 0, 0.174851, 0, 0.984595, 8.12232, 0, -33.6503)
+transform = Transform3D(0.984595, 0, -0.174851, 0, 1, 0, 0.174851, 0, 0.984595, 8.12232, 0.741592, -33.6503)
 
 [node name="Spectators03" parent="Spectators/ZNegative3" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.997536, 0, -0.0701569, 0, 1, 0, 0.0701569, 0, 0.997536, -13.5161, 0, -34.2902)
+transform = Transform3D(0.997536, 0, -0.0701569, 0, 1, 0, 0.0701569, 0, 0.997536, -13.5161, 0.630234, -34.2902)
 
 [node name="Spectators02" parent="Spectators/ZNegative3" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.996613, 0, 0.0822343, 0, 1, 0, -0.0822343, 0, -0.996613, 17.119, 0, -35.9095)
+transform = Transform3D(-0.996613, 0, 0.0822343, 0, 1, 0, -0.0822343, 0, -0.996613, 17.119, -0.388344, -35.9095)
 
 [node name="Spectators19" parent="Spectators/ZNegative3" instance=ExtResource("7_h7epc")]
 transform = Transform3D(-0.993419, 0, -0.114538, 0, 1, 0, 0.114538, 0, -0.993419, -6.37686, 0, -34.7788)
 
 [node name="Spectators17" parent="Spectators/ZNegative3" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 3.24198, 0.0744705, -34.4127)
+transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 3.24198, -0.376907, -34.4127)
 
 [node name="Spectators06" parent="Spectators/ZNegative3" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.880577, 0, -0.473904, 0, 1, 0, 0.473904, 0, 0.880577, 20.9097, 0, -29.1418)
+transform = Transform3D(0.880577, 0, -0.473904, 0, 1, 0, 0.473904, 0, 0.880577, 20.9097, 0.39801, -29.1418)
 
 [node name="Spectators20" parent="Spectators/ZNegative3" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.862089, 0, -0.506756, 0, 1, 0, 0.506756, 0, -0.862089, -22.9422, 0, -30.8659)
+transform = Transform3D(-0.862089, 0, -0.506756, 0, 1, 0, 0.506756, 0, -0.862089, -22.9422, 0.20047, -30.8659)
 
 [node name="ZNegative4" type="Node3D" parent="Spectators"]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
@@ -415,19 +407,19 @@ transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
 transform = Transform3D(0.984595, 0, -0.174851, 0, 1, 0, 0.174851, 0, 0.984595, 8.12232, 0, -33.6503)
 
 [node name="Spectators03" parent="Spectators/ZNegative4" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.997536, 0, -0.0701569, 0, 1, 0, 0.0701569, 0, 0.997536, -13.5161, 0, -34.2902)
+transform = Transform3D(0.997536, 0, -0.0701569, 0, 1, 0, 0.0701569, 0, 0.997536, -13.5161, 0.831215, -34.2902)
 
 [node name="Spectators02" parent="Spectators/ZNegative4" instance=ExtResource("7_h7epc")]
 transform = Transform3D(-0.996613, 0, 0.0822343, 0, 1, 0, -0.0822343, 0, -0.996613, 17.119, 0, -35.9095)
 
 [node name="Spectators19" parent="Spectators/ZNegative4" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.993419, 0, -0.114538, 0, 1, 0, 0.114538, 0, -0.993419, -6.37686, 0, -34.7788)
+transform = Transform3D(-0.993419, 0, -0.114538, 0, 1, 0, 0.114538, 0, -0.993419, -6.37686, -0.55735, -34.7788)
 
 [node name="Spectators17" parent="Spectators/ZNegative4" instance=ExtResource("7_h7epc")]
-transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 3.24198, 0.0744705, -34.4127)
+transform = Transform3D(-0.992191, 0, -0.124727, 0, 1, 0, 0.124727, 0, -0.992191, 3.24198, 0.966118, -34.4127)
 
 [node name="Spectators06" parent="Spectators/ZNegative4" instance=ExtResource("6_67ogh")]
-transform = Transform3D(0.880577, 0, -0.473904, 0, 1, 0, 0.473904, 0, 0.880577, 20.9097, 0, -29.1418)
+transform = Transform3D(0.880577, 0, -0.473904, 0, 1, 0, 0.473904, 0, 0.880577, 20.9097, -0.183556, -29.1418)
 
 [node name="Spectators20" parent="Spectators/ZNegative4" instance=ExtResource("7_h7epc")]
 transform = Transform3D(-0.862089, 0, -0.506756, 0, 1, 0, 0.506756, 0, -0.862089, -22.9422, 0, -30.8659)

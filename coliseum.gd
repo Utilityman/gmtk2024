@@ -4,21 +4,18 @@ const npc_scene: PackedScene = preload("res://entity/non_player_entity.tscn")
 const local_player_scene: PackedScene = preload("res://local_player_entity.tscn")
 var camera_scene: PackedScene = preload("res://game/camera/observing_camera.tscn")
 
-@export var intermission: PackedScene
-
 var player_cuttoff: int = 1
-@export var arena_time: int = 45
 
-@onready var timer: Timer = $Timer
 
 @onready var goal_label: Label = $Control/GoalContainer/GoalLabel
 @onready var player_label: Label = $Control/PlayerCountContainer/PlayerCountLabel
-@onready var timer_label: Label = $Control/Timer
 
 @onready var killbox: Area3D = $Killbox
 @onready var spectators: Node3D = $Spectators
 
 var players_remaining: int
+
+var set_look_at: bool = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -53,17 +50,13 @@ func _ready() -> void:
 		var platform: Node3D = platforms.pick_random() as Node3D
 		platforms.erase(platform)
 		entity.global_position = platform.global_position + Vector3(0, 0.5, 0)
-		entity.global_basis = platform.global_basis
 
 	var player: Entity = local_player_scene.instantiate()
 	setup_and_add_entity(player, Players.player, true) 
 
 	var player_platform: Node3D = platforms.pick_random() as Node3D
 	player.global_position = player_platform.global_position + Vector3(0, 0.5, 0)
-	player.global_basis = player_platform.global_basis
 
-	timer.start(arena_time)
-	timer.timeout.connect(_on_timer_timeout)
 	players_remaining = get_tree().get_node_count_in_group("ENTITY")
 	for node: Node in get_tree().get_nodes_in_group("ENTITY"):
 		if node is not Entity: 
@@ -90,16 +83,11 @@ func setup_and_add_entity (entity: Entity, data: PlayerData, add_camera: bool = 
 	if add_camera:
 		var camera: ObservingCamera = camera_scene.instantiate()
 		entity.add_child(camera)
+		camera.entity = entity
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	timer_label.text = "%d:%02d" % [floor($Timer.time_left / 60), int($Timer.time_left) % 60]
-	if timer.time_left < 30.0:
-		timer_label.text = "%10.1f" % timer.time_left
 	player_label.text = str(players_remaining) + " Players Remaining"
-
-func _on_timer_timeout () -> void:
-	move_to_intermission("Out of Time!")
 
 func _on_entity_death () -> void:
 	players_remaining -= 1
@@ -117,9 +105,7 @@ func move_to_intermission (text: String) -> void:
 			continue
 		var entity: Entity = node as Entity
 		if entity.stats_component.health.current == 0:
-			print(Players.npcs.size())
 			Players.npcs.erase(entity.robo_data)
-			print(Players.npcs.size())
 
 	if Players.npcs.is_empty(): 
 		print("We have a winner!!!")
