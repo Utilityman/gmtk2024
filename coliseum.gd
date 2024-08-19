@@ -77,6 +77,13 @@ func setup_and_add_entity (entity: Entity, data: PlayerData, add_camera: bool = 
 	add_child(entity)
 
 	var skelington: Skeleton3D = entity.model.skeleton
+	entity.robo_data = data
+	print(skelington)
+	entity.data = data.data
+	entity.shoot_ability = data.shoot_ability
+	entity.melee = data.punch_ability
+	# data.arms= 0
+	# data.head = 3
 	Players.resize_arm(entity, data, skelington)
 	Players.resize_head(data, skelington)
 

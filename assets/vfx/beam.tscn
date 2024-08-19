@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr1mw16us5p5a"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f1ev2"]
+gravity = Vector3(0, 2, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bh54y"]
+
+[node name="Beam" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_f1ev2")
+draw_pass_1 = SubResource("SphereMesh_bh54y")
