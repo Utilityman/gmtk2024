@@ -38,6 +38,9 @@ func configure (node: Node3D) -> void:
 
 func _input(event: InputEvent) -> void:
 	if _camera.current == true:
+		if event is InputEventMouseMotion:
+			var mouse_motion: InputEventMouseMotion = event as InputEventMouseMotion
+			print("Do stuff with the camera and the model!")
 		if Input.is_action_pressed(&"CAMERA_ROTATION") and (event as InputEventMouseMotion):
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 

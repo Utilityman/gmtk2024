@@ -4,10 +4,6 @@ class_name NonPlayerEntity extends Entity
 @export var mode: String:
     set(new_mode):
         mode = new_mode
-        if mode_label and mode_label.is_node_ready():
-            mode_label.text = mode
-
-@onready var mode_label: Label3D = $Label3D
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var nav_tester: NavigationAgent3D = $NavigationTester3D
 @onready var sensor: Area3D = $EntitySensor
@@ -55,8 +51,8 @@ func is_navigatable (vector: Vector3) -> bool:
     # print("Is Reachable?: " + str(nav_tester.is_target_reachable()))
     return nav_tester.is_target_reachable()
 
-func set_navigation_target (target: Vector3, additional_radius: float) -> void:
-    var navigation_target: Vector3 = random_on_unit_circle_v3() * additional_radius + target
+func set_navigation_target (target_loc: Vector3, additional_radius: float) -> void:
+    var navigation_target: Vector3 = random_on_unit_circle_v3() * additional_radius + target_loc
 
     var map: RID = nav_agent.get_navigation_map()
     nav_agent.target_position = NavigationServer3D.map_get_closest_point(map, navigation_target)

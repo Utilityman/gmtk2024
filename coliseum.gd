@@ -6,10 +6,8 @@ var camera_scene: PackedScene = preload("res://game/camera/observing_camera.tscn
 
 @export var intermission: PackedScene
 
-@export var player_cuttoff: int = 1
+var player_cuttoff: int = 1
 @export var arena_time: int = 45
-
-@onready var navgiation_region: NavigationRegion3D = $NavigationRegion3D
 
 @onready var timer: Timer = $Timer
 
@@ -17,14 +15,24 @@ var camera_scene: PackedScene = preload("res://game/camera/observing_camera.tscn
 @onready var player_label: Label = $Control/PlayerCountContainer/PlayerCountLabel
 @onready var timer_label: Label = $Control/Timer
 
+@onready var killbox: Area3D = $Killbox
+@onready var spectators: Node3D = $Spectators
 
 var players_remaining: int
 
-
-
 func _ready() -> void:
-	# TODO: don't export number of players, and player cutoff. Get that from some other global (that is keeping track of how many times we've been to the coliseum)
-	
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if Players.times_in_arena >= Players.player_thresholds.size():
+		player_cuttoff = 1
+	else: player_cuttoff = Players.player_thresholds[Players.times_in_arena]
+
+	Players.times_in_arena += 1
+	setup_killbox()
+
+	var tween: Tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(spectators, "position", Vector3(0, 8, 0), 12.0)
+
 	var platforms: Array[Node] = get_tree().get_nodes_in_group("STARTING_PLATFORM")
 	platforms = platforms.filter(func (platform: Node) -> bool: 
 		var p: StartingPlatform = platform as StartingPlatform
@@ -40,26 +48,19 @@ func _ready() -> void:
 
 	for data: PlayerData in Players.npcs:
 		var entity: Entity = npc_scene.instantiate()
-		entity.data = data.data
-		entity.shoot_ability = data.shoot_ability
-		entity.melee = data.punch_ability
-		# do all the scaling stuff based on the NPC's data
-		add_child(entity)
+		setup_and_add_entity(entity, data)
 
 		var platform: Node3D = platforms.pick_random() as Node3D
 		platforms.erase(platform)
-
 		entity.global_position = platform.global_position + Vector3(0, 0.5, 0)
 		entity.global_basis = platform.global_basis
 
 	var player: Entity = local_player_scene.instantiate()
-	setup_and_add_entity(player, Players.player) 
-	# place_on_platform(player)
+	setup_and_add_entity(player, Players.player, true) 
 
 	var player_platform: Node3D = platforms.pick_random() as Node3D
 	player.global_position = player_platform.global_position + Vector3(0, 0.5, 0)
 	player.global_basis = player_platform.global_basis
-
 
 	timer.start(arena_time)
 	timer.timeout.connect(_on_timer_timeout)
@@ -75,35 +76,60 @@ func _ready() -> void:
 	goal_label.text = "Survive to be in top " + str(player_cuttoff) + "!"
 
 
-func setup_and_add_entity (entity: Entity, data: PlayerData) -> void:
+func setup_and_add_entity (entity: Entity, data: PlayerData, add_camera: bool = false) -> void:
+	entity.robo_data = data
 	entity.data = data.data
 	entity.shoot_ability = data.shoot_ability
 	entity.melee = data.punch_ability
-	entity.robo_data = data
-
 	add_child(entity)
-	var camera: ObservingCamera = camera_scene.instantiate()
-	entity.add_child(camera)
 
 	var skelington: Skeleton3D = entity.model.skeleton
 	Players.resize_arm(entity, data, skelington)
 	Players.resize_head(data, skelington)
 
+	if add_camera:
+		var camera: ObservingCamera = camera_scene.instantiate()
+		entity.add_child(camera)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not navgiation_region.is_baking(): navgiation_region.bake_navigation_mesh()
 	timer_label.text = "%d:%02d" % [floor($Timer.time_left / 60), int($Timer.time_left) % 60]
 	if timer.time_left < 30.0:
 		timer_label.text = "%10.1f" % timer.time_left
-	player_label.text = "Players Remaining\n  " + str(players_remaining)
+	player_label.text = str(players_remaining) + " Players Remaining"
 
 func _on_timer_timeout () -> void:
-	print("OUT OF TIME!")
-	get_tree().change_scene_to_file("res://intermission.tscn")
+	move_to_intermission("Out of Time!")
 
 func _on_entity_death () -> void:
 	players_remaining -= 1
-	if players_remaining <= player_cuttoff:
-		print("END THE GAME!!!")
-		get_tree().change_scene_to_file("res://intermission.tscn")
+	if players_remaining == player_cuttoff:
+		move_to_intermission("Finish!")
+
+func move_to_intermission (text: String) -> void:
+	# TODO: stop all abilities and allow pickups for 5 seconds
+	$%FinishLabel.text = text
+	$%FinishLabel.visible = true
+	# TODO: tween some animations and stuff
+	for node: Node in get_tree().get_nodes_in_group("ENTITY"):
+		if node is not Entity: 
+			Logger.warn("Found non-player with ENTITY group tag: " + str(node))
+			continue
+		var entity: Entity = node as Entity
+		if entity.stats_component.health.current == 0:
+			print(Players.npcs.size())
+			Players.npcs.erase(entity.robo_data)
+			print(Players.npcs.size())
+
+	if Players.npcs.is_empty(): 
+		print("We have a winner!!!")
+		# get_tree().call_deferred("change_scene_to_file", "res://winner.tscn")
+	else: get_tree().call_deferred("change_scene_to_file", "res://intermission.tscn")
 		
+func setup_killbox() -> void:
+	killbox.body_entered.connect(_on_killbox_entered)
+
+func _on_killbox_entered (node: Node3D) -> void:
+	if node is Entity:
+		var entity: Entity = node as Entity
+		entity._on_health_changed(0)

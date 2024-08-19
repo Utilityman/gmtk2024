@@ -11,6 +11,7 @@ extends Control
 var player_data :PlayerData = Players.player
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	start_button.pressed.connect(_on_start)
 	
 	random_explode(explosion1)

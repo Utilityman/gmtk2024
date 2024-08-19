@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Colossal See Em"
+config/name="GrowbotArena"
 run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"

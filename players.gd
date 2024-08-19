@@ -7,6 +7,9 @@ const starting_shot: Ability = preload("res://implementation/ability/shots/basic
 
 @export var starting_npcs: int = 19
 
+@export var times_in_arena: int = 0
+@export var player_thresholds: Array[int] = [10, 5, 2]
+
 var npcs: Array[PlayerData]
 var player: PlayerData
 
