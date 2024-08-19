@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="8_mmyjt"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r4s7n"]
+radius = 0.2
 
 [sub_resource type="Resource" id="Resource_yni0r"]
 script = ExtResource("3_apg53")
@@ -29,7 +30,7 @@ direction = Vector3(0, 0, 0)
 use_source_direction = true
 start_from_source = true
 follow_style = "follow_direction"
-speed = 15.0
+speed = 12.0
 acceleration = 1.0
 life_time = 15.0
 hit_style = "any"

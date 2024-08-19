@@ -9,7 +9,6 @@ var camera_scene: PackedScene = preload("res://game/camera/observing_camera.tscn
 @export var player_cuttoff: int = 1
 @export var arena_time: int = 45
 
-@onready var cubes: Node3D = $NavigationRegion3D/Cubes
 @onready var navgiation_region: NavigationRegion3D = $NavigationRegion3D
 
 @onready var timer: Timer = $Timer
@@ -75,7 +74,6 @@ func _ready() -> void:
 
 	goal_label.text = "Survive to be in top " + str(player_cuttoff) + "!"
 
-	tween_cubes(false)
 
 func setup_and_add_entity (entity: Entity, data: PlayerData) -> void:
 	entity.data = data.data
@@ -90,11 +88,6 @@ func setup_and_add_entity (entity: Entity, data: PlayerData) -> void:
 	var skelington: Skeleton3D = entity.model.skeleton
 	Players.resize_arm(entity, data, skelington)
 	Players.resize_head(data, skelington)
-
-func tween_cubes (up: bool) -> void:
-	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(cubes, "position", Vector3(0, 0 if up else -3, 0), 5.0)
-	tween.tween_callback(func () -> void: tween_cubes(!up))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

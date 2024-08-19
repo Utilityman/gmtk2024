@@ -1,11 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3koyon3b1egm"]
+[gd_scene load_steps=11 format=3 uid="uid://b3koyon3b1egm"]
 
 [ext_resource type="Script" path="res://coliseum.gd" id="1_g1hoj"]
 [ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_af7lc"]
-[ext_resource type="Material" uid="uid://dxlnifhgft6h5" path="res://addons/kenney_prototype_tools/materials/green/material_01.tres" id="5_e3rw1"]
-[ext_resource type="Material" uid="uid://8ylcw0h1lkhg" path="res://addons/kenney_prototype_tools/materials/orange/material_01.tres" id="6_43kcs"]
-[ext_resource type="Material" uid="uid://ddal25jay8fq1" path="res://addons/kenney_prototype_tools/materials/purple/material_01.tres" id="7_fjjru"]
-[ext_resource type="Material" uid="uid://d0gmvf62uyhd0" path="res://addons/kenney_prototype_tools/materials/red/material_01.tres" id="8_wfw2x"]
 [ext_resource type="PackedScene" uid="uid://owr0a6iuh5je" path="res://game/platforms/starting_platform.tscn" id="16_bujbd"]
 [ext_resource type="PackedScene" uid="uid://bol24dvutt2eg" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-ctQ5CDmraQ.glb" id="16_k0i1g"]
 [ext_resource type="PackedScene" uid="uid://hqb4b7dnhbyi" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform.glb" id="18_hsi7y"]
@@ -36,6 +32,7 @@ size = Vector3(3.86278, 0.460205, 3.90308)
 [node name="Coliseum" type="Node3D"]
 script = ExtResource("1_g1hoj")
 player_cuttoff = 10
+arena_time = 1800
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6ugcg")
@@ -202,125 +199,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07125, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/PrimaryPlatform/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0867159, -0.160701, -0.0294199)
 shape = SubResource("BoxShape3D_mq4yo")
-
-[node name="Cubes" type="Node3D" parent="NavigationRegion3D"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0.497672, 8.22213)
-material_override = ExtResource("5_e3rw1")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D20" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(0.919149, 0, -0.39391, 0, 1, 0, 0.39391, 0, 0.919149, -11.1106, 0.497672, 4.69472)
-material_override = ExtResource("5_e3rw1")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, -1.08332)
-material_override = ExtResource("5_e3rw1")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -11.1099, 0.5, 10.5231)
-material_override = ExtResource("6_43kcs")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 3.10993, 0.5, 1.89358)
-material_override = ExtResource("6_43kcs")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -4.29166, 0.5, 5.20834)
-material_override = ExtResource("7_fjjru")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D18" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(-0.742397, 0, -0.66996, 0, 1, 0, 0.66996, 0, -0.742397, -4.29166, 0.5, 0.517958)
-material_override = ExtResource("7_fjjru")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 8.29166, 0.5, 10.2083)
-material_override = ExtResource("7_fjjru")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 4.56977, 0.5, -5.33487)
-material_override = ExtResource("8_wfw2x")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -5.56977, 0.5, 11.7516)
-material_override = ExtResource("8_wfw2x")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -1.77597, 0.497672, -12.279)
-material_override = ExtResource("5_e3rw1")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -13.3569, 0.5, -8.22023)
-material_override = ExtResource("5_e3rw1")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D11" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, 8.99597, 0.5, -8.71673)
-material_override = ExtResource("6_43kcs")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D12" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, -7.63353, 0.5, -8.35327)
-material_override = ExtResource("6_43kcs")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D17" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, -3.94909, 0.5, -2.91535)
-material_override = ExtResource("6_43kcs")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0.433818, 0.5, -7.52314)
-material_override = ExtResource("7_fjjru")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -7.96367, 0.5, -18.1449)
-material_override = ExtResource("7_fjjru")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.26077, 0.5, -0.875204)
-material_override = ExtResource("8_wfw2x")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D19" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -10.4451, 0.5, -0.875204)
-material_override = ExtResource("8_wfw2x")
-use_collision = true
-size = Vector3(1, 5, 2)
-
-[node name="CSGBox3D16" type="CSGBox3D" parent="NavigationRegion3D/Cubes"]
-transform = Transform3D(1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, 1, 4.81232, 0.5, -12.5507)
-material_override = ExtResource("8_wfw2x")
-use_collision = true
-size = Vector3(1, 5, 2)

@@ -3,10 +3,11 @@ class_name ReplicatedScene3D extends Node3D
 @export var model_path: String
 @export var model_direction: Vector3 = Vector3(0, 0, -1)
 
-@onready var synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
+# @onready var synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
 
 func _ready() -> void:
-    synchronizer.delta_synchronized.connect(on_synchronized)
+    pass
+    # synchronizer.delta_synchronized.connect(on_synchronized)
 
 func on_synchronized () -> void:
     setup_from_packed(load(model_path))
