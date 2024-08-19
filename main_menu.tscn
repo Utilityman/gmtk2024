@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_gxp82"]
 [ext_resource type="PackedScene" uid="uid://owr0a6iuh5je" path="res://game/platforms/starting_platform.tscn" id="3_dhnni"]
 [ext_resource type="PackedScene" uid="uid://hqb4b7dnhbyi" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform.glb" id="4_87fd6"]
-[ext_resource type="PackedScene" uid="uid://hbcga53nyo6y" path="res://assets/vfx/platform_explosion.tscn" id="4_ten30"]
+[ext_resource type="PackedScene" uid="uid://dvosrcie5fyxl" path="res://assets/vfx/platform_explosion.tscn" id="4_ten30"]
 [ext_resource type="Script" path="res://addons/shaker/src/Vector3/shaker_component3D.gd" id="6_je2vh"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="7_fcn3g"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerTypeSineWave3D.gd" id="8_30r20"]

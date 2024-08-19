@@ -27,8 +27,9 @@ debug_enabled = true
 [node name="Blackboard" type="Node" parent="." index="14"]
 script = ExtResource("3_o5aar")
 
-[node name="NonPlayerAI" parent="." index="15" node_paths=PackedStringArray("blackboard") instance=ExtResource("4_r332j")]
-blackboard = NodePath("@Node@47783")
+[node name="NonPlayerAI" parent="." index="15" node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("4_r332j")]
+blackboard = NodePath("@Node@18640")
+actor = NodePath("..")
 
 [node name="EntitySensor" type="Area3D" parent="." index="16" node_paths=PackedStringArray("controller")]
 collision_mask = 2

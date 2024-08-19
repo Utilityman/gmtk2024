@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://rpg/ability/ability.gd" id="8_b136o"]
 [ext_resource type="Script" path="res://rpg/entity/spellbook.gd" id="9_rtxou"]
 [ext_resource type="Texture2D" uid="uid://bkiwr1bsue1au" path="res://assets/nl/kenney/ui-pack/PNG/Blue/Default/button_rectangle_depth_border.png" id="11_dhlmn"]
-[ext_resource type="PackedScene" uid="uid://dtc2pp2fxuc5s" path="res://assets/vfx/screwslposion.tscn" id="12_xkinv"]
+[ext_resource type="PackedScene" uid="uid://5b17wp0so2qu" path="res://assets/vfx/screwslposion.tscn" id="12_xkinv"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nedbd"]
 panorama = ExtResource("1_41d76")
