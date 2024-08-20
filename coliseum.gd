@@ -223,4 +223,5 @@ func _ai_decisions_upgrades(entity: Entity, data: PlayerData, add_camera: bool =
 			data.punch_ability = punch_v4
 			entity.melee = punch_v4
 			data.data.base_stats.hitpoints += 300
-		entity.stats_component.health.current -= 999999
+		
+	#Sentity.stats_component.health.current -= 999999
