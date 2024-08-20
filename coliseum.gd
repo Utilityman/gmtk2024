@@ -146,11 +146,21 @@ func _on_killbox_entered (node: Node3D) -> void:
 func _ai_decisions_upgrades(entity: Entity, data: PlayerData, add_camera: bool = false) -> void:
 	if add_camera != true:
 		randomize()
-		# var money_amount:int = randi() % 2 + 1 
-		# var min_value: int  = 10
-		# var max_value: int  = 40
-		# var random_number: int = randi_range(min_value, max_value)
-		# data.money += random_number
+		if(Players.npcs.size() != 19):
+			var min_value: int 
+			var max_value: int 
+			if(Players.npcs.size() <= 11):
+				min_value = 10
+				max_value = 20
+			if(Players.npcs.size() <= 6):
+				min_value = 25
+				max_value = 30
+			if(Players.npcs.size() <= 4):
+				min_value = 30
+				max_value = 50
+			var money_amount:int = randi() % 2 + 1 
+			var random_number: int = randi_range(min_value, max_value)
+			data.money += random_number
 
 		var choice:int = randi() % 2 + 1 
 
@@ -222,4 +232,5 @@ func _ai_decisions_upgrades(entity: Entity, data: PlayerData, add_camera: bool =
 			data.punch_ability = punch_v4
 			entity.melee = punch_v4
 			data.data.base_stats.hitpoints += 300
+		data.money = 0
 		
