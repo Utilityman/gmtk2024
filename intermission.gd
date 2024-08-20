@@ -11,6 +11,7 @@ extends Node3D
 @onready var head3_button: Button = $Control/PanelContainer/GridContainer/Head3
 @onready var player_body: Skeleton3D = $Player/RobotModel/RootNode/CharacterArmature/Skeleton3D
 @onready var player_collision: CollisionShape3D = $Player/Collision
+@onready var player: Entity= $Player
 # @onready var left_hand_collision : CollisionShape3D = $Player/RobotModel/RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D
 # @onready var right_hand_collision : CollisionShape3D = $Player/RobotModel/RootNode/CharacterArmature/Skeleton3D/BoneAttachment3D2/Area3D/CollisionShape3D
 @onready var screws: GPUParticles3D = $Screws/GPUParticles3D
@@ -19,6 +20,11 @@ var player_data: PlayerData = Players.player
 var target_scale: Vector3 = Vector3(2, 2, 2)
 
 const punch_v2: Ability = preload("res://implementation/ability/shots/punch_v2.tres")
+const punch_v3: Ability = preload("res://implementation/ability/shots/punch_v3.tres")
+const punch_v4: Ability = preload("res://implementation/ability/shots/punch_v4.tres")
+const shot_v2: Ability = preload("res://implementation/ability/shots/basic_shot_v2.tres")
+const shot_v3: Ability = preload("res://implementation/ability/shots/basic_shot_v3.tres")
+const shot_v4: Ability = preload("res://implementation/ability/shots/basic_shot_v4.tres")
 
 @onready var entity: Entity = $Player
 
@@ -27,6 +33,8 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	timer.start(shop_time)
 	player_data.money = 1000
+	Players.resize_arm(player, player_data, player_body)
+	Players.resize_head(player_data, player_body)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -99,6 +107,12 @@ func _on_arm_v2_pressed() -> void:
 func _on_head_1_pressed() -> void:
 	player_data.money = player_data.money - 60
 	player_data.head = 1
+
+	player_data.shoot_ability = shot_v2
+	player_data.data.base_stats.hitpoints += 100
+	entity.shoot_ability = shot_v2
+
+
 	screws.emitting = true
 	var head_scale: int = 3
 	var bone_index: int = player_body.find_bone("Head")
@@ -124,6 +138,9 @@ func _on_head_1_pressed() -> void:
 func _on_arm_2_pressed() -> void:
 	player_data.money = player_data.money - 80
 	player_data.arms = 2
+	player_data.punch_ability = punch_v3
+	player_data.data.base_stats.hitpoints += 100
+	entity.melee = punch_v3
 	screws.emitting = true
 	print("purchased arms vo. 3")
 	var bone_index_r: int = player_body.find_bone("Shoulder.R")
@@ -150,6 +167,9 @@ func _on_head_2_pressed() -> void:
 	player_data.money = player_data.money - 60
 	player_data.head = 2
 	screws.emitting = true
+	player_data.shoot_ability = shot_v3
+	player_data.data.base_stats.hitpoints += 100
+	entity.shoot_ability = shot_v3
 	var head_scale: float = 1.67
 	var bone_index: int = player_body.find_bone("Head")
 	var pose: Transform3D = player_body.get_bone_pose(bone_index)
@@ -176,6 +196,12 @@ func _on_arm_3_pressed() -> void:
 	player_data.money = player_data.money - 100
 	player_data.arms = 3
 	screws.emitting = true
+
+	player_data.punch_ability = punch_v4
+	player_data.data.base_stats.hitpoints += 100
+	entity.melee = punch_v4
+
+
 	print("purchased arms vo. 4")
 	var bone_index_r: int = player_body.find_bone("Shoulder.R")
 	var bone_index_l: int = player_body.find_bone("Shoulder.L")
@@ -198,6 +224,9 @@ func _on_head_3_pressed() -> void:
 	player_data.money = player_data.money - 100
 	player_data.head = 3
 	screws.emitting = true
+	player_data.shoot_ability = shot_v4
+	player_data.data.base_stats.hitpoints += 100
+	entity.shoot_ability = shot_v4
 	var head_scale: float = 1.44
 	var bone_index: int = player_body.find_bone("Head")
 	var pose: Transform3D = player_body.get_bone_pose(bone_index)

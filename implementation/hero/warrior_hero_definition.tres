@@ -6,11 +6,11 @@
 [ext_resource type="Script" path="res://rpg/ability/ability.gd" id="3_cvw80"]
 [ext_resource type="Resource" uid="uid://fumiwb330kob" path="res://implementation/ability/warrior/ravage.tres" id="3_eldfg"]
 [ext_resource type="Script" path="res://rpg/entity/spellbook.gd" id="3_nr2uy"]
-[ext_resource type="Resource" uid="uid://d34nnygsdb1an" path="res://implementation/ability/weaponskill/pummel.tres" id="4_x1dv5"]
+[ext_resource type="Resource" uid="uid://d34nnygsdb1an" path="res://implementation/ability/shots/weaponskill/pummel.tres" id="4_x1dv5"]
 [ext_resource type="Resource" uid="uid://bkbk3gvwwndvj" path="res://implementation/ability/warrior/thrash.tres" id="5_3j4hc"]
 [ext_resource type="Resource" uid="uid://dy8dklmjt7aum" path="res://implementation/ability/warrior/rage.tres" id="6_2ahiw"]
 [ext_resource type="Resource" uid="uid://hy751m4hghjv" path="res://implementation/ability/warrior/enrage.tres" id="7_4ywmp"]
-[ext_resource type="Resource" uid="uid://xfsdcwofaadk" path="res://implementation/ability/weaponskill/maim.tres" id="8_xaxon"]
+[ext_resource type="Resource" uid="uid://xfsdcwofaadk" path="res://implementation/ability/shots/weaponskill/maim.tres" id="8_xaxon"]
 [ext_resource type="Resource" uid="uid://cv8a1qqc1vlw2" path="res://implementation/ability/devtools/find_chicken.tres" id="10_02rim"]
 [ext_resource type="Resource" uid="uid://dhcv6dcqkl3c4" path="res://implementation/item/default_bag.tres" id="12_wik3d"]
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=16 format=3 uid="uid://okd4u2r3bhbq"]
+[gd_resource type="Resource" script_class="Ability" load_steps=22 format=3 uid="uid://okd4u2r3bhbq"]
 
 [ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_yctuw"]
 [ext_resource type="Script" path="res://game/effects/projectile_data.gd" id="2_u3sb2"]
@@ -7,17 +7,25 @@
 [ext_resource type="Script" path="res://game/multiplayer/replicated_scene_data.gd" id="3_wgivb"]
 [ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="4_32pdx"]
 [ext_resource type="Script" path="res://rpg/ability/effect/projectile_effect.gd" id="4_ms4ej"]
+[ext_resource type="PackedScene" uid="uid://dlfgujwbueqbk" path="res://assets/vfx/punch_002.tscn" id="4_myain"]
 [ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="4_unjn5"]
 [ext_resource type="Script" path="res://rpg/ability/ability.gd" id="5_wxscu"]
+[ext_resource type="PackedScene" uid="uid://b6xv5hhsnutur" path="res://assets/vfx/fire_explosion_001.tscn" id="6_v3fje"]
+[ext_resource type="Script" path="res://rpg/ability/effect/scene_effect.gd" id="7_4j6id"]
 [ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="7_syetr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yi8qv"]
 radius = 1.0
 
+[sub_resource type="Resource" id="Resource_ybod0"]
+script = ExtResource("3_wgivb")
+model = ExtResource("4_myain")
+model_direction = Vector3(0, 0, -1)
+
 [sub_resource type="Resource" id="Resource_hm6in"]
 script = ExtResource("2_u3sb2")
 shape = SubResource("SphereShape3D_yi8qv")
-visual_effects = Array[ExtResource("3_wgivb")]([])
+visual_effects = Array[ExtResource("3_wgivb")]([SubResource("Resource_ybod0")])
 direction = Vector3(0, 0, 0)
 use_source_direction = true
 start_from_source = true
@@ -40,10 +48,22 @@ type = ""
 sub_type = ""
 debug = false
 
+[sub_resource type="Resource" id="Resource_glcia"]
+script = ExtResource("3_wgivb")
+model = ExtResource("6_v3fje")
+model_direction = Vector3(0, 0, -1)
+
+[sub_resource type="Resource" id="Resource_w4vc2"]
+script = ExtResource("7_4j6id")
+scene_data = SubResource("Resource_glcia")
+apply_to_self = true
+duration = 5.0
+debug = false
+
 [sub_resource type="Resource" id="Resource_da71g"]
 script = ExtResource("4_ms4ej")
 data = SubResource("Resource_hm6in")
-effects = Array[ExtResource("1_yctuw")]([SubResource("Resource_0xfk5")])
+effects = Array[ExtResource("1_yctuw")]([SubResource("Resource_0xfk5"), SubResource("Resource_w4vc2")])
 debug = false
 
 [sub_resource type="Resource" id="Resource_g42uo"]
