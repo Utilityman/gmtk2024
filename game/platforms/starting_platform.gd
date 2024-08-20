@@ -48,8 +48,9 @@ func _on_shaker_timeout () -> void:
 	rotation_shaker.play_shake()
 
 func _on_explosion_timeout () -> void:
-	var instance: Node3D = explosion.instantiate()
-	exploision_point.add_child(instance)
+	# var instance: Node3D = explosion.instantiate()
+	# exploision_point.add_child(instance)
+	pass
 
 func _on_body_entered (node: Node3D) -> void:
 	captured_nodes.append(node)

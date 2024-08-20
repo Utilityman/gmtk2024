@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://b16b710fn1ptv"]
+
+[ext_resource type="PackedScene" uid="uid://bwghbsrfug04" path="res://assets/vfx/spectator_bot_03.tscn" id="1_fdu5p"]
+[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="1_qmpgf"]
+[ext_resource type="PackedScene" uid="uid://bol24dvutt2eg" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-ctQ5CDmraQ.glb" id="2_yyt3n"]
+[ext_resource type="FontFile" uid="uid://t51b6g3161l2" path="res://assets/com/google/fonts/BungeeTint-Regular.ttf" id="3_bagvs"]
+[ext_resource type="FontFile" uid="uid://dt55bvt1lk2qq" path="res://assets/com/google/fonts/ShareTechMono-Regular.ttf" id="5_vwmvr"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_iodcd"]
+panorama = ExtResource("1_qmpgf")
+
+[sub_resource type="Sky" id="Sky_r20yl"]
+sky_material = SubResource("PanoramaSkyMaterial_iodcd")
+
+[sub_resource type="Environment" id="Environment_71hic"]
+background_mode = 2
+sky = SubResource("Sky_r20yl")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Screenshot" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_71hic")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.330559, -0.879804, 0.341579, 0.395057, 0.457679, 0.79653, -0.857123, -0.128357, 0.498863, -4.79216, 0, 3.33189)
+shadow_enabled = true
+
+[node name="SpectatorBot03" parent="." instance=ExtResource("1_fdu5p")]
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04204, 0)
+visible = false
+billboard = 1
+text = "Growbots Arena"
+font = ExtResource("3_bagvs")
+font_size = 64
+
+[node name="Root Scene" parent="." instance=ExtResource("2_yyt3n")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.741, -0.431, -0.61)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.5, -0.296198, 0.813798, 0, 0.939693, 0.34202, -0.866025, -0.17101, 0.469846, 1.225, 0.875, 0.698)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92335, 0, 1.70723)
+visible = false
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84248, -0.721139, -1.58451)
+visible = false
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -272.0
+offset_top = 90.0
+offset_right = 272.0
+offset_bottom = 172.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("5_vwmvr")
+theme_override_font_sizes/font_size = 72
+text = "Growbots Arena"

@@ -1,5 +1,5 @@
 extends Node3D
-@export var shop_time: int = 60
+@export var shop_time: int = 1800
 
 @onready var timer: Timer = $Timer
 @onready var timer_label: Label = $Control/Timer

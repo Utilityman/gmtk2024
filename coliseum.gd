@@ -11,7 +11,6 @@ var player_cuttoff: int = 1
 @onready var player_label: Label = $Control/PlayerCountContainer/PlayerCountLabel
 
 @onready var killbox: Area3D = $Killbox
-@onready var spectators: Node3D = $Spectators
 
 const punch_v2: Ability = preload("res://implementation/ability/shots/punch_v2.tres")
 const punch_v3: Ability = preload("res://implementation/ability/shots/punch_v3.tres")
@@ -37,7 +36,6 @@ func _ready() -> void:
 
 	var tween: Tween = get_tree().create_tween()
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(spectators, "position", Vector3(0, 8, 0), 12.0)
 
 	var platforms: Array[Node] = get_tree().get_nodes_in_group("STARTING_PLATFORM")
 	platforms = platforms.filter(func (platform: Node) -> bool: 
@@ -142,7 +140,8 @@ func setup_killbox() -> void:
 func _on_killbox_entered (node: Node3D) -> void:
 	if node is Entity:
 		var entity: Entity = node as Entity
-		entity._on_health_changed(0)
+		entity.stats_component.health.current -= 999999
+
 
 func _ai_decisions_upgrades(entity: Entity, data: PlayerData, add_camera: bool = false) -> void:
 	if add_camera != true:
@@ -224,4 +223,3 @@ func _ai_decisions_upgrades(entity: Entity, data: PlayerData, add_camera: bool =
 			entity.melee = punch_v4
 			data.data.base_stats.hitpoints += 300
 		
-	#Sentity.stats_component.health.current -= 999999

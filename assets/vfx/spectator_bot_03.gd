@@ -1,6 +1,6 @@
 extends Node3D
 
-var animations: Array[String] = ["CharacterArmature|Idle", "CharacterArmature|Shoot", "CharacterArmature|Jump", "CharacterArmature|Attack", "CharacterArmature|Idle"]
+var animations: Array[String] = ["CharacterArmature|Idle", "CharacterArmature|Shoot", "CharacterArmature|Attack", "CharacterArmature|Idle"]
 
 func _ready() -> void:
 	cycle_animations()
