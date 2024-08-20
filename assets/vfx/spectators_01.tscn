@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="3_cfwsc"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerTypeSineWave3D.gd" id="4_hpxhq"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="5_vqvma"]
-[ext_resource type="PackedScene" uid="uid://umqljhtp48cc" path="res://assets/pizza/poly/CyberpunkGameKit/Robot Enemy Legs.glb" id="6_o205x"]
-[ext_resource type="PackedScene" uid="uid://xd5gg458sk1f" path="res://assets/pizza/poly/CyberpunkGameKit/Robot Enemy Large.glb" id="7_jdrwb"]
+[ext_resource type="PackedScene" uid="uid://b83bducrd2v3l" path="res://assets/vfx/spectator_bot_01.tscn" id="6_gi47b"]
+[ext_resource type="PackedScene" uid="uid://crwevns70rdhh" path="res://assets/vfx/spectator_bot_02.tscn" id="7_n7d0q"]
 
 [sub_resource type="Resource" id="Resource_ohktx"]
 script = ExtResource("4_hpxhq")
@@ -33,19 +33,18 @@ __follow_timeline = false
 [node name="Spectators01" type="Node3D"]
 
 [node name="Platform1" parent="." instance=ExtResource("1_7ignt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="ShakerComponent3D" type="Node3D" parent="Platform1" node_paths=PackedStringArray("Targets")]
 script = ExtResource("2_2jjvr")
 custom_target = true
-Targets = [NodePath(".."), NodePath("../Spectator1"), NodePath("../Spectator2")]
+Targets = [NodePath(".."), NodePath("../SpectatorBot01"), NodePath("../SpectatorBot02")]
 randomize = true
 AutoPlay = true
 intensity = 0.01
 shakerPreset = SubResource("Resource_nfpe7")
 
-[node name="Spectator1" parent="Platform1" instance=ExtResource("6_o205x")]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -1.11965, -0.0345158, 0.0280061)
+[node name="SpectatorBot01" parent="Platform1" instance=ExtResource("6_gi47b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11965, -0.0345158, 0.0280061)
 
-[node name="Spectator2" parent="Platform1" instance=ExtResource("7_jdrwb")]
-transform = Transform3D(0.866409, 0, -0.499335, 0, 1, 0, 0.499335, 0, 0.866409, 0.431798, 0.0316527, -0.0047946)
+[node name="SpectatorBot02" parent="Platform1" instance=ExtResource("7_n7d0q")]
+transform = Transform3D(0.866409, 0, -0.499335, 0, 1, 0, 0.499335, 0, 0.866409, 0.711333, 0.0316527, -0.0047946)

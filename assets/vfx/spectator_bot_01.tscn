@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b83bducrd2v3l"]
+
+[ext_resource type="PackedScene" uid="uid://umqljhtp48cc" path="res://assets/pizza/poly/CyberpunkGameKit/Robot Enemy Legs.glb" id="1_ytxca"]
+[ext_resource type="Script" path="res://assets/vfx/spectator_bot_01.gd" id="2_w115d"]
+
+[node name="SpectatorBot01" instance=ExtResource("1_ytxca")]
+script = ExtResource("2_w115d")
+
+[node name="Skeleton3D" parent="RootNode/CharacterArmature" index="0"]
+bones/1/rotation = Quaternion(2.16494e-15, 2.38419e-07, 9.22372e-15, 1)
+bones/4/rotation = Quaternion(-0.684259, -0.186168, 0.677735, -0.194441)
+bones/5/rotation = Quaternion(-0.462385, 0.492092, -0.464188, 0.573215)
+bones/6/rotation = Quaternion(0.28584, -0.199766, 0.727032, 0.59145)
+bones/8/rotation = Quaternion(0.714606, -0.203104, 0.645443, 0.177453)
+bones/9/rotation = Quaternion(-0.462384, -0.492093, 0.464188, 0.573215)
+bones/10/rotation = Quaternion(0.28584, 0.199767, -0.727032, 0.59145)
+bones/12/rotation = Quaternion(0.0139373, -0.00244674, -0.00244673, 0.999897)
+bones/12/scale = Vector3(1, 1, 1)
+bones/16/position = Vector3(0.00595662, 0.000227518, -0.000656491)
+bones/16/rotation = Quaternion(0.496003, 0.498661, -0.501307, 0.503994)
+bones/20/position = Vector3(-0.00595662, 0.000227518, -0.000656493)
