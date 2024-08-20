@@ -6,7 +6,7 @@ var camera_scene: PackedScene = preload("res://game/camera/observing_camera.tscn
 
 var player_cuttoff: int = 1
 
-
+@onready var resource_label: Label = $"%ResourceCount"
 @onready var goal_label: Label = $Control/GoalContainer/GoalLabel
 @onready var player_label: Label = $Control/PlayerCountContainer/PlayerCountLabel
 
@@ -16,6 +16,7 @@ var player_cuttoff: int = 1
 var players_remaining: int
 
 var set_look_at: bool = false
+var player: Entity
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -51,7 +52,7 @@ func _ready() -> void:
 		platforms.erase(platform)
 		entity.global_position = platform.global_position + Vector3(0, 0.5, 0)
 
-	var player: Entity = local_player_scene.instantiate()
+	player = local_player_scene.instantiate()
 	setup_and_add_entity(player, Players.player, true) 
 
 	var player_platform: Node3D = platforms.pick_random() as Node3D
@@ -94,6 +95,7 @@ func setup_and_add_entity (entity: Entity, data: PlayerData, add_camera: bool = 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	player_label.text = str(players_remaining) + " Players Remaining"
+	resource_label.text = str("Bolts Collected: " + str(player.robo_data.money))
 
 func _on_entity_death () -> void:
 	players_remaining -= 1

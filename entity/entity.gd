@@ -1,5 +1,7 @@
 class_name Entity extends CharacterBody3D
 
+const screw_scene: PackedScene = preload("res://game/screws.tscn")
+
 # TODO: how will it work injecting a model with animations (and physics?) onto this? 
 # 		I'm thinking that if I wanted to add an entity with a model that's not this person, I'm not sure how I can/would do that
 signal death
@@ -241,11 +243,16 @@ func activate_ability(ability: Ability, ability_target: Entity) -> void:
 		effect.apply(effect_ctx)
 
 func _on_health_changed (value: float) -> void:
-	# TODO: should this spill any guts just on any hit?
 	if value == 0:
 		if is_alive:
 			health_bar.visible = false
 			death.emit()
+			for i in range((stats_component.health.value / 5) + robo_data.money):
+				var screw: Node3D = screw_scene.instantiate()
+				screw.origin_entity = self
+				add_child(screw, true)
+				screw.global_position = position
+				screw.global_position.y += 1.0
 		else: model._on_death()
 
 		is_alive = false

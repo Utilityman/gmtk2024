@@ -32,7 +32,6 @@ const shot_v4: Ability = preload("res://implementation/ability/shots/basic_shot_
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	timer.start(shop_time)
-	player_data.money = 1000
 	Players.resize_arm(player, player_data, player_body)
 	Players.resize_head(player_data, player_body)
 	

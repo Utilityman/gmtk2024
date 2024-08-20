@@ -115,7 +115,32 @@ theme_override_font_sizes/font_size = 168
 text = "FINISH!"
 
 [node name="PauseMenu" parent="Control" instance=ExtResource("4_846on")]
+visible = false
 layout_mode = 1
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 610.0
+offset_right = 1080.0
+offset_bottom = 632.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 165.0
+grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ResourceCount" type="Label" parent="Control/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Bolts Collected: "
 
 [node name="StartingPlatforms" type="Node3D" parent="."]
 
@@ -124,44 +149,64 @@ layout_mode = 1
 [node name="StartingPlatform0" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 5, 36)
 approach_direction = Vector3(0, 0, -1)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform1" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 5, 36)
 approach_direction = Vector3(0, 0, -1)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform2" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 36)
 approach_direction = Vector3(0, 0, -1)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform3" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5, 36)
 approach_direction = Vector3(0, 0, -1)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform4" parent="StartingPlatforms/ZPositivePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 5, 36)
 approach_direction = Vector3(0, 0, -1)
+speed = 2.0
+life_time = 7.5
 
 [node name="ZNegativePlatforms" type="Node3D" parent="StartingPlatforms"]
 
 [node name="StartingPlatform0" parent="StartingPlatforms/ZNegativePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19, 5, -38)
 approach_direction = Vector3(0, 0, 1)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform1" parent="StartingPlatforms/ZNegativePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10, 5, -38)
 approach_direction = Vector3(0, 0, 1)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform2" parent="StartingPlatforms/ZNegativePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 5, -38)
 approach_direction = Vector3(0, 0, 1)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform3" parent="StartingPlatforms/ZNegativePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6, 5, -38)
 approach_direction = Vector3(0, 0, 1)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform4" parent="StartingPlatforms/ZNegativePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 15, 5, -38)
 approach_direction = Vector3(0, 0, 1)
+speed = 2.0
+life_time = 7.5
 
 [node name="XPositivePlatforms" type="Node3D" parent="StartingPlatforms"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -169,22 +214,32 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 [node name="StartingPlatform0" parent="StartingPlatforms/XPositivePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18, 5, -35)
 approach_direction = Vector3(-1, 0, 0)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform1" parent="StartingPlatforms/XPositivePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9, 5, -35)
 approach_direction = Vector3(-1, 0, 0)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform2" parent="StartingPlatforms/XPositivePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 5, -35)
 approach_direction = Vector3(-1, 0, 0)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform3" parent="StartingPlatforms/XPositivePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7, 5, -35)
 approach_direction = Vector3(-1, 0, 0)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform4" parent="StartingPlatforms/XPositivePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16, 5, -35)
 approach_direction = Vector3(-1, 0, 0)
+speed = 2.0
+life_time = 7.5
 
 [node name="XNegativePlatforms" type="Node3D" parent="StartingPlatforms"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -192,22 +247,32 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 [node name="StartingPlatform0" parent="StartingPlatforms/XNegativePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 5, 38)
 approach_direction = Vector3(1, 0, 0)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform1" parent="StartingPlatforms/XNegativePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 5, 38)
 approach_direction = Vector3(1, 0, 0)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform2" parent="StartingPlatforms/XNegativePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999998, 5, 38)
 approach_direction = Vector3(1, 0, 0)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform3" parent="StartingPlatforms/XNegativePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 5, 38)
 approach_direction = Vector3(1, 0, 0)
+speed = 2.0
+life_time = 7.5
 
 [node name="StartingPlatform4" parent="StartingPlatforms/XNegativePlatforms" instance=ExtResource("16_bujbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 5, 38)
 approach_direction = Vector3(1, 0, 0)
+speed = 2.0
+life_time = 7.5
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_vd1kw")
