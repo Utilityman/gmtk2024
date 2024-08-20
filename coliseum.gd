@@ -13,8 +13,15 @@ var player_cuttoff: int = 1
 @onready var killbox: Area3D = $Killbox
 @onready var spectators: Node3D = $Spectators
 
-var players_remaining: int
+const punch_v2: Ability = preload("res://implementation/ability/shots/punch_v2.tres")
+const punch_v3: Ability = preload("res://implementation/ability/shots/punch_v3.tres")
+const punch_v4: Ability = preload("res://implementation/ability/shots/punch_v4.tres")
+const shot_v2: Ability = preload("res://implementation/ability/shots/basic_shot_v2.tres")
+const shot_v3: Ability = preload("res://implementation/ability/shots/basic_shot_v3.tres")
+const shot_v4: Ability = preload("res://implementation/ability/shots/basic_shot_v4.tres")
 
+
+var players_remaining: int
 var set_look_at: bool = false
 var player: Entity
 
@@ -48,6 +55,7 @@ func _ready() -> void:
 		var entity: Entity = npc_scene.instantiate()
 		setup_and_add_entity(entity, data)
 
+
 		var platform: Node3D = platforms.pick_random() as Node3D
 		platforms.erase(platform)
 		entity.global_position = platform.global_position + Vector3(0, 0.5, 0)
@@ -71,6 +79,8 @@ func _ready() -> void:
 
 
 func setup_and_add_entity (entity: Entity, data: PlayerData, add_camera: bool = false) -> void:
+
+	_ai_decisions_upgrades(entity,data,add_camera)
 	entity.robo_data = data
 	entity.data = data.data
 	entity.shoot_ability = data.shoot_ability
@@ -127,3 +137,83 @@ func _on_killbox_entered (node: Node3D) -> void:
 	if node is Entity:
 		var entity: Entity = node as Entity
 		entity._on_health_changed(0)
+
+func _ai_decisions_upgrades(entity: Entity, data: PlayerData, add_camera: bool = false) -> void:
+	if add_camera != true:
+		randomize()
+		# var money_amount:int = randi() % 2 + 1 
+		# var min_value: int  = 10
+		# var max_value: int  = 40
+		# var random_number: int = randi_range(min_value, max_value)
+		# data.money += random_number
+
+		var choice:int = randi() % 2 + 1 
+
+
+		if data.money <= 19 and data.money > 9:
+			if(choice == 1):
+				data.arms = 1
+			else:
+				data.head = 1
+		elif data.money <=29 and data.money > 19:
+			if(choice == 1):
+				data.arms = 1
+				data.head = 1
+			else:
+				var choice2:int = randi() % 2 + 1 
+				if choice2:
+					data.arms = 2
+				else:
+					data.head = 2
+		elif data.money <= 59 and data.money > 40:
+			if(choice == 1):
+				data.arms = 2
+				data.head = 1
+			else:
+				data.head = 2
+				data.arms = 1
+		elif data.money <=95 and data.money > 59:
+			if(choice == 1):
+				data.arms = 2
+				data.head = 2
+			else:
+				data.head = 2
+				data.arms = 2
+		elif data.money <=129 and data.money > 95:
+			if(choice == 1):
+				data.arms = 3
+				data.head = 2
+			else:
+				data.head = 3
+				data.arms = 2
+		if data.money > 129:
+			if(choice == 1):
+				data.arms = 3
+				data.head = 3
+			else:
+				data.head = 3
+				data.arms = 3
+		if(data.head == 1):
+			data.shoot_ability = shot_v2
+			entity.shoot_ability = shot_v2
+			data.data.base_stats.hitpoints += 100
+		if(data.arms == 1):
+			data.punch_ability = punch_v2
+			entity.melee = punch_v2
+			data.data.base_stats.hitpoints += 100
+		if(data.head == 2):
+			data.shoot_ability = shot_v3
+			entity.shoot_ability = shot_v3
+			data.data.base_stats.hitpoints += 200
+		if(data.arms == 2):
+			data.punch_ability = punch_v3
+			entity.melee = punch_v3
+			data.data.base_stats.hitpoints += 200
+		if(data.head == 3):
+			data.shoot_ability = shot_v4
+			entity.shoot_ability = shot_v4
+			data.data.base_stats.hitpoints += 300
+		if(data.arms == 3):
+			data.punch_ability = punch_v4
+			entity.melee = punch_v4
+			data.data.base_stats.hitpoints += 300

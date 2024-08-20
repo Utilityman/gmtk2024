@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://i15xlyq62iah"]
+
+[ext_resource type="Script" path="res://entity/objects/screws.gd" id="1_yrbop"]
+[ext_resource type="PackedScene" uid="uid://cytxwfg1fv270" path="res://assets/pizza/poly/Screws.glb" id="2_0efx0"]
+
+[node name="Screws" type="Node3D"]
+script = ExtResource("1_yrbop")
+
+[node name="Screws" parent="." instance=ExtResource("2_0efx0")]

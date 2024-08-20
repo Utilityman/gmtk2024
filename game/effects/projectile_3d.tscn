@@ -27,11 +27,6 @@ top_level = true
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_046bj")
-local_direction = null
-local_speed = null
-local_acceleration = null
-local_follow_style = null
-local_target = null
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_interval = 1.0

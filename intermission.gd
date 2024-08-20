@@ -40,17 +40,17 @@ func _process(delta: float) -> void:
 	timer_label.text = "%d:%02d" % [floor($Timer.time_left / 60), int($Timer.time_left) % 60]
 	if timer.time_left < 30.0:
 		timer_label.text = "%10.1f" % timer.time_left
-	if player_data.money < 60 or player_data.arms >= 1:
+	if player_data.money < 10 or player_data.arms >= 1:
 		arms1_button.disabled = true
-	if player_data.money < 60 or player_data.head >=1 :
+	if player_data.money < 10 or player_data.head >=1 :
 		head1_button.disabled = true
-	if player_data.money < 70 or player_data.arms != 1:
+	if player_data.money < 20 or player_data.arms != 1:
 		arms2_button.disabled = true
-	if player_data.money < 70 or player_data.head != 1:
+	if player_data.money < 20 or player_data.head != 1:
 		head2_button.disabled = true
-	if player_data.money < 80 or player_data.arms != 2:
+	if player_data.money < 35 or player_data.arms != 2:
 		arms3_button.disabled = true
-	if player_data.money < 80 or  player_data.head != 2:
+	if player_data.money < 35 or  player_data.head != 2:
 		head3_button.disabled = true
 
 func _on_timer_timeout() -> void:
@@ -67,7 +67,7 @@ func _on_continue_button_pressed() -> void:
 #all money values are hard coded rn and super made up
 func _on_arm_v2_pressed() -> void:
 	# this is the stuff that needs to happen, all else is visuals and such
-	player_data.money = player_data.money - 60
+	player_data.money = player_data.money - 10
 	player_data.punch_ability = punch_v2
 	player_data.arms = 1
 	player_data.data.base_stats.hitpoints += 100
@@ -104,7 +104,7 @@ func _on_arm_v2_pressed() -> void:
 	arms2_button.disabled = false
 
 func _on_head_1_pressed() -> void:
-	player_data.money = player_data.money - 60
+	player_data.money = player_data.money - 10
 	player_data.head = 1
 
 	player_data.shoot_ability = shot_v2
@@ -135,7 +135,7 @@ func _on_head_1_pressed() -> void:
 	head2_button.disabled = false
 
 func _on_arm_2_pressed() -> void:
-	player_data.money = player_data.money - 80
+	player_data.money = player_data.money - 20
 	player_data.arms = 2
 	player_data.punch_ability = punch_v3
 	player_data.data.base_stats.hitpoints += 100
@@ -163,7 +163,7 @@ func _on_arm_2_pressed() -> void:
 		
 
 func _on_head_2_pressed() -> void:
-	player_data.money = player_data.money - 60
+	player_data.money = player_data.money - 20
 	player_data.head = 2
 	screws.emitting = true
 	player_data.shoot_ability = shot_v3
@@ -192,12 +192,11 @@ func _on_head_2_pressed() -> void:
 	
 
 func _on_arm_3_pressed() -> void:
-	player_data.money = player_data.money - 100
+	player_data.money = player_data.money - 35
 	player_data.arms = 3
 	screws.emitting = true
-
-	player_data.punch_ability = punch_v4
 	player_data.data.base_stats.hitpoints += 100
+	player_data.punch_ability = punch_v4
 	entity.melee = punch_v4
 
 
@@ -220,11 +219,11 @@ func _on_arm_3_pressed() -> void:
 	arms3_button.disabled = true
 
 func _on_head_3_pressed() -> void:
-	player_data.money = player_data.money - 100
+	player_data.money = player_data.money - 35
 	player_data.head = 3
 	screws.emitting = true
-	player_data.shoot_ability = shot_v4
 	player_data.data.base_stats.hitpoints += 100
+	player_data.shoot_ability = shot_v4
 	entity.shoot_ability = shot_v4
 	var head_scale: float = 1.44
 	var bone_index: int = player_body.find_bone("Head")
