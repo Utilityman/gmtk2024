@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://rpg/entity/hero_data.gd" id="1_30law"]
 [ext_resource type="Resource" uid="uid://cd34b3j4ql3ig" path="res://implementation/hero/cleric_base_stats.tres" id="1_277jp"]
 [ext_resource type="Script" path="res://rpg/item/item_stack.gd" id="1_qynwx"]
-[ext_resource type="Resource" uid="uid://d34nnygsdb1an" path="res://implementation/ability/weaponskill/pummel.tres" id="3_1o6ef"]
+[ext_resource type="Resource" uid="uid://d34nnygsdb1an" path="res://implementation/ability/shots/weaponskill/pummel.tres" id="3_1o6ef"]
 [ext_resource type="Resource" uid="uid://cc0175gwbqe2e" path="res://implementation/ability/cleric/judgement.tres" id="4_7axrq"]
 [ext_resource type="Script" path="res://rpg/entity/spellbook.gd" id="4_264pj"]
 [ext_resource type="Script" path="res://rpg/ability/ability.gd" id="4_dmdy8"]

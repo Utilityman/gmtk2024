@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://rpg/ability/effect/projectile_effect.gd" id="1_7cxml"]
 [ext_resource type="Script" path="res://game/effects/projectile_data.gd" id="1_ygf7q"]
-[ext_resource type="PackedScene" uid="uid://56em0kd2w1b7" path="res://assets/vfx/fireball_001.tscn" id="2_pmxpy"]
+[ext_resource type="PackedScene" uid="uid://56em0kd2w1b7" path="res://assets/vfx/fireball_002.tscn" id="2_pmxpy"]
 [ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="2_r3mks"]
 [ext_resource type="Script" path="res://game/multiplayer/replicated_scene_data.gd" id="3_axgu2"]
 [ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="4_kvmev"]

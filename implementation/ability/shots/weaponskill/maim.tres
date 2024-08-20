@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://rpg/ability/ability.gd" id="1_6rj5u"]
 [ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_bgass"]
 [ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="1_vexfc"]
-[ext_resource type="Resource" uid="uid://ws50ux2pgc87" path="res://implementation/ability/weaponskill/main_aura.tres" id="2_1d43q"]
+[ext_resource type="Resource" uid="uid://ws50ux2pgc87" path="res://implementation/ability/shots/weaponskill/main_aura.tres" id="2_1d43q"]
 [ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="2_xgpxd"]
 [ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="3_11axj"]
 [ext_resource type="Script" path="res://rpg/ability/requisite/in_range_requisite.gd" id="3_dxb02"]

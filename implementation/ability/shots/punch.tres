@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="3_ii68x"]
 [ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="4_64f6g"]
 [ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="4_qneoy"]
-[ext_resource type="PackedScene" uid="uid://ccmjsv24rvqkb" path="res://assets/vfx/lazer_001.tscn" id="4_tactu"]
+[ext_resource type="PackedScene" uid="uid://ccmjsv24rvqkb" path="res://assets/vfx/punch_001.tscn" id="4_tactu"]
 [ext_resource type="Script" path="res://rpg/ability/ability.gd" id="5_h4ttm"]
 [ext_resource type="PackedScene" uid="uid://b6xv5hhsnutur" path="res://assets/vfx/fire_explosion_001.tscn" id="5_lh2to"]
 [ext_resource type="Script" path="res://rpg/ability/effect/scene_effect.gd" id="6_ycosy"]
@@ -15,7 +15,6 @@
 [ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="10_w3o43"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vpkws"]
-radius = 0.75
 
 [sub_resource type="Resource" id="Resource_4gv0i"]
 script = ExtResource("3_cqd3p")

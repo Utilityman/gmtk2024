@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cwt0265j1fxi1"]
+[gd_scene load_steps=30 format=3 uid="uid://1dhueiar7sf7"]
 
 [sub_resource type="Curve" id="Curve_0yec3"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -22,6 +22,7 @@ initial_velocity_min = 0.07
 initial_velocity_max = 0.1
 gravity = Vector3(0, 0, 0)
 scale_min = 0.7
+color = Color(0.619608, 0, 1, 1)
 color_ramp = SubResource("GradientTexture1D_p61vw")
 alpha_curve = SubResource("CurveTexture_mdtyc")
 turbulence_noise_strength = 0.0
@@ -29,14 +30,14 @@ turbulence_noise_strength = 0.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bc1k3"]
 transparency = 1
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0.952941, 0.611765, 1)
+albedo_color = Color(1.34766e-06, 0.905076, 0.814163, 1)
 emission_enabled = true
-emission = Color(0.964706, 0.741176, 0.223529, 1)
+emission = Color(0.482764, 0.829108, 1, 1)
 emission_energy_multiplier = 2.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_xlp1g"]
 material = SubResource("StandardMaterial3D_bc1k3")
-size = Vector3(0.1, 0.1, 0.1)
+size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="Curve" id="Curve_8s1s3"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.752199, 0.498414), -2.10394, -2.10394, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -46,7 +47,8 @@ point_count = 3
 curve = SubResource("Curve_8s1s3")
 
 [sub_resource type="Gradient" id="Gradient_gaey1"]
-colors = PackedColorArray(0.996078, 0.568627, 0.0784314, 1, 0.148073, 0.0121818, 0.00100226, 1)
+offsets = PackedFloat32Array(0, 0.985656, 1)
+colors = PackedColorArray(1.15514e-06, 0.59519, 0.678162, 1, 0, 0.0863157, 0.0707671, 1, 0.148073, 0.0121818, 0.00100226, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_fax46"]
 gradient = SubResource("Gradient_gaey1")
@@ -66,7 +68,7 @@ curve = SubResource("Curve_pfej5")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4f280"]
 emission_shape = 1
-emission_sphere_radius = 0.08
+emission_sphere_radius = 0.1
 direction = Vector3(0, 1, 0)
 spread = 15.0
 initial_velocity_min = 0.25
@@ -83,11 +85,11 @@ alpha_curve = SubResource("CurveTexture_dla6d")
 transparency = 1
 vertex_color_use_as_albedo = true
 emission_enabled = true
-emission = Color(0.854902, 0.294118, 0.0117647, 1)
+emission = Color(0.266434, 0.454304, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_uj4lr"]
 material = SubResource("StandardMaterial3D_tllh3")
-size = Vector3(0.05, 0.05, 0.05)
+size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="Curve" id="Curve_l0vc0"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
@@ -97,7 +99,7 @@ point_count = 1
 curve = SubResource("Curve_l0vc0")
 
 [sub_resource type="Gradient" id="Gradient_2i41g"]
-colors = PackedColorArray(0.996078, 0.568627, 0.0784314, 1, 0.148073, 0.0121818, 0.00100226, 1)
+colors = PackedColorArray(0, 0.196431, 0.243562, 1, 0.00774394, 0, 0.26375, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_besym"]
 gradient = SubResource("Gradient_2i41g")

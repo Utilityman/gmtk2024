@@ -1,9 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr1mw16us5p5a"]
+[gd_scene load_steps=6 format=3 uid="uid://behuuusdbjuhg"]
+
+[sub_resource type="Curve" id="Curve_x1ppw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3ohhk"]
+curve = SubResource("Curve_x1ppw")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f1ev2"]
 gravity = Vector3(0, 2, 0)
+color = Color(1, 0, 0.227451, 0.188235)
+alpha_curve = SubResource("CurveTexture_3ohhk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wiv6f"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="SphereMesh" id="SphereMesh_bh54y"]
+material = SubResource("StandardMaterial3D_wiv6f")
 
 [node name="Beam" type="Node3D"]
 

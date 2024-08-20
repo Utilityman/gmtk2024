@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cwt0265j1fxi1"]
+[gd_scene load_steps=30 format=3 uid="uid://56em0kd2w1b7"]
 
 [sub_resource type="Curve" id="Curve_0yec3"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -36,7 +36,7 @@ emission_energy_multiplier = 2.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_xlp1g"]
 material = SubResource("StandardMaterial3D_bc1k3")
-size = Vector3(0.1, 0.1, 0.1)
+size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="Curve" id="Curve_8s1s3"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.752199, 0.498414), -2.10394, -2.10394, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -66,7 +66,7 @@ curve = SubResource("Curve_pfej5")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4f280"]
 emission_shape = 1
-emission_sphere_radius = 0.08
+emission_sphere_radius = 0.1
 direction = Vector3(0, 1, 0)
 spread = 15.0
 initial_velocity_min = 0.25
@@ -87,7 +87,7 @@ emission = Color(0.854902, 0.294118, 0.0117647, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_uj4lr"]
 material = SubResource("StandardMaterial3D_tllh3")
-size = Vector3(0.05, 0.05, 0.05)
+size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="Curve" id="Curve_l0vc0"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]

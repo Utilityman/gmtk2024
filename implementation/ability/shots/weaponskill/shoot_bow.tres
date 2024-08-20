@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Ability" load_steps=14 format=3 uid="uid://jrpdhxn1gqth"]
 
 [ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_6a44o"]
-[ext_resource type="Resource" uid="uid://br83x8cmpwoxs" path="res://implementation/ability/weaponskill/shoot_bow_projectile_effect.tres" id="1_coiae"]
+[ext_resource type="Resource" uid="uid://br83x8cmpwoxs" path="res://implementation/ability/shots/weaponskill/shoot_bow_projectile_effect.tres" id="1_coiae"]
 [ext_resource type="Script" path="res://rpg/ability/requisite/in_range_requisite.gd" id="2_kyimp"]
 [ext_resource type="Script" path="res://rpg/ability/requisite/spell_known_requisite.gd" id="3_7qn6n"]
 [ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="4_8ke8d"]

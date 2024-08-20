@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsuha6na7r0fa"]
+
+[sub_resource type="Curve" id="Curve_wo0h5"]
+_data = [Vector2(0.00995025, 0), 0.0, 0.0, 0, 0, Vector2(0.997512, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kvejw"]
+curve = SubResource("Curve_wo0h5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o6uwo"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+angular_velocity_min = -0.150016
+angular_velocity_max = 1.49998
+gravity = Vector3(0, 0, 0)
+color = Color(0.87451, 0.407843, 0.623529, 0.168627)
+alpha_curve = SubResource("CurveTexture_kvejw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ars8s"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_oseft"]
+material = SubResource("StandardMaterial3D_ars8s")
+radius = 0.75
+height = 1.5
+
+[node name="punch_001" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D"]
+lifetime = 0.2
+trail_lifetime = 0.01
+process_material = SubResource("ParticleProcessMaterial_o6uwo")
+draw_pass_1 = SubResource("SphereMesh_oseft")

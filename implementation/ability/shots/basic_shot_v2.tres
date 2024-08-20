@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=22 format=3 uid="uid://kenbvvnfb0ro"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_uqaxs"]
+[ext_resource type="Script" path="res://game/effects/projectile_data.gd" id="2_hvhc3"]
+[ext_resource type="Script" path="res://game/multiplayer/replicated_scene_data.gd" id="3_vu1bw"]
+[ext_resource type="PackedScene" uid="uid://56em0kd2w1b7" path="res://assets/vfx/fireball_002.tscn" id="4_ylamq"]
+[ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="5_jbb3g"]
+[ext_resource type="PackedScene" uid="uid://b6xv5hhsnutur" path="res://assets/vfx/fire_explosion_001.tscn" id="6_v8xv5"]
+[ext_resource type="Script" path="res://rpg/ability/effect/scene_effect.gd" id="7_ecri3"]
+[ext_resource type="Script" path="res://rpg/ability/effect/projectile_effect.gd" id="8_scq6w"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="9_ihjxi"]
+[ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="10_0e6oh"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="11_myenm"]
+[ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="12_vbah1"]
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="13_nq370"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r4s7n"]
+radius = 0.2
+
+[sub_resource type="Resource" id="Resource_yni0r"]
+script = ExtResource("3_vu1bw")
+model = ExtResource("4_ylamq")
+model_direction = Vector3(0, -1, 0)
+
+[sub_resource type="Resource" id="Resource_haaae"]
+script = ExtResource("2_hvhc3")
+shape = SubResource("SphereShape3D_r4s7n")
+visual_effects = Array[ExtResource("3_vu1bw")]([SubResource("Resource_yni0r")])
+direction = Vector3(0, 0, 0)
+use_source_direction = true
+start_from_source = true
+follow_style = "follow_direction"
+speed = 10.0
+acceleration = 1.0
+life_time = 15.0
+hit_style = "any"
+time_to_free = 0.05
+
+[sub_resource type="Resource" id="Resource_xc58g"]
+script = ExtResource("5_jbb3g")
+flat_damage = 40.0
+level_ratio = 0.0
+spell_power_ratio = 0.0
+attack_power_ratio = 0.0
+weapon_damage_ratio = 0.0
+using = 0
+type = ""
+sub_type = ""
+debug = false
+
+[sub_resource type="Resource" id="Resource_3u0yh"]
+script = ExtResource("3_vu1bw")
+model = ExtResource("6_v8xv5")
+model_direction = Vector3(0, 0, -1)
+
+[sub_resource type="Resource" id="Resource_r6dvc"]
+script = ExtResource("7_ecri3")
+scene_data = SubResource("Resource_3u0yh")
+apply_to_self = false
+duration = 5.0
+debug = false
+
+[sub_resource type="Resource" id="Resource_racwy"]
+script = ExtResource("8_scq6w")
+data = SubResource("Resource_haaae")
+effects = Array[ExtResource("1_uqaxs")]([SubResource("Resource_xc58g"), SubResource("Resource_r6dvc")])
+debug = false
+
+[sub_resource type="Resource" id="Resource_xdd4l"]
+script = ExtResource("11_myenm")
+
+[resource]
+script = ExtResource("13_nq370")
+id = "basic-shot-001"
+name = "Basic Shot"
+description = "shoot"
+use_range = 2.0
+cast_time = 0.0
+cooldown = 0.0
+global_cooldown = 1.0
+off_global_cooldown = false
+requisites = Array[ExtResource("10_0e6oh")]([SubResource("Resource_xdd4l")])
+resource_costs = Array[ExtResource("12_vbah1")]([])
+effects = Array[ExtResource("1_uqaxs")]([SubResource("Resource_racwy")])
+passives = Array[ExtResource("9_ihjxi")]([])

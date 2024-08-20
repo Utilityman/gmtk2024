@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="2_7gk1c"]
 [ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="3_310xr"]
 [ext_resource type="Script" path="res://game/multiplayer/replicated_scene_data.gd" id="3_apg53"]
-[ext_resource type="PackedScene" uid="uid://56em0kd2w1b7" path="res://assets/vfx/fireball_001.tscn" id="4_vj1ys"]
+[ext_resource type="PackedScene" uid="uid://cwt0265j1fxi1" path="res://assets/vfx/fireball_001.tscn" id="4_vbmg1"]
 [ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="4_vlxl5"]
 [ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="4_yur5n"]
 [ext_resource type="Script" path="res://rpg/ability/effect/projectile_effect.gd" id="5_8vo4l"]
@@ -19,7 +19,7 @@ radius = 0.2
 
 [sub_resource type="Resource" id="Resource_yni0r"]
 script = ExtResource("3_apg53")
-model = ExtResource("4_vj1ys")
+model = ExtResource("4_vbmg1")
 model_direction = Vector3(0, -1, 0)
 
 [sub_resource type="Resource" id="Resource_haaae"]
