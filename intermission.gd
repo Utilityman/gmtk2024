@@ -26,7 +26,6 @@ const punch_v2: Ability = preload("res://implementation/ability/shots/punch_v2.t
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	timer.start(shop_time)
-	player_data.money = 1000
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

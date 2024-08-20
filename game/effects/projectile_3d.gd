@@ -79,7 +79,6 @@ func _on_area_entered(area: Area3D) -> void:
 	while body is not Entity:
 		body = body.get_parent()
 
-	print("body entered with: " + str(body))
 	if body == source: return
 
 	if body is Entity:
