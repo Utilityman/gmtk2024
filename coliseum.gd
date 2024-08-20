@@ -17,6 +17,7 @@ var players_remaining: int
 
 var set_look_at: bool = false
 var player: Entity
+var changing_to_intermission: bool = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -82,8 +83,6 @@ func setup_and_add_entity (entity: Entity, data: PlayerData, add_camera: bool = 
 	entity.data = data.data
 	entity.shoot_ability = data.shoot_ability
 	entity.melee = data.punch_ability
-	# data.arms= 0
-	# data.head = 3
 	Players.resize_arm(entity, data, skelington)
 	Players.resize_head(data, skelington)
 
@@ -99,14 +98,16 @@ func _process(delta: float) -> void:
 
 func _on_entity_death () -> void:
 	players_remaining -= 1
+	if not changing_to_intermission and player.stats_component.health.current == 0:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		$"%PauseMenu".disabled = true
+		$"%LoseMenu".visible = true
+		return
 	if players_remaining == player_cuttoff:
 		move_to_intermission("Finish!")
 
 func move_to_intermission (text: String) -> void:
-	# TODO: stop all abilities and allow pickups for 5 seconds
-	$%FinishLabel.text = text
-	$%FinishLabel.visible = true
-	# TODO: tween some animations and stuff
+	changing_to_intermission = true
 	for node: Node in get_tree().get_nodes_in_group("ENTITY"):
 		if node is not Entity: 
 			Logger.warn("Found non-player with ENTITY group tag: " + str(node))
@@ -116,9 +117,14 @@ func move_to_intermission (text: String) -> void:
 			Players.npcs.erase(entity.robo_data)
 
 	if Players.npcs.is_empty(): 
-		print("We have a winner!!!")
-		# get_tree().call_deferred("change_scene_to_file", "res://winner.tscn")
-	else: get_tree().call_deferred("change_scene_to_file", "res://intermission.tscn")
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		$"%PauseMenu".disabled = true
+		$"%WinnerMenu".visible = true
+	else: 
+		$"%PauseMenu".disabled = true
+		$"%FinishLabel".visible = true
+		await get_tree().create_timer(5.0).timeout
+		SceneTransition.call_deferred("change_scene_to_file", "res://intermission.tscn")
 		
 func setup_killbox() -> void:
 	killbox.body_entered.connect(_on_killbox_entered)
@@ -126,4 +132,4 @@ func setup_killbox() -> void:
 func _on_killbox_entered (node: Node3D) -> void:
 	if node is Entity:
 		var entity: Entity = node as Entity
-		entity._on_health_changed(0)
+		entity.stats_component.health.current -= 999999

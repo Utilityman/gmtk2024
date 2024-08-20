@@ -1,6 +1,7 @@
 class_name PauseMenu extends Control
 
 @export var quit_to_scene: PackedScene
+@export var disabled: bool = false
 
 @onready var overlay: TextureRect = $MenuScreenOverlay
 @onready var menu: VBoxContainer = $Menu
@@ -16,7 +17,7 @@ func _ready() -> void:
 	quit.pressed.connect(quit_to)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("PAUSE"):
+	if not disabled and Input.is_action_just_pressed("PAUSE"):
 		if not get_tree().paused:
 			starting_mouse_mode = Input.mouse_mode
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -33,5 +34,4 @@ func unpause () -> void:
 
 func quit_to () -> void:
 	get_tree().paused = false
-	get_tree().call_deferred("change_scene_to_file", "res://main_menu.tscn")
-		
+	SceneTransition.call_deferred("change_scene_to_file", "res://main_menu.tscn")		

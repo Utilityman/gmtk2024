@@ -32,4 +32,4 @@ func _on_start () -> void:
 	var player_name: String = name_field.text if name_field.text != "" else "_blank"
 	Players.setup_player(player_name)
 
-	get_tree().change_scene_to_packed(game_scene)
+	SceneTransition.call_deferred("change_scene_to_packed", game_scene)
