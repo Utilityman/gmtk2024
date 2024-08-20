@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://d3b4vn6yawwfi" path="res://assets/pizza/poly/model.obj" id="1_d13du"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3ent5"]
-radius = 0.226894
+radius = 0.332277
 
 [node name="Screws" type="RigidBody3D"]
 top_level = true

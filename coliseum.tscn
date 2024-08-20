@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3koyon3b1egm"]
+[gd_scene load_steps=18 format=3 uid="uid://b3koyon3b1egm"]
 
 [ext_resource type="Script" path="res://coliseum.gd" id="1_g1hoj"]
 [ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_af7lc"]
 [ext_resource type="PackedScene" uid="uid://bf88d7im2w6ob" path="res://interface/pause_menu.tscn" id="4_846on"]
 [ext_resource type="FontFile" uid="uid://t51b6g3161l2" path="res://assets/com/google/fonts/BungeeTint-Regular.ttf" id="4_ba1sg"]
+[ext_resource type="PackedScene" uid="uid://r4pdmk2a1aon" path="res://interface/lose_menu.tscn" id="5_wuouc"]
 [ext_resource type="PackedScene" uid="uid://b4evfy2navalt" path="res://assets/vfx/spectators_01.tscn" id="6_67ogh"]
+[ext_resource type="PackedScene" uid="uid://b6pk4cb4c1kqj" path="res://interface/winner_menu.tscn" id="6_yx1sa"]
 [ext_resource type="PackedScene" uid="uid://cxn20khnv6467" path="res://assets/vfx/spectators_02.tscn" id="7_h7epc"]
 [ext_resource type="PackedScene" uid="uid://owr0a6iuh5je" path="res://game/platforms/starting_platform.tscn" id="16_bujbd"]
 [ext_resource type="PackedScene" uid="uid://bol24dvutt2eg" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-ctQ5CDmraQ.glb" id="16_k0i1g"]
@@ -45,7 +47,7 @@ script = ExtResource("1_g1hoj")
 environment = SubResource("Environment_6ugcg")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 8, -145.707)
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0, 8, -145.707)
 shadow_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -93,45 +95,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Players:"
 
-[node name="FinishLabel" type="Label" parent="Control"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -335.0
-offset_top = -111.5
-offset_right = 335.0
-offset_bottom = 111.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 0
-theme_override_constants/shadow_outline_size = 32
-theme_override_font_sizes/font_size = 168
-text = "FINISH!"
-
-[node name="PauseMenu" parent="Control" instance=ExtResource("4_846on")]
-visible = false
-layout_mode = 1
-
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 1040.0
-offset_top = 610.0
-offset_right = 1080.0
-offset_bottom = 632.0
-
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 165.0
+offset_top = -41.0
+offset_right = 256.0
 grow_vertical = 0
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_bottom = 8
@@ -141,6 +111,42 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Bolts Collected: "
+
+[node name="FinishLabel" type="Label" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.5
+offset_top = -85.0
+offset_right = 282.5
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 32
+theme_override_font_sizes/font_size = 128
+text = "FINISH!"
+
+[node name="PauseMenu" parent="Control" instance=ExtResource("4_846on")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="LoseMenu" parent="Control" instance=ExtResource("5_wuouc")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="WinnerMenu" parent="Control" instance=ExtResource("6_yx1sa")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
 
 [node name="StartingPlatforms" type="Node3D" parent="."]
 

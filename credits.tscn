@@ -1,0 +1,135 @@
+[gd_scene load_steps=8 format=3 uid="uid://i48tqalfbelo"]
+
+[ext_resource type="Script" path="res://credits.gd" id="1_d5s1u"]
+[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="1_jtywb"]
+[ext_resource type="FontFile" uid="uid://dt55bvt1lk2qq" path="res://assets/com/google/fonts/ShareTechMono-Regular.ttf" id="2_k0peq"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_iy8pk"]
+panorama = ExtResource("1_jtywb")
+
+[sub_resource type="Sky" id="Sky_hcmkk"]
+sky_material = SubResource("PanoramaSkyMaterial_iy8pk")
+
+[sub_resource type="Environment" id="Environment_g0jhy"]
+background_mode = 2
+sky = SubResource("Sky_hcmkk")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Theme" id="Theme_j7nmm"]
+default_font = ExtResource("2_k0peq")
+
+[node name="Credits" type="Node3D"]
+script = ExtResource("1_d5s1u")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g0jhy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_j7nmm")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Growbot Arena"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Programming, Production: Josh Mackin, Caroline Mackin"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Design: Josh Mackin, Caroline Mackin, Julia Mackin"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Art:
+Models: quaternius (quaternius.com)
+Screw Model: Jarlan Perez (poly.pizza)
+Skybox: \"skyboxarchitect\" @ cgtrader.com
+Font: Google Fonts"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Control/MarginContainer/Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
+text = "Made in Godot ❤"
+horizontal_alignment = 2
+
+[node name="Control2" type="Control" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/Control2"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -44.0
+offset_right = 94.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ReturnButton" type="Button" parent="Control/MarginContainer/Control2/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+text = "Return"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, -0.422618, 0, 0, 0)

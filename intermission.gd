@@ -55,14 +55,15 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	print("OUT OF TIME IN SHOP!")
-	get_tree().change_scene_to_file("res://coliseum.tscn")
+	SceneTransition.call_deferred("change_scene_to_file", "res://coliseum.tscn")
+
 
 func _on_texture_button_pressed() -> void:
 	print("clicked")
 
 
 func _on_continue_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://coliseum.tscn")
+	SceneTransition.call_deferred("change_scene_to_file", "res://coliseum.tscn")
 
 #all money values are hard coded rn and super made up
 func _on_arm_v2_pressed() -> void:

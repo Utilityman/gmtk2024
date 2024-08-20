@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://r4pdmk2a1aon"]
+
+[ext_resource type="FontFile" uid="uid://t51b6g3161l2" path="res://assets/com/google/fonts/BungeeTint-Regular.ttf" id="1_01wqg"]
+[ext_resource type="Script" path="res://interface/lose_menu.gd" id="2_4anuc"]
+
+[sub_resource type="Theme" id="Theme_0nil6"]
+default_font = ExtResource("1_01wqg")
+
+[sub_resource type="Gradient" id="Gradient_y4a5d"]
+colors = PackedColorArray(0, 0, 0, 0.254902, 0, 0, 0, 0.745098)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bkyou"]
+gradient = SubResource("Gradient_y4a5d")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
+
+[node name="LoseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0nil6")
+script = ExtResource("2_4anuc")
+
+[node name="MenuScreenOverlay" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_bkyou")
+
+[node name="Menu" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -106.5
+offset_right = 151.0
+offset_bottom = 106.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Eliminated"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PositionLabel" type="Label" parent="Menu"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "You made it to the top:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Button" parent="Menu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Quit"
