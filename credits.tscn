@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://i48tqalfbelo"]
 
 [ext_resource type="Script" path="res://credits.gd" id="1_d5s1u"]
-[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="1_jtywb"]
+[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/uploads_files_4381654_LightBlueSky_texture.jpg" id="1_jtywb"]
 [ext_resource type="FontFile" uid="uid://dt55bvt1lk2qq" path="res://assets/com/google/fonts/ShareTechMono-Regular.ttf" id="2_k0peq"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_iy8pk"]

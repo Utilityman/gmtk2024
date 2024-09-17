@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=15 format=3 uid="uid://d34nnygsdb1an"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability.gd" id="1_i8q82"]
+[ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="1_n25mb"]
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_ou7wq"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/cooldown_requisite.gd" id="2_wg4i2"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/in_range_requisite.gd" id="4_2cyn6"]
+[ext_resource type="Script" path="res://rpg/aura/base_aura.gd" id="4_6qaoj"]
+[ext_resource type="Script" path="res://rpg/ability/requisite/spell_known_requisite.gd" id="5_55dio"]
+[ext_resource type="Script" path="res://rpg/ability/ability_requisite.gd" id="5_xnp1e"]
+[ext_resource type="Script" path="res://rpg/ability/resource_cost.gd" id="9_r6d6s"]
+
+[sub_resource type="Resource" id="Resource_2n4mb"]
+script = ExtResource("1_n25mb")
+flat_damage = 5.0
+level_ratio = 1.0
+spell_power_ratio = 0.0
+attack_power_ratio = 0.3
+weapon_damage_ratio = 0.0
+using = 0
+type = ""
+sub_type = ""
+debug = false
+
+[sub_resource type="Resource" id="Resource_logxm"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/punch.svg"
+
+[sub_resource type="Resource" id="Resource_wum35"]
+script = ExtResource("2_wg4i2")
+
+[sub_resource type="Resource" id="Resource_o11ly"]
+script = ExtResource("4_2cyn6")
+
+[sub_resource type="Resource" id="Resource_oc6vd"]
+script = ExtResource("5_55dio")
+
+[resource]
+script = ExtResource("1_i8q82")
+id = "default-pummel"
+name = "Pummel"
+description = "Pummel a target."
+icon = SubResource("Resource_logxm")
+use_range = 2.0
+cast_time = 0.0
+cooldown = 0.0
+global_cooldown = 1.5
+off_global_cooldown = false
+requisites = Array[ExtResource("5_xnp1e")]([SubResource("Resource_wum35"), SubResource("Resource_o11ly"), SubResource("Resource_oc6vd")])
+resource_costs = Array[ExtResource("9_r6d6s")]([])
+effects = Array[ExtResource("1_ou7wq")]([SubResource("Resource_2n4mb")])
+passives = Array[ExtResource("4_6qaoj")]([])

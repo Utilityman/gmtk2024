@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="EffectAura" load_steps=6 format=3 uid="uid://ws50ux2pgc87"]
+
+[ext_resource type="Script" path="res://rpg/ability/ability_effect.gd" id="1_5en6d"]
+[ext_resource type="Script" path="res://rpg/ability/effect/damage_effect.gd" id="1_o1lwt"]
+[ext_resource type="Script" path="res://rpg/aura/effect_aura.gd" id="3_q471e"]
+
+[sub_resource type="Resource" id="Resource_t82vc"]
+script = ExtResource("1_o1lwt")
+flat_damage = 10.0
+level_ratio = 0.0
+spell_power_ratio = 0.0
+attack_power_ratio = 0.0
+weapon_damage_ratio = 0.0
+using = 0
+type = ""
+sub_type = ""
+debug = false
+
+[sub_resource type="Resource" id="Resource_f8ech"]
+metadata/__load_path__ = "res://assets/icons/net/game-icons/ragged-wound.png"
+
+[resource]
+script = ExtResource("3_q471e")
+interval = 3.0
+use_on_start = false
+effects = Array[ExtResource("1_5en6d")]([SubResource("Resource_t82vc")])
+id = "maim-bleed-aura"
+name = "Maim"
+description = "Bleeding"
+icon = SubResource("Resource_f8ech")
+duration = 9.0
+forever = false
+type = "debuff"
+sub_type = "bleed"
+is_unique = "by_entity"
+max_stacks = 1

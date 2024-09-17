@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwghbsrfug04"]
+
+[ext_resource type="PackedScene" uid="uid://8soewehstqdw" path="res://assets/pizza/poly/CyberpunkGameKit/Robot Enemy Flying.glb" id="1_k2x4n"]
+[ext_resource type="Script" path="res://assets/vfx/spectator_bot_03.gd" id="2_jre6m"]
+
+[node name="SpectatorBot03" instance=ExtResource("1_k2x4n")]
+script = ExtResource("2_jre6m")
+
+[node name="Skeleton3D" parent="RootNode/CharacterArmature" index="0"]
+bones/1/position = Vector3(-3.43777e-06, 0.00378199, 5.03862e-05)
+bones/1/rotation = Quaternion(-0.00609609, 0.00722077, 0.00042492, 0.999955)
+bones/3/rotation = Quaternion(-0.475713, 0.181504, 0.100947, 0.85473)
+bones/4/rotation = Quaternion(-0.381402, -0.0615826, -0.536971, 0.749935)
+bones/7/position = Vector3(-0.00314611, 0.00148207, -1.81067e-05)
+bones/7/rotation = Quaternion(-0.499357, 0.668755, 0.329514, 0.441394)
+bones/8/rotation = Quaternion(-0.474756, -0.179718, -0.0890503, 0.856959)
+bones/9/rotation = Quaternion(-0.358352, 0.0677466, 0.585953, 0.723639)
+bones/12/scale = Vector3(1, 1, 1)

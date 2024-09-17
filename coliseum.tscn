@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://b3koyon3b1egm"]
 
 [ext_resource type="Script" path="res://coliseum.gd" id="1_g1hoj"]
-[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_af7lc"]
+[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/uploads_files_4381654_LightBlueSky_texture.jpg" id="2_af7lc"]
 [ext_resource type="PackedScene" uid="uid://bf88d7im2w6ob" path="res://interface/pause_menu.tscn" id="4_846on"]
 [ext_resource type="FontFile" uid="uid://t51b6g3161l2" path="res://assets/com/google/fonts/BungeeTint-Regular.ttf" id="4_ba1sg"]
 [ext_resource type="PackedScene" uid="uid://r4pdmk2a1aon" path="res://interface/lose_menu.tscn" id="5_wuouc"]

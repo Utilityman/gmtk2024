@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b16b710fn1ptv"]
 
-[ext_resource type="PackedScene" uid="uid://bwghbsrfug04" path="res://assets/vfx/spectator_bot_03.tscn" id="1_fdu5p"]
-[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/skyboxarchitect/uploads_files_4381654_LightBlueSky_texture.jpg" id="1_qmpgf"]
+[ext_resource type="PackedScene" uid="uid://bwghbsrfug04" path="res://spectator_bot_03.tscn" id="1_fdu5p"]
+[ext_resource type="Texture2D" uid="uid://bvlgdsm8d5woa" path="res://assets/uploads_files_4381654_LightBlueSky_texture.jpg" id="1_qmpgf"]
 [ext_resource type="PackedScene" uid="uid://bol24dvutt2eg" path="res://assets/pizza/poly/CyberpunkGameKit/Cyberpunk Platform-ctQ5CDmraQ.glb" id="2_yyt3n"]
 [ext_resource type="FontFile" uid="uid://t51b6g3161l2" path="res://assets/com/google/fonts/BungeeTint-Regular.ttf" id="3_bagvs"]
 [ext_resource type="FontFile" uid="uid://dt55bvt1lk2qq" path="res://assets/com/google/fonts/ShareTechMono-Regular.ttf" id="5_vwmvr"]
@@ -28,6 +28,7 @@ transform = Transform3D(0.330559, -0.879804, 0.341579, 0.395057, 0.457679, 0.796
 shadow_enabled = true
 
 [node name="SpectatorBot03" parent="." instance=ExtResource("1_fdu5p")]
+script = null
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04204, 0)
